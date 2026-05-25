@@ -40,7 +40,7 @@ function loadDarkMode() {
 }
 
 export default function App() {
-  const [activeView, setActiveView] = useState('swipe')
+  const [activeView, setActiveView] = useState('browse')
   const [currentCategory, setCurrentCategory] = useState('All Sentences')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [bookmarks, setBookmarks] = useState(loadBookmarks)

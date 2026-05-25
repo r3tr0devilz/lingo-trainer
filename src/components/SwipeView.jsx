@@ -107,6 +107,7 @@ export default function SwipeView({
   // Touch handlers
   const onTouchStart = useCallback((e) => {
     if (stage !== 'idle') return
+    if (e.target.closest('button, a, input, [role="button"]')) return
     touchStartYRef.current = e.touches[0].clientY
     touchStartXRef.current = e.touches[0].clientX
     setStage('dragging')
