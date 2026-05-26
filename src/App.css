@@ -89,6 +89,13 @@ input {
   position: relative;
 }
 
+/* Sidebar-only elements hidden on mobile */
+.sidebar-brand,
+.sidebar-spacer,
+.sidebar-dark-toggle {
+  display: none;
+}
+
 /* ── Bottom Navigation ───────────────────────────────────── */
 .bottom-nav {
   height: var(--nav-height);
@@ -162,6 +169,12 @@ input {
   touch-action: none; /* JS owns all touch gestures; horizontal guard handled in onTouchMove */
   background: var(--bg);
   user-select: none;
+}
+
+/* swipe-stage is a passthrough on mobile */
+.swipe-stage {
+  position: absolute;
+  inset: 0;
 }
 
 .swipe-card-wrapper {
@@ -523,6 +536,11 @@ input {
 
 .dark-toggle:hover {
   background: var(--border);
+}
+
+/* Content wrap — no-op on mobile, centered column on desktop */
+.browse-content-wrap {
+  width: 100%;
 }
 
 /* All sentences tile */
@@ -977,7 +995,7 @@ input {
   border-radius: 2px;
 }
 
-/* ── Responsive: Larger screens ──────────────────────────── */
+/* ── Responsive: Tablet ──────────────────────────────────── */
 @media (min-width: 480px) {
   .card-german {
     font-size: clamp(26px, 4.5vw, 40px);
@@ -988,23 +1006,205 @@ input {
   }
 }
 
-@media (min-width: 768px) {
-  /* Center the "app" like a phone on desktop */
-  html, body, #root {
-    overflow: auto;
-    background: #2A2218;
-  }
-
+/* ── Responsive: Desktop (≥1024px) ───────────────────────── */
+@media (min-width: 1024px) {
+  /* Shell: horizontal layout with sidebar */
   .app {
-    max-width: 420px;
-    margin: 0 auto;
+    flex-direction: row;
     height: 100vh;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
     overflow: hidden;
   }
 
-  .card-german {
-    font-size: clamp(28px, 3.5vw, 38px);
+  .view-container {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+  }
+
+  /* ── Sidebar Nav ─────────────────── */
+  .bottom-nav {
+    width: 220px;
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    order: -1;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    box-shadow: 2px 0 16px var(--shadow);
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 8px;
+  }
+
+  .sidebar-brand-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .sidebar-brand-title {
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-item {
+    flex: none;
+    height: 48px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 0 16px;
+    border-radius: 8px;
+    margin: 2px 8px;
+    width: auto;
+  }
+
+  .nav-item::after {
+    display: none;
+  }
+
+  .nav-item--active {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .nav-label {
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+
+  .sidebar-spacer {
+    flex: 1;
+  }
+
+  .sidebar-dark-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    width: 100%;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 0;
+  }
+
+  .sidebar-dark-toggle:hover {
+    background: var(--border-light);
+    color: var(--text-primary);
+  }
+
+  /* Hide per-view dark toggles — sidebar handles it */
+  .browse-title-row .dark-toggle,
+  .secondary-header .dark-toggle {
+    display: none;
+  }
+
+  /* ── Browse View ─────────────────── */
+  .browse-header {
+    padding: 28px 40px 16px;
+  }
+
+  .browse-content-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .category-tile--all {
+    width: calc(100% - 80px);
+    margin: 20px 40px 12px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 12px 40px 40px;
+  }
+
+  /* ── Swipe View ──────────────────── */
+  .swipe-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: auto;
+  }
+
+  .swipe-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .swipe-card-wrapper {
+    position: relative;
+    inset: unset;
+    width: 520px;
+    height: 680px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px var(--shadow-md);
+    --card-fly-distance: 720px;
+  }
+
+  .keyboard-hint {
+    position: static;
+    transform: none;
+    bottom: auto;
+    left: auto;
+    display: block;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .card-fabs {
+    bottom: 24px;
+  }
+
+  .card-swipe-nudge {
+    bottom: 16px;
+  }
+
+  .swipe-hint {
+    display: none;
+  }
+
+  /* ── Bookmarks + Search ──────────── */
+  .secondary-header {
+    padding: 20px 40px;
+  }
+
+  .bookmarks-content,
+  .search-results {
+    padding-left: max(40px, calc((100% - 720px) / 2));
+    padding-right: max(40px, calc((100% - 720px) / 2));
+  }
+
+  .search-bar-wrapper {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

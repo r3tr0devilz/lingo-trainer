@@ -145,10 +145,10 @@ export default function SwipeView({
   // Compute card style
   const getTransform = () => {
     switch (stage) {
-      case 'fly-up':    return 'translateY(-105vh)'
-      case 'fly-down':  return 'translateY(105vh)'
-      case 'in-bottom': return 'translateY(105vh)'
-      case 'in-top':    return 'translateY(-105vh)'
+      case 'fly-up':    return 'translateY(calc(-1 * var(--card-fly-distance, 105vh)))'
+      case 'fly-down':  return 'translateY(var(--card-fly-distance, 105vh))'
+      case 'in-bottom': return 'translateY(var(--card-fly-distance, 105vh))'
+      case 'in-top':    return 'translateY(calc(-1 * var(--card-fly-distance, 105vh)))'
       case 'dragging':  return `translateY(${dragOffset}px)`
       case 'snap-back': return 'translateY(0)'
       case 'settling':  return 'translateY(0)'
@@ -196,34 +196,36 @@ export default function SwipeView({
         ↓
       </div>
 
-      {/* The animated card */}
-      <div
-        className="swipe-card-wrapper"
-        style={{
-          transform: getTransform(),
-          transition: getTransition(),
-        }}
-        onTransitionEnd={handleTransitionEnd}
-      >
-        <SentenceCard
-          sentence={sentence}
-          index={index}
-          total={total}
-          progress={progress}
-          bookmarks={bookmarks}
-          onBookmark={onBookmark}
-          darkMode={darkMode}
-          onToggleDark={onToggleDark}
-          onNext={goNext}
-          onPrev={goPrev}
-          canGoNext={canGoNext}
-          canGoPrev={canGoPrev}
-        />
-      </div>
+      {/* Card + keyboard hint grouped for desktop centering */}
+      <div className="swipe-stage">
+        <div
+          className="swipe-card-wrapper"
+          style={{
+            transform: getTransform(),
+            transition: getTransition(),
+          }}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          <SentenceCard
+            sentence={sentence}
+            index={index}
+            total={total}
+            progress={progress}
+            bookmarks={bookmarks}
+            onBookmark={onBookmark}
+            darkMode={darkMode}
+            onToggleDark={onToggleDark}
+            onNext={goNext}
+            onPrev={goPrev}
+            canGoNext={canGoNext}
+            canGoPrev={canGoPrev}
+          />
+        </div>
 
-      {/* Keyboard nav hint on desktop */}
-      <div className="keyboard-hint">
-        <span>↑↓ arrow keys</span>
+        {/* Keyboard nav hint — badge style on desktop */}
+        <div className="keyboard-hint">
+          <span>↑↓ arrow keys</span>
+        </div>
       </div>
     </div>
   )

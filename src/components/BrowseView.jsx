@@ -54,36 +54,38 @@ export default function BrowseView({
         <p className="browse-subtitle">Choose a category to begin</p>
       </div>
 
-      <button
-        className="category-tile category-tile--all"
-        onClick={() => onSelectCategory('All Sentences')}
-      >
-        <span className="tile-icon"><BookOpen size={26} strokeWidth={1.5} /></span>
-        <div className="tile-text">
-          <span className="tile-name">All Sentences</span>
-          <span className="tile-count">{sentences.length} sentences</span>
-        </div>
-        <span className="tile-arrow"><ChevronRight size={18} strokeWidth={2} /></span>
-      </button>
+      <div className="browse-content-wrap">
+        <button
+          className="category-tile category-tile--all"
+          onClick={() => onSelectCategory('All Sentences')}
+        >
+          <span className="tile-icon"><BookOpen size={26} strokeWidth={1.5} /></span>
+          <div className="tile-text">
+            <span className="tile-name">All Sentences</span>
+            <span className="tile-count">{sentences.length} sentences</span>
+          </div>
+          <span className="tile-arrow"><ChevronRight size={18} strokeWidth={2} /></span>
+        </button>
 
-      <div className="category-grid">
-        {categories.map((cat) => {
-          const Icon = CATEGORY_ICONS[cat] || BookOpen
-          return (
-            <button
-              key={cat}
-              className="category-tile"
-              onClick={() => onSelectCategory(cat)}
-            >
-              <span className="tile-icon"><Icon size={26} strokeWidth={1.5} /></span>
-              <div className="tile-text">
-                <span className="tile-name">{cat}</span>
-                <span className="tile-count">{countFor(cat)} sentences</span>
-              </div>
-              <span className="tile-arrow"><ChevronRight size={16} strokeWidth={2} /></span>
-            </button>
-          )
-        })}
+        <div className="category-grid">
+          {categories.map((cat) => {
+            const Icon = CATEGORY_ICONS[cat] || BookOpen
+            return (
+              <button
+                key={cat}
+                className="category-tile"
+                onClick={() => onSelectCategory(cat)}
+              >
+                <span className="tile-icon"><Icon size={26} strokeWidth={1.5} /></span>
+                <div className="tile-text">
+                  <span className="tile-name">{cat}</span>
+                  <span className="tile-count">{countFor(cat)} sentences</span>
+                </div>
+                <span className="tile-arrow"><ChevronRight size={16} strokeWidth={2} /></span>
+              </button>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

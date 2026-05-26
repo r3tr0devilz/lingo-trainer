@@ -165,7 +165,7 @@ export default function App() {
         )}
       </div>
 
-      <BottomNav activeView={activeView} onNavigate={setActiveView} darkMode={darkMode} />
+      <BottomNav activeView={activeView} onNavigate={setActiveView} darkMode={darkMode} onToggleDark={toggleDarkMode} />
     </div>
   )
 }
