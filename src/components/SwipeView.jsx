@@ -73,11 +73,11 @@ export default function SwipeView({
   useEffect(() => {
     const onKey = (e) => {
       if (stage !== 'idle' && stage !== 'drag') return
-      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault()
         goNext()
       }
-      if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
         e.preventDefault()
         goPrev()
       }
@@ -179,13 +179,13 @@ export default function SwipeView({
     <div className="swipe-view">
       {/* Swipe hint arrows */}
       <div
-        className={`swipe-hint swipe-hint--up${canGoNext ? ' swipe-hint--visible' : ''}`}
+        className="swipe-hint swipe-hint--up"
         style={{ opacity: dragOffset < -20 ? Math.min(1, Math.abs(dragOffset) / 80) : 0 }}
       >
         ↑
       </div>
       <div
-        className={`swipe-hint swipe-hint--down${canGoPrev ? ' swipe-hint--visible' : ''}`}
+        className="swipe-hint swipe-hint--down"
         style={{ opacity: dragOffset > 20 ? Math.min(1, dragOffset / 80) : 0 }}
       >
         ↓
@@ -224,7 +224,7 @@ export default function SwipeView({
 
         {/* Keyboard nav hint — badge style on desktop */}
         <div className="keyboard-hint">
-          <span>↑↓ arrow keys</span>
+          <span>↓ next · ↑ prev</span>
         </div>
       </div>
     </div>

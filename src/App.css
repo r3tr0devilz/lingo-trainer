@@ -1158,12 +1158,12 @@ input {
   .swipe-card-wrapper {
     position: relative;
     inset: unset;
-    width: 520px;
-    height: 680px;
+    width: clamp(540px, 44vw, 720px);
+    height: calc(100vh - 80px);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 8px 48px var(--shadow-md);
-    --card-fly-distance: 720px;
+    --card-fly-distance: 100vh;
   }
 
   .keyboard-hint {
@@ -1186,8 +1186,10 @@ input {
     bottom: 24px;
   }
 
+  /* Reset mobile nudge padding — no FAB column offset needed inside the desktop card */
   .card-swipe-nudge {
     bottom: 16px;
+    padding-right: 0;
   }
 
   .swipe-hint {
@@ -1205,10 +1207,10 @@ input {
     padding-right: max(40px, calc((100% - 720px) / 2));
   }
 
+  /* Reset mobile margins before applying auto-centering */
   .search-bar-wrapper {
     max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 16px auto 0;
   }
 }
 
