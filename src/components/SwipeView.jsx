@@ -176,12 +176,7 @@ export default function SwipeView({
   const progress = total > 1 ? index / (total - 1) : 1
 
   return (
-    <div
-      className="swipe-view"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
+    <div className="swipe-view">
       {/* Swipe hint arrows */}
       <div
         className={`swipe-hint swipe-hint--up${canGoNext ? ' swipe-hint--visible' : ''}`}
@@ -196,8 +191,13 @@ export default function SwipeView({
         ↓
       </div>
 
-      {/* Card + keyboard hint grouped for desktop centering */}
-      <div className="swipe-stage">
+      {/* Touch handlers live here — swipe-stage is the actual touch surface */}
+      <div
+        className="swipe-stage"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div
           className="swipe-card-wrapper"
           style={{
