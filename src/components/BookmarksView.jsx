@@ -1,22 +1,5 @@
-import {
-  Bookmark, BookmarkX, X, Sun, Moon, BookOpen,
-  MessageCircle, Briefcase, Users, Compass,
-  ShoppingBag, UtensilsCrossed, Stethoscope,
-  AlertTriangle, Home, Heart,
-} from 'lucide-react'
-
-const CATEGORY_ICONS = {
-  'Greetings & Small Talk': MessageCircle,
-  'Work & Professional':    Briefcase,
-  'Friends & Casual':       Users,
-  'Travel & Directions':    Compass,
-  'Shopping':               ShoppingBag,
-  'Restaurants & Food':     UtensilsCrossed,
-  'Health & Medical':       Stethoscope,
-  'Emergency':              AlertTriangle,
-  'Family':                 Home,
-  'Dating & Romance':       Heart,
-}
+import { Bookmark, BookmarkX, X, Sun, Moon, BookOpen } from 'lucide-react'
+import { CATEGORY_ICONS } from '../data/categoryIcons.js'
 
 export default function BookmarksView({
   sentences,

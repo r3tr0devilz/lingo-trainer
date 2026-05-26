@@ -5,6 +5,16 @@ import {
   ChevronUp, ChevronDown,
 } from 'lucide-react'
 
+function pickGermanVoice(voices) {
+  return (
+    voices.find(v => v.lang.replace('_','-') === 'de-DE' && v.localService) ||
+    voices.find(v => v.lang.replace('_','-') === 'de-DE') ||
+    voices.find(v => v.lang.replace('_','-').startsWith('de-')) ||
+    voices.find(v => /deutsch/i.test(v.name) || /\bgerman\b/i.test(v.name)) ||
+    null
+  )
+}
+
 export default function SentenceCard({
   sentence,
   index,
@@ -20,24 +30,27 @@ export default function SentenceCard({
   canGoPrev,
 }) {
   const [isSpeaking, setIsSpeaking] = useState(false)
+  const [bookmarkFlash, setBookmarkFlash] = useState(false)
   const isBookmarked = bookmarks.has(sentence.id)
   const germanVoiceRef = useRef(null)
+  const lastTapRef = useRef(0)
 
-  // Pick the best available German voice. getVoices() is async on Chrome —
-  // voices populate after the voiceschanged event fires.
   useEffect(() => {
-    const pickVoice = () => {
-      const voices = window.speechSynthesis.getVoices()
-      germanVoiceRef.current =
-        voices.find(v => v.lang === 'de-DE' && v.localService) ||
-        voices.find(v => v.lang === 'de-DE') ||
-        voices.find(v => v.lang.startsWith('de')) ||
-        null
-    }
-    pickVoice()
-    window.speechSynthesis.addEventListener('voiceschanged', pickVoice)
-    return () => window.speechSynthesis.removeEventListener('voiceschanged', pickVoice)
+    const update = () => { germanVoiceRef.current = pickGermanVoice(window.speechSynthesis.getVoices()) }
+    update()
+    window.speechSynthesis.addEventListener('voiceschanged', update)
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', update)
   }, [])
+
+  const handleDoubleTap = useCallback(() => {
+    const now = Date.now()
+    if (now - lastTapRef.current < 320) {
+      onBookmark(sentence.id)
+      setBookmarkFlash(true)
+      setTimeout(() => setBookmarkFlash(false), 650)
+    }
+    lastTapRef.current = now
+  }, [onBookmark, sentence.id])
 
   const speak = useCallback(() => {
     if (!window.speechSynthesis) return
@@ -88,8 +101,13 @@ export default function SentenceCard({
         </button>
       </div>
 
-      {/* Main content */}
-      <div className="card-body">
+      {/* Main content — double-tap to bookmark */}
+      <div className="card-body" onClick={handleDoubleTap}>
+        {bookmarkFlash && (
+          <span className="bookmark-flash" aria-hidden="true">
+            <BookmarkCheck size={64} strokeWidth={1.5} />
+          </span>
+        )}
         <p className="card-english">{sentence.english}</p>
         <p className="card-german">{sentence.german}</p>
         <p className="card-pronunciation">{sentence.pronunciation}</p>

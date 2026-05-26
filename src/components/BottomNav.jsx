@@ -1,10 +1,11 @@
-import { LayoutGrid, BookOpen, Bookmark, Search, Languages, Sun, Moon } from 'lucide-react'
+import { LayoutGrid, BookOpen, Bookmark, Search, Languages, Sun, Moon, GraduationCap } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { id: 'browse',    Icon: LayoutGrid, label: 'Browse'    },
-  { id: 'swipe',     Icon: BookOpen,   label: 'Learn'     },
-  { id: 'bookmarks', Icon: Bookmark,   label: 'Saved'     },
-  { id: 'search',    Icon: Search,     label: 'Search'    },
+  { id: 'browse',    Icon: LayoutGrid,    label: 'Browse' },
+  { id: 'swipe',     Icon: BookOpen,      label: 'Learn'  },
+  { id: 'flash',     Icon: GraduationCap, label: 'Flash'  },
+  { id: 'bookmarks', Icon: Bookmark,      label: 'Saved'  },
+  { id: 'search',    Icon: Search,        label: 'Search' },
 ]
 
 export default function BottomNav({ activeView, onNavigate, darkMode, onToggleDark }) {

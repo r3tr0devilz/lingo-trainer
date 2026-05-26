@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import SentenceCard from './SentenceCard.jsx'
+import ErrorBoundary from './ErrorBoundary.jsx'
 
 /**
  * SwipeView - TikTok/Reels-style full-screen sentence swiper.
@@ -206,20 +207,22 @@ export default function SwipeView({
           }}
           onTransitionEnd={handleTransitionEnd}
         >
-          <SentenceCard
-            sentence={sentence}
-            index={index}
-            total={total}
-            progress={progress}
-            bookmarks={bookmarks}
-            onBookmark={onBookmark}
-            darkMode={darkMode}
-            onToggleDark={onToggleDark}
-            onNext={goNext}
-            onPrev={goPrev}
-            canGoNext={canGoNext}
-            canGoPrev={canGoPrev}
-          />
+          <ErrorBoundary>
+            <SentenceCard
+              sentence={sentence}
+              index={index}
+              total={total}
+              progress={progress}
+              bookmarks={bookmarks}
+              onBookmark={onBookmark}
+              darkMode={darkMode}
+              onToggleDark={onToggleDark}
+              onNext={goNext}
+              onPrev={goPrev}
+              canGoNext={canGoNext}
+              canGoPrev={canGoPrev}
+            />
+          </ErrorBoundary>
         </div>
 
         {/* Keyboard nav hint — badge style on desktop */}

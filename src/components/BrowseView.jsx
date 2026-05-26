@@ -1,22 +1,6 @@
 import { useMemo } from 'react'
-import {
-  MessageCircle, Briefcase, Users, Compass,
-  ShoppingBag, UtensilsCrossed, Stethoscope,
-  AlertTriangle, Home, Heart, BookOpen, ChevronRight, Languages,
-} from 'lucide-react'
-
-const CATEGORY_ICONS = {
-  'Greetings & Small Talk': MessageCircle,
-  'Work & Professional':    Briefcase,
-  'Friends & Casual':       Users,
-  'Travel & Directions':    Compass,
-  'Shopping':               ShoppingBag,
-  'Restaurants & Food':     UtensilsCrossed,
-  'Health & Medical':       Stethoscope,
-  'Emergency':              AlertTriangle,
-  'Family':                 Home,
-  'Dating & Romance':       Heart,
-}
+import { BookOpen, ChevronRight, Languages, Sun, Moon } from 'lucide-react'
+import { CATEGORY_ICONS } from '../data/categoryIcons.js'
 
 export default function BrowseView({
   categories,
@@ -46,8 +30,8 @@ export default function BrowseView({
             aria-label="Toggle dark mode"
           >
             {darkMode
-              ? <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-              : <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              ? <Sun size={18} strokeWidth={1.75} />
+              : <Moon size={18} strokeWidth={1.75} />
             }
           </button>
         </div>

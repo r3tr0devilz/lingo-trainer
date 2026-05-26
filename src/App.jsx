@@ -4,6 +4,7 @@ import SwipeView from './components/SwipeView.jsx'
 import BrowseView from './components/BrowseView.jsx'
 import BookmarksView from './components/BookmarksView.jsx'
 import SearchView from './components/SearchView.jsx'
+import FlashCardView from './components/FlashCardView.jsx'
 import BottomNav from './components/BottomNav.jsx'
 
 const CATEGORIES = [
@@ -101,15 +102,7 @@ export default function App() {
     setActiveView('swipe')
   }, [])
 
-  const handleSearchResultSelect = useCallback((sentence) => {
-    const catSentences = sentences.filter(s => s.category === sentence.category)
-    const idx = catSentences.findIndex(s => s.id === sentence.id)
-    setCurrentCategory(sentence.category)
-    setCurrentIndex(idx >= 0 ? idx : 0)
-    setActiveView('swipe')
-  }, [])
-
-  const handleBookmarkSelect = useCallback((sentence) => {
+  const handleJumpToSentence = useCallback((sentence) => {
     const catSentences = sentences.filter(s => s.category === sentence.category)
     const idx = catSentences.findIndex(s => s.id === sentence.id)
     setCurrentCategory(sentence.category)
@@ -146,7 +139,7 @@ export default function App() {
             sentences={bookmarkedSentences}
             bookmarks={bookmarks}
             onBookmark={toggleBookmark}
-            onSelect={handleBookmarkSelect}
+            onSelect={handleJumpToSentence}
             darkMode={darkMode}
             onToggleDark={toggleDarkMode}
           />
@@ -158,7 +151,15 @@ export default function App() {
             results={searchResults}
             bookmarks={bookmarks}
             onBookmark={toggleBookmark}
-            onSelect={handleSearchResultSelect}
+            onSelect={handleJumpToSentence}
+            darkMode={darkMode}
+            onToggleDark={toggleDarkMode}
+          />
+        )}
+        {activeView === 'flash' && (
+          <FlashCardView
+            bookmarks={bookmarks}
+            onBookmark={toggleBookmark}
             darkMode={darkMode}
             onToggleDark={toggleDarkMode}
           />

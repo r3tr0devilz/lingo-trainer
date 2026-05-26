@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react'
 import { Search, X, Sun, Moon, Bookmark, BookmarkCheck, Languages } from 'lucide-react'
 
 export default function SearchView({
@@ -11,11 +10,6 @@ export default function SearchView({
   darkMode,
   onToggleDark,
 }) {
-  const inputRef = useRef(null)
-
-  useEffect(() => {
-    setTimeout(() => inputRef.current?.focus(), 100)
-  }, [])
 
   return (
     <div className="search-view">
@@ -38,7 +32,6 @@ export default function SearchView({
       <div className="search-bar-wrapper">
         <span className="search-icon"><Search size={16} strokeWidth={1.75} /></span>
         <input
-          ref={inputRef}
           type="search"
           className="search-input"
           placeholder="Search English or German..."
@@ -46,6 +39,7 @@ export default function SearchView({
           onChange={e => onQueryChange(e.target.value)}
           autoComplete="off"
           spellCheck="false"
+          autoFocus
         />
         {query && (
           <button
