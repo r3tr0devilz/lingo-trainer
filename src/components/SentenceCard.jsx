@@ -1,4 +1,9 @@
 import { useState, useCallback } from 'react'
+import {
+  ChevronLeft, ChevronRight, Sun, Moon,
+  Volume2, PauseCircle, Bookmark, BookmarkCheck,
+  ChevronUp, ChevronDown,
+} from 'lucide-react'
 
 export default function SentenceCard({
   sentence,
@@ -47,7 +52,7 @@ export default function SentenceCard({
           disabled={!canGoPrev}
           aria-label="Previous sentence"
         >
-          ←
+          <ChevronLeft size={20} strokeWidth={2} />
         </button>
         <span className="card-category-badge">
           {sentence.category}
@@ -58,7 +63,10 @@ export default function SentenceCard({
           aria-label="Toggle dark mode"
           title={darkMode ? 'Light mode' : 'Dark mode'}
         >
-          {darkMode ? '☀️' : '🌙'}
+          {darkMode
+            ? <Sun size={18} strokeWidth={1.75} />
+            : <Moon size={18} strokeWidth={1.75} />
+          }
         </button>
       </div>
 
@@ -69,31 +77,38 @@ export default function SentenceCard({
         <p className="card-pronunciation">{sentence.pronunciation}</p>
       </div>
 
-      {/* Right FABs (Instagram-style) */}
+      {/* Right FABs */}
       <div className="card-fabs">
-        {/* Speaker */}
         <button
           className={`fab fab--speaker${isSpeaking ? ' fab--active' : ''}`}
           onClick={speak}
           aria-label="Pronounce German sentence"
           title="Listen"
         >
-          <span className="fab-icon">{isSpeaking ? '⏸' : '🔊'}</span>
+          <span className="fab-icon">
+            {isSpeaking
+              ? <PauseCircle size={22} strokeWidth={1.75} />
+              : <Volume2 size={22} strokeWidth={1.75} />
+            }
+          </span>
           <span className="fab-label">Listen</span>
         </button>
 
-        {/* Bookmark */}
         <button
           className={`fab fab--bookmark${isBookmarked ? ' fab--active' : ''}`}
           onClick={handleBookmark}
           aria-label={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
           title={isBookmarked ? 'Bookmarked' : 'Bookmark'}
         >
-          <span className="fab-icon">{isBookmarked ? '🔖' : '🏷️'}</span>
+          <span className="fab-icon">
+            {isBookmarked
+              ? <BookmarkCheck size={22} strokeWidth={1.75} />
+              : <Bookmark size={22} strokeWidth={1.75} />
+            }
+          </span>
           <span className="fab-label">{isBookmarked ? 'Saved' : 'Save'}</span>
         </button>
 
-        {/* Progress indicator */}
         <div className="fab fab--progress" aria-hidden="true">
           <div className="progress-track">
             <div
@@ -109,11 +124,11 @@ export default function SentenceCard({
       <div className="card-swipe-nudge">
         {canGoNext ? (
           <span className="nudge-arrow" onClick={onNext} title="Next">
-            swipe up ↑
+            <ChevronUp size={14} strokeWidth={2} /> swipe up
           </span>
         ) : canGoPrev ? (
           <span className="nudge-arrow" onClick={onPrev} title="Previous">
-            ↓ swipe down
+            <ChevronDown size={14} strokeWidth={2} /> swipe down
           </span>
         ) : (
           <span className="nudge-end">End of {sentence.category}</span>

@@ -432,6 +432,9 @@ input {
 }
 
 .nudge-arrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-size: 11px;
   color: var(--text-faint);
   letter-spacing: 0.05em;
@@ -488,7 +491,9 @@ input {
 }
 
 .app-logo {
-  font-size: 26px;
+  display: flex;
+  align-items: center;
+  color: var(--accent);
 }
 
 .browse-title {
@@ -644,6 +649,7 @@ input {
   align-items: center;
   gap: 8px;
   font-family: 'Georgia', serif;
+  line-height: 1;
 }
 
 .header-actions {
@@ -933,8 +939,8 @@ input {
 }
 
 .empty-icon {
-  font-size: 52px;
   line-height: 1;
+  color: var(--text-faint);
 }
 
 .empty-title {

@@ -1,14 +1,21 @@
+import {
+  Bookmark, BookmarkX, X, Sun, Moon, BookOpen,
+  MessageCircle, Briefcase, Users, Compass,
+  ShoppingBag, UtensilsCrossed, Stethoscope,
+  AlertTriangle, Home, Heart,
+} from 'lucide-react'
+
 const CATEGORY_ICONS = {
-  'Greetings & Small Talk': '👋',
-  'Work & Professional':    '💼',
-  'Friends & Casual':       '😄',
-  'Travel & Directions':    '✈️',
-  'Shopping':               '🛍️',
-  'Restaurants & Food':     '🍽️',
-  'Health & Medical':       '🏥',
-  'Emergency':              '🚨',
-  'Family':                 '👨‍👩‍👧',
-  'Dating & Romance':       '❤️',
+  'Greetings & Small Talk': MessageCircle,
+  'Work & Professional':    Briefcase,
+  'Friends & Casual':       Users,
+  'Travel & Directions':    Compass,
+  'Shopping':               ShoppingBag,
+  'Restaurants & Food':     UtensilsCrossed,
+  'Health & Medical':       Stethoscope,
+  'Emergency':              AlertTriangle,
+  'Family':                 Home,
+  'Dating & Romance':       Heart,
 }
 
 export default function BookmarksView({
@@ -19,7 +26,6 @@ export default function BookmarksView({
   darkMode,
   onToggleDark,
 }) {
-  // Group by category, preserving a nice order
   const grouped = sentences.reduce((acc, s) => {
     if (!acc[s.category]) acc[s.category] = []
     acc[s.category].push(s)
@@ -32,7 +38,7 @@ export default function BookmarksView({
     <div className="bookmarks-view">
       <div className="secondary-header">
         <h2 className="secondary-title">
-          <span>🔖</span> Saved Sentences
+          <Bookmark size={20} strokeWidth={1.75} /> Saved
         </h2>
         <div className="header-actions">
           <span className="bookmark-count">{sentences.length} saved</span>
@@ -41,7 +47,10 @@ export default function BookmarksView({
             onClick={onToggleDark}
             aria-label="Toggle dark mode"
           >
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode
+              ? <Sun size={18} strokeWidth={1.75} />
+              : <Moon size={18} strokeWidth={1.75} />
+            }
           </button>
         </div>
       </div>
@@ -49,42 +58,45 @@ export default function BookmarksView({
       <div className="bookmarks-content">
         {sentences.length === 0 ? (
           <div className="empty-state">
-            <span className="empty-icon">🏷️</span>
+            <span className="empty-icon"><BookmarkX size={52} strokeWidth={1.25} /></span>
             <p className="empty-title">No bookmarks yet</p>
             <p className="empty-hint">Tap the save button on any sentence card while swiping</p>
           </div>
         ) : (
-          categories.map((cat) => (
-            <div key={cat} className="bookmark-group">
-              <h3 className="bookmark-group-heading">
-                <span>{CATEGORY_ICONS[cat] || '📝'}</span>
-                <span>{cat}</span>
-                <span className="bookmark-group-count">{grouped[cat].length}</span>
-              </h3>
-              <div className="bookmark-list">
-                {grouped[cat].map((sentence) => (
-                  <div key={sentence.id} className="bookmark-item">
-                    <button
-                      className="bookmark-item-content"
-                      onClick={() => onSelect(sentence)}
-                    >
-                      <p className="bm-english">{sentence.english}</p>
-                      <p className="bm-german">{sentence.german}</p>
-                      <p className="bm-pronunciation">{sentence.pronunciation}</p>
-                    </button>
-                    <button
-                      className="bm-remove"
-                      onClick={() => onBookmark(sentence.id)}
-                      aria-label="Remove bookmark"
-                      title="Remove"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
+          categories.map((cat) => {
+            const Icon = CATEGORY_ICONS[cat] || BookOpen
+            return (
+              <div key={cat} className="bookmark-group">
+                <h3 className="bookmark-group-heading">
+                  <Icon size={14} strokeWidth={2} />
+                  <span>{cat}</span>
+                  <span className="bookmark-group-count">{grouped[cat].length}</span>
+                </h3>
+                <div className="bookmark-list">
+                  {grouped[cat].map((sentence) => (
+                    <div key={sentence.id} className="bookmark-item">
+                      <button
+                        className="bookmark-item-content"
+                        onClick={() => onSelect(sentence)}
+                      >
+                        <p className="bm-english">{sentence.english}</p>
+                        <p className="bm-german">{sentence.german}</p>
+                        <p className="bm-pronunciation">{sentence.pronunciation}</p>
+                      </button>
+                      <button
+                        className="bm-remove"
+                        onClick={() => onBookmark(sentence.id)}
+                        aria-label="Remove bookmark"
+                        title="Remove"
+                      >
+                        <X size={16} strokeWidth={2} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
     </div>

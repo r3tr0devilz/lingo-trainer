@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { Search, X, Sun, Moon, Bookmark, BookmarkCheck, Languages } from 'lucide-react'
 
 export default function SearchView({
   query,
@@ -13,7 +14,6 @@ export default function SearchView({
   const inputRef = useRef(null)
 
   useEffect(() => {
-    // Auto-focus when view mounts
     setTimeout(() => inputRef.current?.focus(), 100)
   }, [])
 
@@ -21,19 +21,22 @@ export default function SearchView({
     <div className="search-view">
       <div className="secondary-header">
         <h2 className="secondary-title">
-          <span>🔍</span> Search
+          <Search size={20} strokeWidth={1.75} /> Search
         </h2>
         <button
           className="dark-toggle"
           onClick={onToggleDark}
           aria-label="Toggle dark mode"
         >
-          {darkMode ? '☀️' : '🌙'}
+          {darkMode
+            ? <Sun size={18} strokeWidth={1.75} />
+            : <Moon size={18} strokeWidth={1.75} />
+          }
         </button>
       </div>
 
       <div className="search-bar-wrapper">
-        <span className="search-icon">🔍</span>
+        <span className="search-icon"><Search size={16} strokeWidth={1.75} /></span>
         <input
           ref={inputRef}
           type="search"
@@ -50,7 +53,7 @@ export default function SearchView({
             onClick={() => onQueryChange('')}
             aria-label="Clear search"
           >
-            ×
+            <X size={16} strokeWidth={2} />
           </button>
         )}
       </div>
@@ -58,7 +61,7 @@ export default function SearchView({
       <div className="search-results">
         {!query.trim() && (
           <div className="empty-state">
-            <span className="empty-icon">🇩🇪</span>
+            <span className="empty-icon"><Languages size={52} strokeWidth={1.25} /></span>
             <p className="empty-title">Search all sentences</p>
             <p className="empty-hint">Type English or German to find matching sentences</p>
           </div>
@@ -66,7 +69,7 @@ export default function SearchView({
 
         {query.trim() && results.length === 0 && (
           <div className="empty-state">
-            <span className="empty-icon">🤔</span>
+            <span className="empty-icon"><Search size={52} strokeWidth={1.25} /></span>
             <p className="empty-title">No results</p>
             <p className="empty-hint">Try a different word or phrase</p>
           </div>
@@ -90,7 +93,10 @@ export default function SearchView({
                 onClick={() => onBookmark(sentence.id)}
                 aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark'}
               >
-                {isBookmarked ? '🔖' : '🏷️'}
+                {isBookmarked
+                  ? <BookmarkCheck size={20} strokeWidth={1.75} />
+                  : <Bookmark size={20} strokeWidth={1.75} />
+                }
               </button>
             </div>
           )

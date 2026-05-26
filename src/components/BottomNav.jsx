@@ -1,14 +1,16 @@
+import { LayoutGrid, BookOpen, Bookmark, Search } from 'lucide-react'
+
 const NAV_ITEMS = [
-  { id: 'browse',    icon: '🗂️',  label: 'Browse'    },
-  { id: 'swipe',     icon: '📖',  label: 'Learn'     },
-  { id: 'bookmarks', icon: '🔖',  label: 'Saved'     },
-  { id: 'search',    icon: '🔍',  label: 'Search'    },
+  { id: 'browse',    Icon: LayoutGrid, label: 'Browse'    },
+  { id: 'swipe',     Icon: BookOpen,   label: 'Learn'     },
+  { id: 'bookmarks', Icon: Bookmark,   label: 'Saved'     },
+  { id: 'search',    Icon: Search,     label: 'Search'    },
 ]
 
-export default function BottomNav({ activeView, onNavigate, darkMode }) {
+export default function BottomNav({ activeView, onNavigate }) {
   return (
     <nav className="bottom-nav" role="navigation" aria-label="Main navigation">
-      {NAV_ITEMS.map(({ id, icon, label }) => (
+      {NAV_ITEMS.map(({ id, Icon, label }) => (
         <button
           key={id}
           className={`nav-item${activeView === id ? ' nav-item--active' : ''}`}
@@ -16,7 +18,7 @@ export default function BottomNav({ activeView, onNavigate, darkMode }) {
           aria-label={label}
           aria-current={activeView === id ? 'page' : undefined}
         >
-          <span className="nav-icon">{icon}</span>
+          <span className="nav-icon"><Icon size={22} strokeWidth={1.75} /></span>
           <span className="nav-label">{label}</span>
         </button>
       ))}
