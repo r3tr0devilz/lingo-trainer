@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import {
   ChevronLeft, ChevronRight, Sun, Moon,
   Volume2, PauseCircle, Bookmark, BookmarkCheck,
@@ -21,6 +21,23 @@ export default function SentenceCard({
 }) {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const isBookmarked = bookmarks.has(sentence.id)
+  const germanVoiceRef = useRef(null)
+
+  // Pick the best available German voice. getVoices() is async on Chrome —
+  // voices populate after the voiceschanged event fires.
+  useEffect(() => {
+    const pickVoice = () => {
+      const voices = window.speechSynthesis.getVoices()
+      germanVoiceRef.current =
+        voices.find(v => v.lang === 'de-DE' && v.localService) ||
+        voices.find(v => v.lang === 'de-DE') ||
+        voices.find(v => v.lang.startsWith('de')) ||
+        null
+    }
+    pickVoice()
+    window.speechSynthesis.addEventListener('voiceschanged', pickVoice)
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', pickVoice)
+  }, [])
 
   const speak = useCallback(() => {
     if (!window.speechSynthesis) return
@@ -32,6 +49,7 @@ export default function SentenceCard({
     const utterance = new SpeechSynthesisUtterance(sentence.german)
     utterance.lang = 'de-DE'
     utterance.rate = 0.85
+    if (germanVoiceRef.current) utterance.voice = germanVoiceRef.current
     utterance.onstart = () => setIsSpeaking(true)
     utterance.onend = () => setIsSpeaking(false)
     utterance.onerror = () => setIsSpeaking(false)
