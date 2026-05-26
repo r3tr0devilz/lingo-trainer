@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 const CATEGORY_ICONS = {
   'Greetings & Small Talk': '👋',
   'Work & Professional':    '💼',
@@ -18,7 +20,14 @@ export default function BrowseView({
   darkMode,
   onToggleDark,
 }) {
-  const countFor = (cat) => sentences.filter(s => s.category === cat).length
+  const countByCategory = useMemo(() => {
+    const map = {}
+    for (const s of sentences) {
+      map[s.category] = (map[s.category] || 0) + 1
+    }
+    return map
+  }, [sentences])
+  const countFor = (cat) => countByCategory[cat] ?? 0
 
   return (
     <div className="browse-view">

@@ -57,12 +57,14 @@ export default function SwipeView({
 
   const goNext = useCallback(() => {
     if (!canGoNext) return
+    navigator.vibrate?.(8)
     pendingIndexRef.current = index + 1
     setStage('fly-up')
   }, [index, canGoNext])
 
   const goPrev = useCallback(() => {
     if (!canGoPrev) return
+    navigator.vibrate?.(8)
     pendingIndexRef.current = index - 1
     setStage('fly-down')
   }, [index, canGoPrev])
@@ -107,7 +109,7 @@ export default function SwipeView({
   // Touch handlers
   const onTouchStart = useCallback((e) => {
     if (stage !== 'idle') return
-    if (e.target.closest('button, a, input, [role="button"]')) return
+    if (e.target.closest('.card-fabs, .card-top-bar')) return
     touchStartYRef.current = e.touches[0].clientY
     touchStartXRef.current = e.touches[0].clientX
     setStage('dragging')
@@ -117,14 +119,15 @@ export default function SwipeView({
     if (stage !== 'dragging') return
     const deltaY = e.touches[0].clientY - touchStartYRef.current
     const deltaX = e.touches[0].clientX - touchStartXRef.current
-    // Only handle vertical swipes
     if (Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
       setStage('idle')
       return
     }
     e.preventDefault()
-    setDragOffset(deltaY)
-  }, [stage])
+    // Rubber-band resistance at boundaries
+    const atBoundary = (deltaY < 0 && !canGoNext) || (deltaY > 0 && !canGoPrev)
+    setDragOffset(atBoundary ? deltaY / 3 : deltaY)
+  }, [stage, canGoNext, canGoPrev])
 
   const onTouchEnd = useCallback(() => {
     if (stage !== 'dragging') return

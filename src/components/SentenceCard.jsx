@@ -105,19 +105,17 @@ export default function SentenceCard({
         </div>
       </div>
 
-      {/* Swipe nudge at bottom */}
+      {/* Swipe nudge at bottom — show one at a time, prefer next */}
       <div className="card-swipe-nudge">
-        {canGoPrev && (
-          <span className="nudge-arrow nudge-arrow--up" onClick={onPrev} title="Previous">
-            ↑ swipe up to continue
-          </span>
-        )}
-        {canGoNext && (
-          <span className="nudge-arrow nudge-arrow--down" onClick={onNext} title="Next">
+        {canGoNext ? (
+          <span className="nudge-arrow" onClick={onNext} title="Next">
             swipe up ↑
           </span>
-        )}
-        {!canGoNext && (
+        ) : canGoPrev ? (
+          <span className="nudge-arrow" onClick={onPrev} title="Previous">
+            ↓ swipe down
+          </span>
+        ) : (
           <span className="nudge-end">End of {sentence.category}</span>
         )}
       </div>
