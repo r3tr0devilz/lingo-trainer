@@ -1,2271 +1,328 @@
 const sentences = [
-  // ─── Greetings & Small Talk ───────────────────────────────────────────────
-  {
-    id: 1,
-    category: "Greetings & Small Talk",
-    english: "Good morning! How are you?",
-    german: "Guten Morgen! Wie geht es Ihnen?",
-    pronunciation: "GOO-ten MOR-gen. vee gayt es EE-nen"
-  },
-  {
-    id: 2,
-    category: "Greetings & Small Talk",
-    english: "Good evening! Nice to meet you.",
-    german: "Guten Abend! Schön, Sie kennenzulernen.",
-    pronunciation: "GOO-ten AH-bent. shurn, zee KEN-en-tsoo-lair-nen"
-  },
-  {
-    id: 3,
-    category: "Greetings & Small Talk",
-    english: "Where have you been?",
-    german: "Wo waren Sie?",
-    pronunciation: "voh VAH-ren zee"
-  },
-  {
-    id: 4,
-    category: "Greetings & Small Talk",
-    english: "I'm doing well, thank you.",
-    german: "Mir geht es gut, danke.",
-    pronunciation: "meer gayt es goot, DAHN-keh"
-  },
-  {
-    id: 5,
-    category: "Greetings & Small Talk",
-    english: "What's your name?",
-    german: "Wie heißen Sie?",
-    pronunciation: "vee HY-ssen zee"
-  },
-  {
-    id: 6,
-    category: "Greetings & Small Talk",
-    english: "My name is Maria.",
-    german: "Ich heiße Maria.",
-    pronunciation: "ikh HY-sse mah-REE-ah"
-  },
-  {
-    id: 7,
-    category: "Greetings & Small Talk",
-    english: "Where are you from?",
-    german: "Woher kommen Sie?",
-    pronunciation: "voh-HAIR KOM-men zee"
-  },
-  {
-    id: 8,
-    category: "Greetings & Small Talk",
-    english: "I'm from the United States.",
-    german: "Ich komme aus den USA.",
-    pronunciation: "ikh KOM-eh owss dayn oo-es-AH"
-  },
-  {
-    id: 9,
-    category: "Greetings & Small Talk",
-    english: "Do you speak English?",
-    german: "Sprechen Sie Englisch?",
-    pronunciation: "SHPREH-khen zee ENG-lish"
-  },
-  {
-    id: 10,
-    category: "Greetings & Small Talk",
-    english: "I speak a little German.",
-    german: "Ich spreche ein bisschen Deutsch.",
-    pronunciation: "ikh SHPREH-kheh ine BISS-khen doych"
-  },
-  {
-    id: 11,
-    category: "Greetings & Small Talk",
-    english: "Please speak more slowly.",
-    german: "Bitte sprechen Sie langsamer.",
-    pronunciation: "BIT-eh SHPREH-khen zee LAHNG-zah-mer"
-  },
-  {
-    id: 12,
-    category: "Greetings & Small Talk",
-    english: "I don't understand.",
-    german: "Ich verstehe nicht.",
-    pronunciation: "ikh fehr-SHTAY-eh nikht"
-  },
-  {
-    id: 13,
-    category: "Greetings & Small Talk",
-    english: "Can you repeat that, please?",
-    german: "Können Sie das bitte wiederholen?",
-    pronunciation: "KUR-nen zee dahs BIT-eh VEE-der-hoh-len"
-  },
-  {
-    id: 14,
-    category: "Greetings & Small Talk",
-    english: "What does that mean?",
-    german: "Was bedeutet das?",
-    pronunciation: "vahs beh-DOY-tet dahs"
-  },
-  {
-    id: 15,
-    category: "Greetings & Small Talk",
-    english: "How's the weather today?",
-    german: "Wie ist das Wetter heute?",
-    pronunciation: "vee ist dahs VET-ter HOY-teh"
-  },
-  {
-    id: 16,
-    category: "Greetings & Small Talk",
-    english: "It's a beautiful day, isn't it?",
-    german: "Es ist ein schöner Tag, nicht wahr?",
-    pronunciation: "es ist ine SHUR-ner tahk, nikht vahr"
-  },
-  {
-    id: 17,
-    category: "Greetings & Small Talk",
-    english: "See you tomorrow!",
-    german: "Bis morgen!",
-    pronunciation: "biss MOR-gen"
-  },
-  {
-    id: 18,
-    category: "Greetings & Small Talk",
-    english: "Take care of yourself.",
-    german: "Pass auf dich auf.",
-    pronunciation: "pahss owf dikh owf"
-  },
-  {
-    id: 19,
-    category: "Greetings & Small Talk",
-    english: "Have a great weekend!",
-    german: "Schönes Wochenende!",
-    pronunciation: "SHUR-nes VOH-khen-en-deh"
-  },
-  {
-    id: 20,
-    category: "Greetings & Small Talk",
-    english: "Long time no see!",
-    german: "Lange nicht gesehen!",
-    pronunciation: "LAHNG-eh nikht geh-ZAY-en"
-  },
-  {
-    id: 21,
-    category: "Greetings & Small Talk",
-    english: "How was your trip?",
-    german: "Wie war Ihre Reise?",
-    pronunciation: "vee vahr EE-reh RY-zeh"
-  },
-  {
-    id: 22,
-    category: "Greetings & Small Talk",
-    english: "Are you enjoying Berlin?",
-    german: "Gefällt Ihnen Berlin?",
-    pronunciation: "geh-FELT EE-nen behr-LEEN"
-  },
-  {
-    id: 23,
-    category: "Greetings & Small Talk",
-    english: "What do you do for work?",
-    german: "Was machen Sie beruflich?",
-    pronunciation: "vahs MAHKH-en zee beh-ROOF-likh"
-  },
-  {
-    id: 24,
-    category: "Greetings & Small Talk",
-    english: "I'm a teacher.",
-    german: "Ich bin Lehrer.",
-    pronunciation: "ikh bin LAY-rer"
-  },
-  {
-    id: 25,
-    category: "Greetings & Small Talk",
-    english: "Do you have any siblings?",
-    german: "Haben Sie Geschwister?",
-    pronunciation: "HAH-ben zee geh-SHVIS-ter"
-  },
-  {
-    id: 26,
-    category: "Greetings & Small Talk",
-    english: "I have two brothers.",
-    german: "Ich habe zwei Brüder.",
-    pronunciation: "ikh HAH-beh tsvy BROO-der"
-  },
-  {
-    id: 27,
-    category: "Greetings & Small Talk",
-    english: "What are your hobbies?",
-    german: "Was sind Ihre Hobbys?",
-    pronunciation: "vahs zint EE-reh HOB-bees"
-  },
-  {
-    id: 28,
-    category: "Greetings & Small Talk",
-    english: "I enjoy reading and hiking.",
-    german: "Ich lese gerne und wandere.",
-    pronunciation: "ikh LAY-zeh GEHR-neh oont VAHN-deh-reh"
-  },
-  {
-    id: 29,
-    category: "Greetings & Small Talk",
-    english: "Good night! Sleep well.",
-    german: "Gute Nacht! Schlaf gut.",
-    pronunciation: "GOO-teh nakht. shlahf goot"
-  },
-  {
-    id: 30,
-    category: "Greetings & Small Talk",
-    english: "It was nice talking to you.",
-    german: "Es war schön, mit Ihnen zu sprechen.",
-    pronunciation: "es vahr shurn, mit EE-nen tsoo SHPREH-khen"
-  },
-  {
-    id: 31,
-    category: "Greetings & Small Talk",
-    english: "I have to go now.",
-    german: "Ich muss jetzt gehen.",
-    pronunciation: "ikh mooss yetst GAY-en"
-  },
-  {
-    id: 32,
-    category: "Greetings & Small Talk",
-    english: "Say hello to your family.",
-    german: "Grüßen Sie Ihre Familie.",
-    pronunciation: "GROO-ssen zee EE-reh fah-MEE-lee-eh"
-  },
-
-  // ─── Work & Professional ──────────────────────────────────────────────────
-  {
-    id: 101,
-    category: "Work & Professional",
-    english: "I have a meeting at ten o'clock.",
-    german: "Ich habe um zehn Uhr eine Besprechung.",
-    pronunciation: "ikh HAH-beh oom tsayn oor EYE-neh beh-SPREH-khoong"
-  },
-  {
-    id: 102,
-    category: "Work & Professional",
-    english: "Can we reschedule the appointment?",
-    german: "Können wir den Termin verschieben?",
-    pronunciation: "KUR-nen veer dayn tehr-MEEN fehr-SHEE-ben"
-  },
-  {
-    id: 103,
-    category: "Work & Professional",
-    english: "Please send me the report by Friday.",
-    german: "Bitte schicken Sie mir den Bericht bis Freitag.",
-    pronunciation: "BIT-eh SHIK-en zee meer dayn beh-RIKHT biss FRY-tahk"
-  },
-  {
-    id: 104,
-    category: "Work & Professional",
-    english: "I work in marketing.",
-    german: "Ich arbeite im Marketing.",
-    pronunciation: "ikh AR-by-teh im MARK-eh-ting"
-  },
-  {
-    id: 105,
-    category: "Work & Professional",
-    english: "Who is responsible for this project?",
-    german: "Wer ist für dieses Projekt verantwortlich?",
-    pronunciation: "vehr ist fyur DEE-zes proh-YEKT fehr-ANT-vort-likh"
-  },
-  {
-    id: 106,
-    category: "Work & Professional",
-    english: "The deadline is next Monday.",
-    german: "Die Frist ist nächsten Montag.",
-    pronunciation: "dee frist ist NEKS-ten MON-tahk"
-  },
-  {
-    id: 107,
-    category: "Work & Professional",
-    english: "I need your signature on this document.",
-    german: "Ich brauche Ihre Unterschrift auf diesem Dokument.",
-    pronunciation: "ikh BROW-kheh EE-reh OON-ter-shrift owf DEE-zem doh-koo-MENT"
-  },
-  {
-    id: 108,
-    category: "Work & Professional",
-    english: "Could you review this proposal?",
-    german: "Könnten Sie diesen Vorschlag prüfen?",
-    pronunciation: "KUR-ten zee DEE-zen FOR-shlahk PROO-fen"
-  },
-  {
-    id: 109,
-    category: "Work & Professional",
-    english: "I'm out of office until Wednesday.",
-    german: "Ich bin bis Mittwoch nicht im Büro.",
-    pronunciation: "ikh bin biss MIT-vokh nikht im boo-ROH"
-  },
-  {
-    id: 110,
-    category: "Work & Professional",
-    english: "Let's set up a conference call.",
-    german: "Lassen Sie uns eine Telefonkonferenz einrichten.",
-    pronunciation: "LAHS-sen zee oons EYE-neh teh-leh-FON-kon-feh-rents EIN-rikh-ten"
-  },
-  {
-    id: 111,
-    category: "Work & Professional",
-    english: "I'd like to apply for this position.",
-    german: "Ich möchte mich für diese Stelle bewerben.",
-    pronunciation: "ikh MURK-teh mikh fyur DEE-zeh SHTEL-eh beh-VEHR-ben"
-  },
-  {
-    id: 112,
-    category: "Work & Professional",
-    english: "What is the salary for this role?",
-    german: "Was ist das Gehalt für diese Stelle?",
-    pronunciation: "vahs ist dahs geh-HALT fyur DEE-zeh SHTEL-eh"
-  },
-  {
-    id: 113,
-    category: "Work & Professional",
-    english: "The client is waiting in the lobby.",
-    german: "Der Kunde wartet in der Lobby.",
-    pronunciation: "dehr KOON-deh VAR-tet in dehr LOB-ee"
-  },
-  {
-    id: 114,
-    category: "Work & Professional",
-    english: "We need to cut costs this quarter.",
-    german: "Wir müssen dieses Quartal Kosten reduzieren.",
-    pronunciation: "veer MOOS-sen DEE-zes kvar-TAHL KOS-ten reh-doo-TSEE-ren"
-  },
-  {
-    id: 115,
-    category: "Work & Professional",
-    english: "The presentation went very well.",
-    german: "Die Präsentation lief sehr gut.",
-    pronunciation: "dee preh-zen-tah-TSYOHN leef zayr goot"
-  },
-  {
-    id: 116,
-    category: "Work & Professional",
-    english: "Please copy me on that email.",
-    german: "Bitte setzen Sie mich in CC für diese E-Mail.",
-    pronunciation: "BIT-eh ZET-sen zee mikh in tseh-TSEH fyur DEE-zeh EE-mayl"
-  },
-  {
-    id: 117,
-    category: "Work & Professional",
-    english: "I'm working from home today.",
-    german: "Ich arbeite heute von zu Hause.",
-    pronunciation: "ikh AR-by-teh HOY-teh fon tsoo HOW-zeh"
-  },
-  {
-    id: 118,
-    category: "Work & Professional",
-    english: "Can I take a vacation next month?",
-    german: "Kann ich nächsten Monat Urlaub nehmen?",
-    pronunciation: "kahn ikh NEKS-ten MOH-naht OOR-lowp NAY-men"
-  },
-  {
-    id: 119,
-    category: "Work & Professional",
-    english: "This task is urgent.",
-    german: "Diese Aufgabe ist dringend.",
-    pronunciation: "DEE-zeh OWF-gah-beh ist DRING-ent"
-  },
-  {
-    id: 120,
-    category: "Work & Professional",
-    english: "I'll finish it by end of day.",
-    german: "Ich werde es bis Tagesende fertig haben.",
-    pronunciation: "ikh VEHR-deh es biss TAH-ges-en-deh FEHR-tikh HAH-ben"
-  },
-  {
-    id: 121,
-    category: "Work & Professional",
-    english: "Let's brainstorm some ideas.",
-    german: "Lassen Sie uns Ideen sammeln.",
-    pronunciation: "LAHS-sen zee oons ee-DAY-en ZAH-meln"
-  },
-  {
-    id: 122,
-    category: "Work & Professional",
-    english: "I disagree with that approach.",
-    german: "Ich bin mit diesem Ansatz nicht einverstanden.",
-    pronunciation: "ikh bin mit DEE-zem AN-zahts nikht EIN-fehr-shtan-den"
-  },
-  {
-    id: 123,
-    category: "Work & Professional",
-    english: "Could you train me on this software?",
-    german: "Könnten Sie mich in dieser Software einweisen?",
-    pronunciation: "KUR-ten zee mikh in DEE-zer SOFT-vehr EIN-vy-zen"
-  },
-  {
-    id: 124,
-    category: "Work & Professional",
-    english: "Sales numbers are up this month.",
-    german: "Die Verkaufszahlen sind diesen Monat gestiegen.",
-    pronunciation: "dee fehr-KOWFS-tsah-len zint DEE-zen MOH-naht geh-SHTEE-gen"
-  },
-  {
-    id: 125,
-    category: "Work & Professional",
-    english: "I have a job interview tomorrow.",
-    german: "Ich habe morgen ein Vorstellungsgespräch.",
-    pronunciation: "ikh HAH-beh MOR-gen ine FOR-shtel-oongs-geh-shprekh"
-  },
-  {
-    id: 126,
-    category: "Work & Professional",
-    english: "The office is closed on public holidays.",
-    german: "Das Büro ist an Feiertagen geschlossen.",
-    pronunciation: "dahs boo-ROH ist ahn FY-er-tah-gen geh-SHLOS-sen"
-  },
-  {
-    id: 127,
-    category: "Work & Professional",
-    english: "I'll send you the invoice.",
-    german: "Ich schicke Ihnen die Rechnung.",
-    pronunciation: "ikh SHIK-eh EE-nen dee REKH-noong"
-  },
-  {
-    id: 128,
-    category: "Work & Professional",
-    english: "Let's wrap up for today.",
-    german: "Lassen Sie uns für heute Schluss machen.",
-    pronunciation: "LAHS-sen zee oons fyur HOY-teh shloos MAHKH-en"
-  },
-  {
-    id: 129,
-    category: "Work & Professional",
-    english: "I need access to the shared drive.",
-    german: "Ich brauche Zugang zum gemeinsamen Laufwerk.",
-    pronunciation: "ikh BROW-kheh TSOO-gahng tsom geh-MINE-zah-men LOWF-vehrk"
-  },
-  {
-    id: 130,
-    category: "Work & Professional",
-    english: "Great teamwork, everyone!",
-    german: "Tolle Teamarbeit, alle zusammen!",
-    pronunciation: "TOL-eh TEEM-ar-bite, AL-eh tsoo-ZAH-men"
-  },
-  {
-    id: 131,
-    category: "Work & Professional",
-    english: "The budget was approved.",
-    german: "Das Budget wurde genehmigt.",
-    pronunciation: "dahs boo-DJEH VOOR-deh geh-NAY-mikt"
-  },
-  {
-    id: 132,
-    category: "Work & Professional",
-    english: "Please confirm receipt of this email.",
-    german: "Bitte bestätigen Sie den Eingang dieser E-Mail.",
-    pronunciation: "BIT-eh beh-SHTAY-ti-gen zee dayn EIN-gahng DEE-zer EE-mayl"
-  },
-
-  // ─── Friends & Casual ─────────────────────────────────────────────────────
-  {
-    id: 201,
-    category: "Friends & Casual",
-    english: "Hey, what's up?",
-    german: "Hey, was geht ab?",
-    pronunciation: "hey, vahs gayt ahp"
-  },
-  {
-    id: 202,
-    category: "Friends & Casual",
-    english: "Are you free tonight?",
-    german: "Hast du heute Abend Zeit?",
-    pronunciation: "hahst doo HOY-teh AH-bent tsyt"
-  },
-  {
-    id: 203,
-    category: "Friends & Casual",
-    english: "Let's hang out this weekend.",
-    german: "Lass uns dieses Wochenende was unternehmen.",
-    pronunciation: "lahs oons DEE-zes VOH-khen-en-deh vahs OON-ter-nay-men"
-  },
-  {
-    id: 204,
-    category: "Friends & Casual",
-    english: "That's hilarious!",
-    german: "Das ist zum Totlachen!",
-    pronunciation: "dahs ist tsom TOT-lahkh-en"
-  },
-  {
-    id: 205,
-    category: "Friends & Casual",
-    english: "I'm so tired today.",
-    german: "Ich bin heute so müde.",
-    pronunciation: "ikh bin HOY-teh zoh MOO-deh"
-  },
-  {
-    id: 206,
-    category: "Friends & Casual",
-    english: "Did you see that movie?",
-    german: "Hast du den Film gesehen?",
-    pronunciation: "hahst doo dayn film geh-ZAY-en"
-  },
-  {
-    id: 207,
-    category: "Friends & Casual",
-    english: "No way! I can't believe it.",
-    german: "Kein Witz! Das glaube ich nicht.",
-    pronunciation: "kine vits! dahs GLOW-beh ikh nikht"
-  },
-  {
-    id: 208,
-    category: "Friends & Casual",
-    english: "You look great today!",
-    german: "Du siehst heute toll aus!",
-    pronunciation: "doo zeest HOY-teh tol owss"
-  },
-  {
-    id: 209,
-    category: "Friends & Casual",
-    english: "Can I borrow your charger?",
-    german: "Kann ich dein Ladekabel ausleihen?",
-    pronunciation: "kahn ikh dyne LAH-deh-kah-bel OWS-ly-en"
-  },
-  {
-    id: 210,
-    category: "Friends & Casual",
-    english: "I'm starving. Let's get food.",
-    german: "Ich habe Riesenhunger. Lass uns was essen.",
-    pronunciation: "ikh HAH-beh REE-zen-hoong-er. lahs oons vahs ES-sen"
-  },
-  {
-    id: 211,
-    category: "Friends & Casual",
-    english: "What kind of music do you like?",
-    german: "Was für Musik magst du?",
-    pronunciation: "vahs fyur moo-ZEEK mahkst doo"
-  },
-  {
-    id: 212,
-    category: "Friends & Casual",
-    english: "I love that band.",
-    german: "Ich liebe diese Band.",
-    pronunciation: "ikh LEE-beh DEE-zeh bant"
-  },
-  {
-    id: 213,
-    category: "Friends & Casual",
-    english: "Do you want to play video games?",
-    german: "Willst du Videospiele spielen?",
-    pronunciation: "vilst doo VEE-deh-oh-shpee-leh SHPEE-len"
-  },
-  {
-    id: 214,
-    category: "Friends & Casual",
-    english: "That party was so much fun.",
-    german: "Die Party hat so viel Spaß gemacht.",
-    pronunciation: "dee PAR-tee haht zoh feel shpahs geh-MAHKHT"
-  },
-  {
-    id: 215,
-    category: "Friends & Casual",
-    english: "How did your date go?",
-    german: "Wie lief dein Date?",
-    pronunciation: "vee leef dyne dayt"
-  },
-  {
-    id: 216,
-    category: "Friends & Casual",
-    english: "I'm not feeling well today.",
-    german: "Ich fühle mich heute nicht gut.",
-    pronunciation: "ikh FOO-leh mikh HOY-teh nikht goot"
-  },
-  {
-    id: 217,
-    category: "Friends & Casual",
-    english: "Wanna grab a coffee?",
-    german: "Willst du einen Kaffee trinken gehen?",
-    pronunciation: "vilst doo EYE-nen KAH-feh TRIN-ken GAY-en"
-  },
-  {
-    id: 218,
-    category: "Friends & Casual",
-    english: "You were right about that.",
-    german: "Da hattest du recht.",
-    pronunciation: "dah HAH-test doo rekht"
-  },
-  {
-    id: 219,
-    category: "Friends & Casual",
-    english: "Let me know if you need anything.",
-    german: "Sag mir Bescheid, wenn du was brauchst.",
-    pronunciation: "zahk meer beh-SHIDE, ven doo vahs browkhst"
-  },
-  {
-    id: 220,
-    category: "Friends & Casual",
-    english: "Stop worrying so much!",
-    german: "Hör auf, dir so viele Sorgen zu machen!",
-    pronunciation: "hur owf, deer zoh FEE-leh ZOR-gen tsoo MAHKH-en"
-  },
-  {
-    id: 221,
-    category: "Friends & Casual",
-    english: "That's so annoying.",
-    german: "Das ist so nervig.",
-    pronunciation: "dahs ist zoh NEHR-vikh"
-  },
-  {
-    id: 222,
-    category: "Friends & Casual",
-    english: "Are you coming to the barbecue?",
-    german: "Kommst du zum Grillen?",
-    pronunciation: "komst doo tsom GRIL-en"
-  },
-  {
-    id: 223,
-    category: "Friends & Casual",
-    english: "I'll be there in ten minutes.",
-    german: "Ich bin in zehn Minuten da.",
-    pronunciation: "ikh bin in tsayn mee-NOO-ten dah"
-  },
-  {
-    id: 224,
-    category: "Friends & Casual",
-    english: "My phone is almost dead.",
-    german: "Mein Handy ist fast leer.",
-    pronunciation: "mine HAN-dee ist fahst layr"
-  },
-  {
-    id: 225,
-    category: "Friends & Casual",
-    english: "I just saw the news.",
-    german: "Ich habe gerade die Nachrichten gesehen.",
-    pronunciation: "ikh HAH-beh geh-RAH-deh dee NAHKH-rikh-ten geh-ZAY-en"
-  },
-  {
-    id: 226,
-    category: "Friends & Casual",
-    english: "We should do this more often.",
-    german: "Das sollten wir öfter machen.",
-    pronunciation: "dahs ZOL-ten veer UR-fter MAHKH-en"
-  },
-  {
-    id: 227,
-    category: "Friends & Casual",
-    english: "I miss you.",
-    german: "Ich vermisse dich.",
-    pronunciation: "ikh fehr-MIS-seh dikh"
-  },
-  {
-    id: 228,
-    category: "Friends & Casual",
-    english: "Cheers! To good times.",
-    german: "Prost! Auf gute Zeiten.",
-    pronunciation: "prohst! owf GOO-teh TSYE-ten"
-  },
-  {
-    id: 229,
-    category: "Friends & Casual",
-    english: "Want to split the bill?",
-    german: "Wollen wir die Rechnung teilen?",
-    pronunciation: "VOL-en veer dee REKH-noong TY-len"
-  },
-  {
-    id: 230,
-    category: "Friends & Casual",
-    english: "You're such a good friend.",
-    german: "Du bist so ein guter Freund.",
-    pronunciation: "doo bist zoh ine GOO-ter froynt"
-  },
-  {
-    id: 231,
-    category: "Friends & Casual",
-    english: "I haven't slept well lately.",
-    german: "Ich habe in letzter Zeit schlecht geschlafen.",
-    pronunciation: "ikh HAH-beh in LETS-ter tsyt shlekht geh-SHLAH-fen"
-  },
-  {
-    id: 232,
-    category: "Friends & Casual",
-    english: "That's the best idea ever!",
-    german: "Das ist die beste Idee überhaupt!",
-    pronunciation: "dahs ist dee BES-teh ee-DAY-eh OO-ber-howpt"
-  },
-
-  // ─── Travel & Directions ──────────────────────────────────────────────────
-  {
-    id: 301,
-    category: "Travel & Directions",
-    english: "Where is the train station?",
-    german: "Wo ist der Bahnhof?",
-    pronunciation: "voh ist dehr BAHN-hohf"
-  },
-  {
-    id: 302,
-    category: "Travel & Directions",
-    english: "How do I get to the city center?",
-    german: "Wie komme ich in die Innenstadt?",
-    pronunciation: "vee KOM-eh ikh in dee IN-en-shtat"
-  },
-  {
-    id: 303,
-    category: "Travel & Directions",
-    english: "Turn left at the traffic light.",
-    german: "Biegen Sie an der Ampel links ab.",
-    pronunciation: "BEE-gen zee ahn dehr AHM-pel links ahp"
-  },
-  {
-    id: 304,
-    category: "Travel & Directions",
-    english: "It's straight ahead.",
-    german: "Es ist geradeaus.",
-    pronunciation: "es ist geh-RAH-deh-owss"
-  },
-  {
-    id: 305,
-    category: "Travel & Directions",
-    english: "How far is it from here?",
-    german: "Wie weit ist es von hier?",
-    pronunciation: "vee vyt ist es fon heer"
-  },
-  {
-    id: 306,
-    category: "Travel & Directions",
-    english: "I'd like a one-way ticket to Munich.",
-    german: "Ich möchte eine einfache Fahrkarte nach München.",
-    pronunciation: "ikh MURK-teh EYE-neh EIN-fakh-eh FAHR-kar-teh nahkh MOON-khen"
-  },
-  {
-    id: 307,
-    category: "Travel & Directions",
-    english: "When does the next bus arrive?",
-    german: "Wann kommt der nächste Bus?",
-    pronunciation: "vahn komt dehr NEKHS-teh boos"
-  },
-  {
-    id: 308,
-    category: "Travel & Directions",
-    english: "I missed my train.",
-    german: "Ich habe meinen Zug verpasst.",
-    pronunciation: "ikh HAH-beh MY-nen tsook fehr-PAHST"
-  },
-  {
-    id: 309,
-    category: "Travel & Directions",
-    english: "Is this seat taken?",
-    german: "Ist dieser Platz besetzt?",
-    pronunciation: "ist DEE-zer plahts beh-ZETST"
-  },
-  {
-    id: 310,
-    category: "Travel & Directions",
-    english: "I have a reservation at this hotel.",
-    german: "Ich habe eine Reservierung in diesem Hotel.",
-    pronunciation: "ikh HAH-beh EYE-neh reh-zehr-VEER-oong in DEE-zem hoh-TEL"
-  },
-  {
-    id: 311,
-    category: "Travel & Directions",
-    english: "Can I have a map of the city?",
-    german: "Kann ich einen Stadtplan bekommen?",
-    pronunciation: "kahn ikh EYE-nen SHTAT-plahn beh-KOM-en"
-  },
-  {
-    id: 312,
-    category: "Travel & Directions",
-    english: "My luggage is lost.",
-    german: "Mein Gepäck ist verloren gegangen.",
-    pronunciation: "mine geh-PEK ist fehr-LOH-ren geh-GAHNG-en"
-  },
-  {
-    id: 313,
-    category: "Travel & Directions",
-    english: "Which platform does the train leave from?",
-    german: "Von welchem Gleis fährt der Zug ab?",
-    pronunciation: "fon VEL-khem glise fehrt dehr tsook ahp"
-  },
-  {
-    id: 314,
-    category: "Travel & Directions",
-    english: "I need a taxi to the airport.",
-    german: "Ich brauche ein Taxi zum Flughafen.",
-    pronunciation: "ikh BROW-kheh ine TAHK-see tsom FLOOK-hah-fen"
-  },
-  {
-    id: 315,
-    category: "Travel & Directions",
-    english: "How long does the journey take?",
-    german: "Wie lange dauert die Fahrt?",
-    pronunciation: "vee LAHNG-eh DOW-ert dee fahrt"
-  },
-  {
-    id: 316,
-    category: "Travel & Directions",
-    english: "Do you have any rooms available?",
-    german: "Haben Sie noch Zimmer frei?",
-    pronunciation: "HAH-ben zee nokh TSIM-er fry"
-  },
-  {
-    id: 317,
-    category: "Travel & Directions",
-    english: "I'd like to check in, please.",
-    german: "Ich möchte einchecken, bitte.",
-    pronunciation: "ikh MURK-teh EIN-chek-en, BIT-eh"
-  },
-  {
-    id: 318,
-    category: "Travel & Directions",
-    english: "What time is check-out?",
-    german: "Wann ist der Check-out?",
-    pronunciation: "vahn ist dehr CHEK-owt"
-  },
-  {
-    id: 319,
-    category: "Travel & Directions",
-    english: "Is breakfast included?",
-    german: "Ist das Frühstück inklusive?",
-    pronunciation: "ist dahs FROO-shtook in-kloo-ZEE-veh"
-  },
-  {
-    id: 320,
-    category: "Travel & Directions",
-    english: "Could you call me a cab?",
-    german: "Könnten Sie mir ein Taxi rufen?",
-    pronunciation: "KUR-ten zee meer ine TAHK-see ROO-fen"
-  },
-  {
-    id: 321,
-    category: "Travel & Directions",
-    english: "I'm looking for the museum.",
-    german: "Ich suche das Museum.",
-    pronunciation: "ikh ZOO-kheh dahs moo-ZAY-oom"
-  },
-  {
-    id: 322,
-    category: "Travel & Directions",
-    english: "Is there a pharmacy nearby?",
-    german: "Gibt es eine Apotheke in der Nähe?",
-    pronunciation: "gipt es EYE-neh ah-poh-TAY-keh in dehr NAY-eh"
-  },
-  {
-    id: 323,
-    category: "Travel & Directions",
-    english: "I'm lost. Can you help me?",
-    german: "Ich habe mich verlaufen. Können Sie mir helfen?",
-    pronunciation: "ikh HAH-beh mikh fehr-LOW-fen. KUR-nen zee meer HEL-fen"
-  },
-  {
-    id: 324,
-    category: "Travel & Directions",
-    english: "Cross the bridge and turn right.",
-    german: "Überqueren Sie die Brücke und biegen Sie rechts ab.",
-    pronunciation: "OO-ber-kveh-ren zee dee BROO-keh oont BEE-gen zee rekhts ahp"
-  },
-  {
-    id: 325,
-    category: "Travel & Directions",
-    english: "My flight is delayed.",
-    german: "Mein Flug hat Verspätung.",
-    pronunciation: "mine flook haht fehr-SHPAY-toong"
-  },
-  {
-    id: 326,
-    category: "Travel & Directions",
-    english: "Where can I rent a car?",
-    german: "Wo kann ich ein Auto mieten?",
-    pronunciation: "voh kahn ikh ine OW-toh MEE-ten"
-  },
-  {
-    id: 327,
-    category: "Travel & Directions",
-    english: "Do I need a visa?",
-    german: "Brauche ich ein Visum?",
-    pronunciation: "BROW-kheh ikh ine VEE-zoom"
-  },
-  {
-    id: 328,
-    category: "Travel & Directions",
-    english: "The view from here is beautiful.",
-    german: "Der Ausblick von hier ist wunderschön.",
-    pronunciation: "dehr OWS-blik fon heer ist VOON-der-shurn"
-  },
-  {
-    id: 329,
-    category: "Travel & Directions",
-    english: "Can I use this bus pass here?",
-    german: "Kann ich diesen Buspass hier benutzen?",
-    pronunciation: "kahn ikh DEE-zen BOOS-pahs heer beh-NOOT-sen"
-  },
-  {
-    id: 330,
-    category: "Travel & Directions",
-    english: "I'd like a window seat.",
-    german: "Ich hätte gerne einen Fensterplatz.",
-    pronunciation: "ikh HET-eh GEHR-neh EYE-nen FEN-ster-plahts"
-  },
-  {
-    id: 331,
-    category: "Travel & Directions",
-    english: "The subway is on the next corner.",
-    german: "Die U-Bahn ist an der nächsten Ecke.",
-    pronunciation: "dee OO-bahn ist ahn dehr NEKHS-ten EK-eh"
-  },
-  {
-    id: 332,
-    category: "Travel & Directions",
-    english: "Is it safe to walk here at night?",
-    german: "Ist es sicher, hier nachts zu Fuß zu gehen?",
-    pronunciation: "ist es ZIKH-er, heer nahkhts tsoo foos tsoo GAY-en"
-  },
-
-  // ─── Shopping ─────────────────────────────────────────────────────────────
-  {
-    id: 401,
-    category: "Shopping",
-    english: "How much does this cost?",
-    german: "Was kostet das?",
-    pronunciation: "vahs KOS-tet dahs"
-  },
-  {
-    id: 402,
-    category: "Shopping",
-    english: "Do you have this in a larger size?",
-    german: "Haben Sie das in einer größeren Größe?",
-    pronunciation: "HAH-ben zee dahs in EYE-ner GRUR-sse-ren GRUR-sse"
-  },
-  {
-    id: 403,
-    category: "Shopping",
-    english: "Can I try this on?",
-    german: "Kann ich das anprobieren?",
-    pronunciation: "kahn ikh dahs AHN-proh-bee-ren"
-  },
-  {
-    id: 404,
-    category: "Shopping",
-    english: "Where is the fitting room?",
-    german: "Wo ist die Umkleidekabine?",
-    pronunciation: "voh ist dee OOM-kly-deh-kah-bee-neh"
-  },
-  {
-    id: 405,
-    category: "Shopping",
-    english: "I'll take this one.",
-    german: "Ich nehme dieses.",
-    pronunciation: "ikh NAY-meh DEE-zes"
-  },
-  {
-    id: 406,
-    category: "Shopping",
-    english: "Do you accept credit cards?",
-    german: "Akzeptieren Sie Kreditkarten?",
-    pronunciation: "ahk-tsep-TEER-en zee kre-DEET-kar-ten"
-  },
-  {
-    id: 407,
-    category: "Shopping",
-    english: "Can I pay by card?",
-    german: "Kann ich mit Karte zahlen?",
-    pronunciation: "kahn ikh mit KAR-teh TSAH-len"
-  },
-  {
-    id: 408,
-    category: "Shopping",
-    english: "Is there a discount?",
-    german: "Gibt es einen Rabatt?",
-    pronunciation: "gipt es EYE-nen rah-BAHT"
-  },
-  {
-    id: 409,
-    category: "Shopping",
-    english: "I'd like to return this item.",
-    german: "Ich möchte diesen Artikel zurückgeben.",
-    pronunciation: "ikh MURK-teh DEE-zen ar-TEE-kel tsoo-ROOK-gay-ben"
-  },
-  {
-    id: 410,
-    category: "Shopping",
-    english: "Do you have a receipt?",
-    german: "Haben Sie einen Kassenbon?",
-    pronunciation: "HAH-ben zee EYE-nen KAHS-sen-bon"
-  },
-  {
-    id: 411,
-    category: "Shopping",
-    english: "I'm just browsing, thank you.",
-    german: "Ich schaue mich nur um, danke.",
-    pronunciation: "ikh SHOW-eh mikh noor oom, DAHN-keh"
-  },
-  {
-    id: 412,
-    category: "Shopping",
-    english: "Could you wrap this as a gift?",
-    german: "Können Sie das als Geschenk einpacken?",
-    pronunciation: "KUR-nen zee dahs ahls geh-SHENK EIN-pahk-en"
-  },
-  {
-    id: 413,
-    category: "Shopping",
-    english: "What time does the store close?",
-    german: "Wann schließt das Geschäft?",
-    pronunciation: "vahn shleest dahs geh-SHEFT"
-  },
-  {
-    id: 414,
-    category: "Shopping",
-    english: "Do you deliver?",
-    german: "Liefern Sie?",
-    pronunciation: "LEE-fern zee"
-  },
-  {
-    id: 415,
-    category: "Shopping",
-    english: "This is too expensive.",
-    german: "Das ist zu teuer.",
-    pronunciation: "dahs ist tsoo TOY-er"
-  },
-  {
-    id: 416,
-    category: "Shopping",
-    english: "I'm looking for a birthday gift.",
-    german: "Ich suche ein Geburtstagsgeschenk.",
-    pronunciation: "ikh ZOO-kheh ine geh-BOORTS-tahks-geh-shenk"
-  },
-  {
-    id: 417,
-    category: "Shopping",
-    english: "Where is the supermarket?",
-    german: "Wo ist der Supermarkt?",
-    pronunciation: "voh ist dehr ZOO-per-markt"
-  },
-  {
-    id: 418,
-    category: "Shopping",
-    english: "Can I get a bag, please?",
-    german: "Kann ich bitte eine Tüte haben?",
-    pronunciation: "kahn ikh BIT-eh EYE-neh TOO-teh HAH-ben"
-  },
-  {
-    id: 419,
-    category: "Shopping",
-    english: "This is on sale.",
-    german: "Das ist im Angebot.",
-    pronunciation: "dahs ist im AHN-geh-boht"
-  },
-  {
-    id: 420,
-    category: "Shopping",
-    english: "Do you have a loyalty card?",
-    german: "Haben Sie eine Kundenkarte?",
-    pronunciation: "HAH-ben zee EYE-neh KOON-den-kar-teh"
-  },
-  {
-    id: 421,
-    category: "Shopping",
-    english: "I need a medium size.",
-    german: "Ich brauche Größe M.",
-    pronunciation: "ikh BROW-kheh GRUR-sse em"
-  },
-  {
-    id: 422,
-    category: "Shopping",
-    english: "These shoes hurt my feet.",
-    german: "Diese Schuhe drücken.",
-    pronunciation: "DEE-zeh SHOO-eh DROO-ken"
-  },
-  {
-    id: 423,
-    category: "Shopping",
-    english: "I'll think about it.",
-    german: "Ich überlege es mir.",
-    pronunciation: "ikh OO-ber-lay-geh es meer"
-  },
-  {
-    id: 424,
-    category: "Shopping",
-    english: "Is there a sale on right now?",
-    german: "Gibt es gerade einen Ausverkauf?",
-    pronunciation: "gipt es geh-RAH-deh EYE-nen OWS-fehr-kowf"
-  },
-  {
-    id: 425,
-    category: "Shopping",
-    english: "Can I exchange this for a different color?",
-    german: "Kann ich das gegen eine andere Farbe umtauschen?",
-    pronunciation: "kahn ikh dahs GAY-gen EYE-neh AHN-deh-reh FAR-beh OOM-tow-shen"
-  },
-  {
-    id: 426,
-    category: "Shopping",
-    english: "I need batteries for this.",
-    german: "Ich brauche Batterien dafür.",
-    pronunciation: "ikh BROW-kheh bah-teh-REE-en dah-FYUR"
-  },
-  {
-    id: 427,
-    category: "Shopping",
-    english: "That color doesn't suit me.",
-    german: "Diese Farbe steht mir nicht.",
-    pronunciation: "DEE-zeh FAR-beh shtayt meer nikht"
-  },
-  {
-    id: 428,
-    category: "Shopping",
-    english: "Here is my payment.",
-    german: "Hier ist meine Zahlung.",
-    pronunciation: "heer ist MY-neh TSAH-loong"
-  },
-  {
-    id: 429,
-    category: "Shopping",
-    english: "Do you have anything cheaper?",
-    german: "Haben Sie etwas Günstigeres?",
-    pronunciation: "HAH-ben zee ET-vahs GOONS-ti-geh-res"
-  },
-  {
-    id: 430,
-    category: "Shopping",
-    english: "Keep the change.",
-    german: "Behalten Sie das Wechselgeld.",
-    pronunciation: "beh-HAHL-ten zee dahs VEK-sel-gelt"
-  },
-  {
-    id: 431,
-    category: "Shopping",
-    english: "Where are the fitting rooms?",
-    german: "Wo sind die Umkleideräume?",
-    pronunciation: "voh zint dee OOM-kly-deh-roy-meh"
-  },
-  {
-    id: 432,
-    category: "Shopping",
-    english: "I'm a size 40 in shoes.",
-    german: "Ich habe Schuhgröße vierzig.",
-    pronunciation: "ikh HAH-beh SHOO-grur-sse FEER-tsikh"
-  },
-
-  // ─── Restaurants & Food ───────────────────────────────────────────────────
-  {
-    id: 501,
-    category: "Restaurants & Food",
-    english: "A table for two, please.",
-    german: "Einen Tisch für zwei, bitte.",
-    pronunciation: "EYE-nen tish fyur tsvy, BIT-eh"
-  },
-  {
-    id: 502,
-    category: "Restaurants & Food",
-    english: "Could I see the menu, please?",
-    german: "Darf ich die Speisekarte sehen?",
-    pronunciation: "darf ikh dee SHPY-zeh-kar-teh ZAY-en"
-  },
-  {
-    id: 503,
-    category: "Restaurants & Food",
-    english: "What do you recommend?",
-    german: "Was empfehlen Sie?",
-    pronunciation: "vahs em-PFAY-len zee"
-  },
-  {
-    id: 504,
-    category: "Restaurants & Food",
-    english: "I'm vegetarian.",
-    german: "Ich bin Vegetarier.",
-    pronunciation: "ikh bin veh-geh-TAH-ree-er"
-  },
-  {
-    id: 505,
-    category: "Restaurants & Food",
-    english: "I'm allergic to nuts.",
-    german: "Ich bin allergisch gegen Nüsse.",
-    pronunciation: "ikh bin ah-LEHR-gish GAY-gen NOO-sse"
-  },
-  {
-    id: 506,
-    category: "Restaurants & Food",
-    english: "The food is delicious.",
-    german: "Das Essen ist köstlich.",
-    pronunciation: "dahs ES-sen ist KURST-likh"
-  },
-  {
-    id: 507,
-    category: "Restaurants & Food",
-    english: "Could we get some water, please?",
-    german: "Könnten wir bitte etwas Wasser bekommen?",
-    pronunciation: "KUR-ten veer BIT-eh ET-vahs VAHS-ser beh-KOM-en"
-  },
-  {
-    id: 508,
-    category: "Restaurants & Food",
-    english: "I'd like to order the steak.",
-    german: "Ich möchte das Steak bestellen.",
-    pronunciation: "ikh MURK-teh dahs stayk beh-SHTEL-en"
-  },
-  {
-    id: 509,
-    category: "Restaurants & Food",
-    english: "Can I have the check, please?",
-    german: "Kann ich bitte die Rechnung haben?",
-    pronunciation: "kahn ikh BIT-eh dee REKH-noong HAH-ben"
-  },
-  {
-    id: 510,
-    category: "Restaurants & Food",
-    english: "Does this contain gluten?",
-    german: "Enthält das Gluten?",
-    pronunciation: "ent-HELT dahs gloo-TEN"
-  },
-  {
-    id: 511,
-    category: "Restaurants & Food",
-    english: "I'd like my steak medium-rare.",
-    german: "Ich hätte mein Steak gerne medium.",
-    pronunciation: "ikh HET-eh mine stayk GEHR-neh MEE-dee-oom"
-  },
-  {
-    id: 512,
-    category: "Restaurants & Food",
-    english: "This is too salty.",
-    german: "Das ist zu salzig.",
-    pronunciation: "dahs ist tsoo ZAHL-tsikh"
-  },
-  {
-    id: 513,
-    category: "Restaurants & Food",
-    english: "I'd like a glass of red wine.",
-    german: "Ich möchte ein Glas Rotwein.",
-    pronunciation: "ikh MURK-teh ine glahs ROHT-vine"
-  },
-  {
-    id: 514,
-    category: "Restaurants & Food",
-    english: "Can we sit outside?",
-    german: "Können wir draußen sitzen?",
-    pronunciation: "KUR-nen veer DROW-ssen ZIT-sen"
-  },
-  {
-    id: 515,
-    category: "Restaurants & Food",
-    english: "I have a reservation for six o'clock.",
-    german: "Ich habe eine Reservierung für achtzehn Uhr.",
-    pronunciation: "ikh HAH-beh EYE-neh reh-zehr-VEER-oong fyur AKH-tsayn oor"
-  },
-  {
-    id: 516,
-    category: "Restaurants & Food",
-    english: "What's the soup of the day?",
-    german: "Was ist die Tagessuppe?",
-    pronunciation: "vahs ist dee TAH-ges-zoo-peh"
-  },
-  {
-    id: 517,
-    category: "Restaurants & Food",
-    english: "Can I get this to go?",
-    german: "Kann ich das zum Mitnehmen bekommen?",
-    pronunciation: "kahn ikh dahs tsom MIT-nay-men beh-KOM-en"
-  },
-  {
-    id: 518,
-    category: "Restaurants & Food",
-    english: "We're ready to order.",
-    german: "Wir sind bereit zu bestellen.",
-    pronunciation: "veer zint beh-RITE tsoo beh-SHTEL-en"
-  },
-  {
-    id: 519,
-    category: "Restaurants & Food",
-    english: "I'd like dessert, please.",
-    german: "Ich möchte bitte ein Dessert.",
-    pronunciation: "ikh MURK-teh BIT-eh ine deh-SEHR"
-  },
-  {
-    id: 520,
-    category: "Restaurants & Food",
-    english: "This is not what I ordered.",
-    german: "Das habe ich nicht bestellt.",
-    pronunciation: "dahs HAH-beh ikh nikht beh-SHTELT"
-  },
-  {
-    id: 521,
-    category: "Restaurants & Food",
-    english: "Could you split the bill?",
-    german: "Könnten Sie die Rechnung teilen?",
-    pronunciation: "KUR-ten zee dee REKH-noong TY-len"
-  },
-  {
-    id: 522,
-    category: "Restaurants & Food",
-    english: "The service was excellent.",
-    german: "Der Service war ausgezeichnet.",
-    pronunciation: "dehr SEHR-vis vahr OWS-geh-tsysh-net"
-  },
-  {
-    id: 523,
-    category: "Restaurants & Food",
-    english: "Do you have a children's menu?",
-    german: "Haben Sie eine Kinderkarte?",
-    pronunciation: "HAH-ben zee EYE-neh KIN-der-kar-teh"
-  },
-  {
-    id: 524,
-    category: "Restaurants & Food",
-    english: "I'd like a coffee after the meal.",
-    german: "Ich möchte nach dem Essen einen Kaffee.",
-    pronunciation: "ikh MURK-teh nahkh daym ES-sen EYE-nen KAH-feh"
-  },
-  {
-    id: 525,
-    category: "Restaurants & Food",
-    english: "No ice in my drink, please.",
-    german: "Ohne Eis in meinem Getränk, bitte.",
-    pronunciation: "OH-neh ise in MY-nem geh-TRENK, BIT-eh"
-  },
-  {
-    id: 526,
-    category: "Restaurants & Food",
-    english: "The portion is very generous.",
-    german: "Die Portion ist sehr großzügig.",
-    pronunciation: "dee por-TSYOHN ist zayr GROHS-tsoo-gikh"
-  },
-  {
-    id: 527,
-    category: "Restaurants & Food",
-    english: "Do you have lactose-free milk?",
-    german: "Haben Sie laktosefreie Milch?",
-    pronunciation: "HAH-ben zee lahk-TOH-zeh-fry-eh milkh"
-  },
-  {
-    id: 528,
-    category: "Restaurants & Food",
-    english: "I'll have the same as him.",
-    german: "Ich nehme dasselbe wie er.",
-    pronunciation: "ikh NAY-meh dahs-ZEL-beh vee ehr"
-  },
-  {
-    id: 529,
-    category: "Restaurants & Food",
-    english: "This dish is too spicy for me.",
-    german: "Dieses Gericht ist mir zu scharf.",
-    pronunciation: "DEE-zes geh-RIKHT ist meer tsoo sharf"
-  },
-  {
-    id: 530,
-    category: "Restaurants & Food",
-    english: "Compliments to the chef!",
-    german: "Kompliment an den Koch!",
-    pronunciation: "kom-plee-MENT ahn dayn kokh"
-  },
-  {
-    id: 531,
-    category: "Restaurants & Food",
-    english: "Is there a vegetarian option?",
-    german: "Gibt es eine vegetarische Option?",
-    pronunciation: "gipt es EYE-neh veh-geh-TAH-ri-sheh op-TSYOHN"
-  },
-  {
-    id: 532,
-    category: "Restaurants & Food",
-    english: "We'd like to start with the appetizers.",
-    german: "Wir möchten mit den Vorspeisen beginnen.",
-    pronunciation: "veer MURK-ten mit dayn FOR-shpy-zen beh-GIN-en"
-  },
-
-  // ─── Health & Medical ─────────────────────────────────────────────────────
-  {
-    id: 601,
-    category: "Health & Medical",
-    english: "I need to see a doctor.",
-    german: "Ich muss zum Arzt.",
-    pronunciation: "ikh mooss tsom artst"
-  },
-  {
-    id: 602,
-    category: "Health & Medical",
-    english: "I have a headache.",
-    german: "Ich habe Kopfschmerzen.",
-    pronunciation: "ikh HAH-beh KOPF-shmehr-tsen"
-  },
-  {
-    id: 603,
-    category: "Health & Medical",
-    english: "My stomach hurts.",
-    german: "Mein Bauch tut weh.",
-    pronunciation: "mine bowkh toot vay"
-  },
-  {
-    id: 604,
-    category: "Health & Medical",
-    english: "I've had a fever for two days.",
-    german: "Ich habe seit zwei Tagen Fieber.",
-    pronunciation: "ikh HAH-beh zite tsvy TAH-gen FEE-ber"
-  },
-  {
-    id: 605,
-    category: "Health & Medical",
-    english: "Where is the nearest pharmacy?",
-    german: "Wo ist die nächste Apotheke?",
-    pronunciation: "voh ist dee NEKHS-teh ah-poh-TAY-keh"
-  },
-  {
-    id: 606,
-    category: "Health & Medical",
-    english: "I need a prescription for this medication.",
-    german: "Ich brauche ein Rezept für dieses Medikament.",
-    pronunciation: "ikh BROW-kheh ine reh-TSEPT fyur DEE-zes meh-dee-kah-MENT"
-  },
-  {
-    id: 607,
-    category: "Health & Medical",
-    english: "I'm allergic to penicillin.",
-    german: "Ich bin allergisch gegen Penicillin.",
-    pronunciation: "ikh bin ah-LEHR-gish GAY-gen peh-ni-tsil-EEN"
-  },
-  {
-    id: 608,
-    category: "Health & Medical",
-    english: "I've broken my arm.",
-    german: "Ich habe mir den Arm gebrochen.",
-    pronunciation: "ikh HAH-beh meer dayn arm geh-BROH-khen"
-  },
-  {
-    id: 609,
-    category: "Health & Medical",
-    english: "I feel dizzy.",
-    german: "Mir ist schwindelig.",
-    pronunciation: "meer ist SHVIN-deh-likh"
-  },
-  {
-    id: 610,
-    category: "Health & Medical",
-    english: "I haven't slept well recently.",
-    german: "Ich habe in letzter Zeit schlecht geschlafen.",
-    pronunciation: "ikh HAH-beh in LETS-ter tsyt shlekht geh-SHLAH-fen"
-  },
-  {
-    id: 611,
-    category: "Health & Medical",
-    english: "I need to make an appointment.",
-    german: "Ich muss einen Termin machen.",
-    pronunciation: "ikh mooss EYE-nen tehr-MEEN MAHKH-en"
-  },
-  {
-    id: 612,
-    category: "Health & Medical",
-    english: "Take this tablet twice a day.",
-    german: "Nehmen Sie diese Tablette zweimal täglich.",
-    pronunciation: "NAY-men zee DEE-zeh tah-BLET-eh TSVY-mahl TEG-likh"
-  },
-  {
-    id: 613,
-    category: "Health & Medical",
-    english: "I have a sore throat.",
-    german: "Ich habe Halsschmerzen.",
-    pronunciation: "ikh HAH-beh HAHLS-shmehr-tsen"
-  },
-  {
-    id: 614,
-    category: "Health & Medical",
-    english: "Do I need stitches?",
-    german: "Brauche ich Nähte?",
-    pronunciation: "BROW-kheh ikh NAY-teh"
-  },
-  {
-    id: 615,
-    category: "Health & Medical",
-    english: "I need to check my blood pressure.",
-    german: "Ich muss meinen Blutdruck messen lassen.",
-    pronunciation: "ikh mooss MY-nen BLOOT-drook MES-sen LAHS-sen"
-  },
-  {
-    id: 616,
-    category: "Health & Medical",
-    english: "I have a rash on my arm.",
-    german: "Ich habe einen Ausschlag am Arm.",
-    pronunciation: "ikh HAH-beh EYE-nen OWS-shlahk ahm arm"
-  },
-  {
-    id: 617,
-    category: "Health & Medical",
-    english: "Are you vaccinated?",
-    german: "Sind Sie geimpft?",
-    pronunciation: "zint zee geh-IMPFT"
-  },
-  {
-    id: 618,
-    category: "Health & Medical",
-    english: "I'd like a referral to a specialist.",
-    german: "Ich möchte eine Überweisung zum Facharzt.",
-    pronunciation: "ikh MURK-teh EYE-neh OO-ber-vy-zoong tsom FAKH-artst"
-  },
-  {
-    id: 619,
-    category: "Health & Medical",
-    english: "How long will recovery take?",
-    german: "Wie lange wird die Genesung dauern?",
-    pronunciation: "vee LAHNG-eh virt dee geh-NAY-zoong DOW-ern"
-  },
-  {
-    id: 620,
-    category: "Health & Medical",
-    english: "I have diabetes.",
-    german: "Ich habe Diabetes.",
-    pronunciation: "ikh HAH-beh dee-ah-BAY-tes"
-  },
-  {
-    id: 621,
-    category: "Health & Medical",
-    english: "My knee is swollen.",
-    german: "Mein Knie ist geschwollen.",
-    pronunciation: "mine knee ist geh-SHVOL-en"
-  },
-  {
-    id: 622,
-    category: "Health & Medical",
-    english: "I need a blood test.",
-    german: "Ich brauche einen Bluttest.",
-    pronunciation: "ikh BROW-kheh EYE-nen BLOOT-test"
-  },
-  {
-    id: 623,
-    category: "Health & Medical",
-    english: "I've been feeling anxious lately.",
-    german: "Ich fühle mich in letzter Zeit ängstlich.",
-    pronunciation: "ikh FOO-leh mikh in LETS-ter tsyt ENGST-likh"
-  },
-  {
-    id: 624,
-    category: "Health & Medical",
-    english: "Can you prescribe something for the pain?",
-    german: "Können Sie mir etwas gegen die Schmerzen verschreiben?",
-    pronunciation: "KUR-nen zee meer ET-vahs GAY-gen dee SHMEHR-tsen fehr-SHRY-ben"
-  },
-  {
-    id: 625,
-    category: "Health & Medical",
-    english: "I feel much better now.",
-    german: "Mir geht es jetzt viel besser.",
-    pronunciation: "meer gayt es yetst feel BES-ser"
-  },
-  {
-    id: 626,
-    category: "Health & Medical",
-    english: "Do I need to fast before the test?",
-    german: "Muss ich vor dem Test nüchtern sein?",
-    pronunciation: "mooss ikh for daym test NOOKH-tern zine"
-  },
-  {
-    id: 627,
-    category: "Health & Medical",
-    english: "What are the side effects?",
-    german: "Was sind die Nebenwirkungen?",
-    pronunciation: "vahs zint dee NAY-ben-veer-koong-en"
-  },
-  {
-    id: 628,
-    category: "Health & Medical",
-    english: "I need to see an eye doctor.",
-    german: "Ich muss zum Augenarzt.",
-    pronunciation: "ikh mooss tsom OW-gen-artst"
-  },
-  {
-    id: 629,
-    category: "Health & Medical",
-    english: "My back has been hurting for a week.",
-    german: "Mein Rücken schmerzt seit einer Woche.",
-    pronunciation: "mine ROO-ken shmertst zite EYE-ner VOH-kheh"
-  },
-  {
-    id: 630,
-    category: "Health & Medical",
-    english: "Is this contagious?",
-    german: "Ist das ansteckend?",
-    pronunciation: "ist dahs AHN-shtek-ent"
-  },
-  {
-    id: 631,
-    category: "Health & Medical",
-    english: "Please fill out this health form.",
-    german: "Bitte füllen Sie dieses Gesundheitsformular aus.",
-    pronunciation: "BIT-eh FOO-len zee DEE-zes geh-ZOONT-hites-for-moo-lahr owss"
-  },
-  {
-    id: 632,
-    category: "Health & Medical",
-    english: "I'm eight weeks pregnant.",
-    german: "Ich bin in der achten Schwangerschaftswoche.",
-    pronunciation: "ikh bin in dehr AHKH-ten SHVAHNG-er-shahfts-voh-kheh"
-  },
-
-  // ─── Emergency ────────────────────────────────────────────────────────────
-  {
-    id: 701,
-    category: "Emergency",
-    english: "Help! Call the police!",
-    german: "Hilfe! Rufen Sie die Polizei!",
-    pronunciation: "HIL-feh! ROO-fen zee dee poh-lee-TSYE"
-  },
-  {
-    id: 702,
-    category: "Emergency",
-    english: "There's been an accident.",
-    german: "Es hat einen Unfall gegeben.",
-    pronunciation: "es haht EYE-nen OON-fahl geh-GAY-ben"
-  },
-  {
-    id: 703,
-    category: "Emergency",
-    english: "Call an ambulance, please!",
-    german: "Rufen Sie bitte einen Krankenwagen!",
-    pronunciation: "ROO-fen zee BIT-eh EYE-nen KRAHN-ken-vah-gen"
-  },
-  {
-    id: 704,
-    category: "Emergency",
-    english: "I need help!",
-    german: "Ich brauche Hilfe!",
-    pronunciation: "ikh BROW-kheh HIL-feh"
-  },
-  {
-    id: 705,
-    category: "Emergency",
-    english: "Fire! Get out of the building!",
-    german: "Feuer! Verlassen Sie das Gebäude!",
-    pronunciation: "FOY-er! fehr-LAHS-sen zee dahs geh-BOY-deh"
-  },
-  {
-    id: 706,
-    category: "Emergency",
-    english: "My wallet has been stolen.",
-    german: "Meine Brieftasche wurde gestohlen.",
-    pronunciation: "MY-neh BREEF-tah-sheh VOOR-deh geh-SHTOH-len"
-  },
-  {
-    id: 707,
-    category: "Emergency",
-    english: "I've lost my passport.",
-    german: "Ich habe meinen Reisepass verloren.",
-    pronunciation: "ikh HAH-beh MY-nen RY-zeh-pahs fehr-LOH-ren"
-  },
-  {
-    id: 708,
-    category: "Emergency",
-    english: "I need to call my embassy.",
-    german: "Ich muss meine Botschaft anrufen.",
-    pronunciation: "ikh mooss MY-neh BOT-shahft AHN-roo-fen"
-  },
-  {
-    id: 709,
-    category: "Emergency",
-    english: "Someone is following me.",
-    german: "Jemand folgt mir.",
-    pronunciation: "YAY-mahnt folkt meer"
-  },
-  {
-    id: 710,
-    category: "Emergency",
-    english: "I've been in a car accident.",
-    german: "Ich war in einen Autounfall verwickelt.",
-    pronunciation: "ikh vahr in EYE-nen OW-toh-oon-fahl fehr-VIK-elt"
-  },
-  {
-    id: 711,
-    category: "Emergency",
-    english: "The person is unconscious.",
-    german: "Die Person ist bewusstlos.",
-    pronunciation: "dee pehr-ZOHN ist beh-VOOST-lohs"
-  },
-  {
-    id: 712,
-    category: "Emergency",
-    english: "He's not breathing.",
-    german: "Er atmet nicht.",
-    pronunciation: "ehr AHT-met nikht"
-  },
-  {
-    id: 713,
-    category: "Emergency",
-    english: "There's a gas leak.",
-    german: "Es gibt ein Gasleck.",
-    pronunciation: "es gipt ine GAHS-lek"
-  },
-  {
-    id: 714,
-    category: "Emergency",
-    english: "Where is the nearest hospital?",
-    german: "Wo ist das nächste Krankenhaus?",
-    pronunciation: "voh ist dahs NEKHS-teh KRAHN-ken-howss"
-  },
-  {
-    id: 715,
-    category: "Emergency",
-    english: "I've swallowed something dangerous.",
-    german: "Ich habe etwas Gefährliches geschluckt.",
-    pronunciation: "ikh HAH-beh ET-vahs geh-FEHR-li-khes geh-SHLUKT"
-  },
-  {
-    id: 716,
-    category: "Emergency",
-    english: "My child is missing.",
-    german: "Mein Kind wird vermisst.",
-    pronunciation: "mine kint virt fehr-MIST"
-  },
-  {
-    id: 717,
-    category: "Emergency",
-    english: "Stop the thief!",
-    german: "Haltet den Dieb!",
-    pronunciation: "HAHL-tet dayn deep"
-  },
-  {
-    id: 718,
-    category: "Emergency",
-    english: "Is everyone okay?",
-    german: "Ist alle okay?",
-    pronunciation: "ist AL-eh oh-KAY"
-  },
-  {
-    id: 719,
-    category: "Emergency",
-    english: "Can you do CPR?",
-    german: "Können Sie Wiederbelebung durchführen?",
-    pronunciation: "KUR-nen zee VEE-der-beh-lay-boong DOORKH-fyoo-ren"
-  },
-  {
-    id: 720,
-    category: "Emergency",
-    english: "I think I'm having a heart attack.",
-    german: "Ich glaube, ich habe einen Herzanfall.",
-    pronunciation: "ikh GLOW-beh, ikh HAH-beh EYE-nen HERTS-ahn-fahl"
-  },
-  {
-    id: 721,
-    category: "Emergency",
-    english: "We need to evacuate immediately.",
-    german: "Wir müssen sofort evakuieren.",
-    pronunciation: "veer MOOS-sen ZOH-fort eh-vah-koo-EE-ren"
-  },
-  {
-    id: 722,
-    category: "Emergency",
-    english: "Please don't leave me alone.",
-    german: "Bitte lassen Sie mich nicht allein.",
-    pronunciation: "BIT-eh LAHS-sen zee mikh nikht ah-LINE"
-  },
-  {
-    id: 723,
-    category: "Emergency",
-    english: "I've been robbed.",
-    german: "Ich wurde ausgeraubt.",
-    pronunciation: "ikh VOOR-deh OWS-geh-rowpt"
-  },
-  {
-    id: 724,
-    category: "Emergency",
-    english: "The emergency number in Germany is 112.",
-    german: "Die Notrufnummer in Deutschland ist eins eins zwei.",
-    pronunciation: "dee NOHT-roof-noom-mer in DOYCH-lahnt ist ines ines tsvy"
-  },
-  {
-    id: 725,
-    category: "Emergency",
-    english: "I need a police report for my insurance.",
-    german: "Ich brauche ein Polizeiprotokoll für meine Versicherung.",
-    pronunciation: "ikh BROW-kheh ine poh-lee-TSYE-proh-toh-kol fyur MY-neh fehr-ZIKH-eh-roong"
-  },
-  {
-    id: 726,
-    category: "Emergency",
-    english: "She's having an allergic reaction.",
-    german: "Sie hat eine allergische Reaktion.",
-    pronunciation: "zee haht EYE-neh ah-LEHR-gi-sheh reh-ahk-TSYOHN"
-  },
-  {
-    id: 727,
-    category: "Emergency",
-    english: "There is smoke coming from the building.",
-    german: "Rauch steigt aus dem Gebäude auf.",
-    pronunciation: "rowkh shtike owss daym geh-BOY-deh owf"
-  },
-  {
-    id: 728,
-    category: "Emergency",
-    english: "Do you have a first aid kit?",
-    german: "Haben Sie einen Erste-Hilfe-Kasten?",
-    pronunciation: "HAH-ben zee EYE-nen EHR-steh-HIL-feh-kahs-ten"
-  },
-  {
-    id: 729,
-    category: "Emergency",
-    english: "I can't find my children.",
-    german: "Ich kann meine Kinder nicht finden.",
-    pronunciation: "ikh kahn MY-neh KIN-der nikht FIN-den"
-  },
-  {
-    id: 730,
-    category: "Emergency",
-    english: "Please stay calm.",
-    german: "Bitte bleiben Sie ruhig.",
-    pronunciation: "BIT-eh BLY-ben zee ROO-ikh"
-  },
-  {
-    id: 731,
-    category: "Emergency",
-    english: "He's bleeding heavily.",
-    german: "Er blutet stark.",
-    pronunciation: "ehr BLOO-tet shtark"
-  },
-  {
-    id: 732,
-    category: "Emergency",
-    english: "The road is blocked.",
-    german: "Die Straße ist gesperrt.",
-    pronunciation: "dee SHTRAH-sse ist geh-SHPEHRT"
-  },
-
-  // ─── Family ───────────────────────────────────────────────────────────────
-  {
-    id: 801,
-    category: "Family",
-    english: "This is my wife.",
-    german: "Das ist meine Frau.",
-    pronunciation: "dahs ist MY-neh frow"
-  },
-  {
-    id: 802,
-    category: "Family",
-    english: "Do you have children?",
-    german: "Haben Sie Kinder?",
-    pronunciation: "HAH-ben zee KIN-der"
-  },
-  {
-    id: 803,
-    category: "Family",
-    english: "My daughter is three years old.",
-    german: "Meine Tochter ist drei Jahre alt.",
-    pronunciation: "MY-neh TOKH-ter ist dry YAH-reh ahlt"
-  },
-  {
-    id: 804,
-    category: "Family",
-    english: "My parents live in Hamburg.",
-    german: "Meine Eltern wohnen in Hamburg.",
-    pronunciation: "MY-neh EL-tern VOH-nen in HAHM-boork"
-  },
-  {
-    id: 805,
-    category: "Family",
-    english: "We're expecting a baby.",
-    german: "Wir erwarten ein Baby.",
-    pronunciation: "veer ehr-VAHR-ten ine BAY-bee"
-  },
-  {
-    id: 806,
-    category: "Family",
-    english: "My grandmother just turned eighty.",
-    german: "Meine Großmutter ist gerade achtzig geworden.",
-    pronunciation: "MY-neh GROHS-moo-ter ist geh-RAH-deh AHKH-tsikh geh-VOR-den"
-  },
-  {
-    id: 807,
-    category: "Family",
-    english: "My brother and I don't get along.",
-    german: "Mein Bruder und ich verstehen uns nicht.",
-    pronunciation: "mine BROO-der oont ikh fehr-SHTAY-en oons nikht"
-  },
-  {
-    id: 808,
-    category: "Family",
-    english: "We're going to my in-laws for Christmas.",
-    german: "Wir fahren Weihnachten zu meinen Schwiegereltern.",
-    pronunciation: "veer FAH-ren VY-nahkh-ten tsoo MY-nen SHVEE-ger-el-tern"
-  },
-  {
-    id: 809,
-    category: "Family",
-    english: "My son is starting school this year.",
-    german: "Mein Sohn kommt dieses Jahr in die Schule.",
-    pronunciation: "mine zohn komt DEE-zes yahr in dee SHOO-leh"
-  },
-  {
-    id: 810,
-    category: "Family",
-    english: "My sister got married last year.",
-    german: "Meine Schwester hat letztes Jahr geheiratet.",
-    pronunciation: "MY-neh SHVES-ter haht LETS-tes yahr geh-HY-rah-tet"
-  },
-  {
-    id: 811,
-    category: "Family",
-    english: "We have a family reunion every summer.",
-    german: "Wir haben jedes Jahr ein Familientreffen im Sommer.",
-    pronunciation: "veer HAH-ben YAY-des yahr ine fah-MEEL-yen-tref-en im ZOM-er"
-  },
-  {
-    id: 812,
-    category: "Family",
-    english: "My father is a retired engineer.",
-    german: "Mein Vater ist pensionierter Ingenieur.",
-    pronunciation: "mine FAH-ter ist pen-syo-NEER-ter in-jhen-YOOR"
-  },
-  {
-    id: 813,
-    category: "Family",
-    english: "She takes after her mother.",
-    german: "Sie kommt nach ihrer Mutter.",
-    pronunciation: "zee komt nahkh EE-rer MOOT-ter"
-  },
-  {
-    id: 814,
-    category: "Family",
-    english: "He's my half-brother.",
-    german: "Er ist mein Halbbruder.",
-    pronunciation: "ehr ist mine HAHLP-broo-der"
-  },
-  {
-    id: 815,
-    category: "Family",
-    english: "Are you an only child?",
-    german: "Bist du ein Einzelkind?",
-    pronunciation: "bist doo ine EIN-tsel-kint"
-  },
-  {
-    id: 816,
-    category: "Family",
-    english: "My nephew is studying medicine.",
-    german: "Mein Neffe studiert Medizin.",
-    pronunciation: "mine NEF-eh shtoo-DEERT meh-dee-TSEEN"
-  },
-  {
-    id: 817,
-    category: "Family",
-    english: "We named our son after his grandfather.",
-    german: "Wir haben unseren Sohn nach seinem Großvater benannt.",
-    pronunciation: "veer HAH-ben OON-zeh-ren zohn nahkh ZY-nem GROHS-fah-ter beh-NAHNT"
-  },
-  {
-    id: 818,
-    category: "Family",
-    english: "My aunt makes the best cake.",
-    german: "Meine Tante macht den besten Kuchen.",
-    pronunciation: "MY-neh TAHN-teh mahkht dayn BES-ten KOO-khen"
-  },
-  {
-    id: 819,
-    category: "Family",
-    english: "My parents are divorced.",
-    german: "Meine Eltern sind geschieden.",
-    pronunciation: "MY-neh EL-tern zint geh-SHEE-den"
-  },
-  {
-    id: 820,
-    category: "Family",
-    english: "Our family has grown a lot.",
-    german: "Unsere Familie ist sehr gewachsen.",
-    pronunciation: "OON-zeh-reh fah-MEE-lee-eh ist zayr geh-VAHKH-sen"
-  },
-  {
-    id: 821,
-    category: "Family",
-    english: "I'm the youngest of four children.",
-    german: "Ich bin das jüngste von vier Kindern.",
-    pronunciation: "ikh bin dahs YOONG-steh fon feer KIN-dern"
-  },
-  {
-    id: 822,
-    category: "Family",
-    english: "My cousin lives in Vienna.",
-    german: "Meine Cousine lebt in Wien.",
-    pronunciation: "MY-neh koo-ZEE-neh laybt in veen"
-  },
-  {
-    id: 823,
-    category: "Family",
-    english: "The kids are at school.",
-    german: "Die Kinder sind in der Schule.",
-    pronunciation: "dee KIN-der zint in dehr SHOO-leh"
-  },
-  {
-    id: 824,
-    category: "Family",
-    english: "We had a family argument.",
-    german: "Wir hatten einen Familienstreit.",
-    pronunciation: "veer HAH-ten EYE-nen fah-MEEL-yen-shtrite"
-  },
-  {
-    id: 825,
-    category: "Family",
-    english: "My mother-in-law is visiting this week.",
-    german: "Meine Schwiegermutter besucht uns diese Woche.",
-    pronunciation: "MY-neh SHVEE-ger-moo-ter beh-ZOOKHT oons DEE-zeh VOH-kheh"
-  },
-  {
-    id: 826,
-    category: "Family",
-    english: "I look like my dad.",
-    german: "Ich sehe meinem Vater ähnlich.",
-    pronunciation: "ikh ZAY-eh MY-nem FAH-ter EN-likh"
-  },
-  {
-    id: 827,
-    category: "Family",
-    english: "We're a big family.",
-    german: "Wir sind eine große Familie.",
-    pronunciation: "veer zint EYE-neh GROH-sse fah-MEE-lee-eh"
-  },
-  {
-    id: 828,
-    category: "Family",
-    english: "My grandmother raised me.",
-    german: "Meine Großmutter hat mich aufgezogen.",
-    pronunciation: "MY-neh GROHS-moo-ter haht mikh OWF-geh-tsoh-gen"
-  },
-  {
-    id: 829,
-    category: "Family",
-    english: "The children are fast asleep.",
-    german: "Die Kinder schlafen tief und fest.",
-    pronunciation: "dee KIN-der SHLAH-fen teef oont fest"
-  },
-  {
-    id: 830,
-    category: "Family",
-    english: "My parents want grandchildren.",
-    german: "Meine Eltern möchten Enkel.",
-    pronunciation: "MY-neh EL-tern MURK-ten ENK-el"
-  },
-  {
-    id: 831,
-    category: "Family",
-    english: "We're celebrating my grandfather's birthday.",
-    german: "Wir feiern den Geburtstag meines Großvaters.",
-    pronunciation: "veer FY-ern dayn geh-BOORTS-tahk MY-nes GROHS-fah-ters"
-  },
-  {
-    id: 832,
-    category: "Family",
-    english: "Family is the most important thing to me.",
-    german: "Familie ist mir das Wichtigste.",
-    pronunciation: "fah-MEE-lee-eh ist meer dahs VIKH-tikh-steh"
-  },
-
-  // ─── Dating & Romance ─────────────────────────────────────────────────────
-  {
-    id: 901,
-    category: "Dating & Romance",
-    english: "You have a beautiful smile.",
-    german: "Sie haben ein wunderschönes Lächeln.",
-    pronunciation: "zee HAH-ben ine VOON-der-shur-nes LEKH-eln"
-  },
-  {
-    id: 902,
-    category: "Dating & Romance",
-    english: "Would you like to go on a date with me?",
-    german: "Würdest du gerne mit mir ausgehen?",
-    pronunciation: "VOOR-dest doo GEHR-neh mit meer OWS-gay-en"
-  },
-  {
-    id: 903,
-    category: "Dating & Romance",
-    english: "I've been thinking about you.",
-    german: "Ich habe an dich gedacht.",
-    pronunciation: "ikh HAH-beh ahn dikh geh-DAHKHT"
-  },
-  {
-    id: 904,
-    category: "Dating & Romance",
-    english: "You mean a lot to me.",
-    german: "Du bedeutest mir viel.",
-    pronunciation: "doo beh-DOY-test meer feel"
-  },
-  {
-    id: 905,
-    category: "Dating & Romance",
-    english: "I love you.",
-    german: "Ich liebe dich.",
-    pronunciation: "ikh LEE-beh dikh"
-  },
-  {
-    id: 906,
-    category: "Dating & Romance",
-    english: "Are you single?",
-    german: "Bist du Single?",
-    pronunciation: "bist doo SING-el"
-  },
-  {
-    id: 907,
-    category: "Dating & Romance",
-    english: "I have a crush on you.",
-    german: "Ich stehe auf dich.",
-    pronunciation: "ikh SHTAY-eh owf dikh"
-  },
-  {
-    id: 908,
-    category: "Dating & Romance",
-    english: "Can I have your phone number?",
-    german: "Darf ich deine Telefonnummer haben?",
-    pronunciation: "darf ikh DY-neh teh-leh-FON-noom-er HAH-ben"
-  },
-  {
-    id: 909,
-    category: "Dating & Romance",
-    english: "You're really funny.",
-    german: "Du bist wirklich lustig.",
-    pronunciation: "doo bist VEER-klikh LOOS-tikh"
-  },
-  {
-    id: 910,
-    category: "Dating & Romance",
-    english: "I'm in a relationship.",
-    german: "Ich bin in einer Beziehung.",
-    pronunciation: "ikh bin in EYE-ner beh-TSEE-oong"
-  },
-  {
-    id: 911,
-    category: "Dating & Romance",
-    english: "Do you want to meet for coffee?",
-    german: "Wollen wir uns auf einen Kaffee treffen?",
-    pronunciation: "VOL-en veer oons owf EYE-nen KAH-feh TREF-en"
-  },
-  {
-    id: 912,
-    category: "Dating & Romance",
-    english: "You look amazing tonight.",
-    german: "Du siehst heute Abend wunderschön aus.",
-    pronunciation: "doo zeest HOY-teh AH-bent VOON-der-shurn owss"
-  },
-  {
-    id: 913,
-    category: "Dating & Romance",
-    english: "I really enjoy spending time with you.",
-    german: "Ich verbringe wirklich gerne Zeit mit dir.",
-    pronunciation: "ikh fehr-BRING-eh VEER-klikh GEHR-neh tsyt mit deer"
-  },
-  {
-    id: 914,
-    category: "Dating & Romance",
-    english: "Will you be my girlfriend?",
-    german: "Willst du meine Freundin sein?",
-    pronunciation: "vilst doo MY-neh FROYN-din zine"
-  },
-  {
-    id: 915,
-    category: "Dating & Romance",
-    english: "I'm not ready for a relationship right now.",
-    german: "Ich bin gerade nicht bereit für eine Beziehung.",
-    pronunciation: "ikh bin geh-RAH-deh nikht beh-RITE fyur EYE-neh beh-TSEE-oong"
-  },
-  {
-    id: 916,
-    category: "Dating & Romance",
-    english: "Let's take things slow.",
-    german: "Lass uns langsam machen.",
-    pronunciation: "lahs oons LAHNG-zahm MAHKH-en"
-  },
-  {
-    id: 917,
-    category: "Dating & Romance",
-    english: "I fell in love with you the moment I saw you.",
-    german: "Ich habe mich in dem Moment verliebt, als ich dich sah.",
-    pronunciation: "ikh HAH-beh mikh in daym mo-MENT fehr-LEEPT, ahls ikh dikh zah"
-  },
-  {
-    id: 918,
-    category: "Dating & Romance",
-    english: "I missed you so much.",
-    german: "Ich habe dich so sehr vermisst.",
-    pronunciation: "ikh HAH-beh dikh zoh zayr fehr-MIST"
-  },
-  {
-    id: 919,
-    category: "Dating & Romance",
-    english: "We should do this again.",
-    german: "Das sollten wir wiederholen.",
-    pronunciation: "dahs ZOL-ten veer VEE-der-hoh-len"
-  },
-  {
-    id: 920,
-    category: "Dating & Romance",
-    english: "I think we're moving too fast.",
-    german: "Ich denke, wir bewegen uns zu schnell.",
-    pronunciation: "ikh DEN-keh, veer beh-VAY-gen oons tsoo shnel"
-  },
-  {
-    id: 921,
-    category: "Dating & Romance",
-    english: "I'd like to introduce you to my friends.",
-    german: "Ich würde dich gerne meinen Freunden vorstellen.",
-    pronunciation: "ikh VOOR-deh dikh GEHR-neh MY-nen FROYN-den FOR-shtel-en"
-  },
-  {
-    id: 922,
-    category: "Dating & Romance",
-    english: "Happy anniversary, my love.",
-    german: "Herzlichen Glückwunsch zum Jahrestag, mein Schatz.",
-    pronunciation: "HERTS-li-khen GLOOK-voonsh tsom YAH-res-tahk, mine shahts"
-  },
-  {
-    id: 923,
-    category: "Dating & Romance",
-    english: "Will you marry me?",
-    german: "Willst du mich heiraten?",
-    pronunciation: "vilst doo mikh HY-rah-ten"
-  },
-  {
-    id: 924,
-    category: "Dating & Romance",
-    english: "You make me so happy.",
-    german: "Du machst mich so glücklich.",
-    pronunciation: "doo mahkhst mikh zoh GLOOK-likh"
-  },
-  {
-    id: 925,
-    category: "Dating & Romance",
-    english: "I can't imagine my life without you.",
-    german: "Ich kann mir mein Leben ohne dich nicht vorstellen.",
-    pronunciation: "ikh kahn meer mine LAY-ben OH-neh dikh nikht FOR-shtel-en"
-  },
-  {
-    id: 926,
-    category: "Dating & Romance",
-    english: "We should talk about our future.",
-    german: "Wir sollten über unsere Zukunft reden.",
-    pronunciation: "veer ZOL-ten OO-ber OON-zeh-reh TSOO-koonft RAY-den"
-  },
-  {
-    id: 927,
-    category: "Dating & Romance",
-    english: "I feel safe with you.",
-    german: "Ich fühle mich bei dir sicher.",
-    pronunciation: "ikh FOO-leh mikh by deer ZIKH-er"
-  },
-  {
-    id: 928,
-    category: "Dating & Romance",
-    english: "You're my best friend.",
-    german: "Du bist mein bester Freund.",
-    pronunciation: "doo bist mine BES-ter froynt"
-  },
-  {
-    id: 929,
-    category: "Dating & Romance",
-    english: "I'd like to know everything about you.",
-    german: "Ich möchte alles über dich wissen.",
-    pronunciation: "ikh MURK-teh AL-es OO-ber dikh VIS-en"
-  },
-  {
-    id: 930,
-    category: "Dating & Romance",
-    english: "You're unlike anyone I've ever met.",
-    german: "Du bist anders als alle, die ich je getroffen habe.",
-    pronunciation: "doo bist AHN-ders ahls AL-eh, dee ikh yeh geh-TROF-en HAH-beh"
-  },
-  {
-    id: 931,
-    category: "Dating & Romance",
-    english: "Let's spend the weekend together.",
-    german: "Lass uns das Wochenende zusammen verbringen.",
-    pronunciation: "lahs oons dahs VOH-khen-en-deh tsoo-ZAH-men fehr-BRING-en"
-  },
-  {
-    id: 932,
-    category: "Dating & Romance",
-    english: "I'm so lucky to have you in my life.",
-    german: "Ich bin so froh, dich in meinem Leben zu haben.",
-    pronunciation: "ikh bin zoh froh, dikh in MY-nem LAY-ben tsoo HAH-ben"
-  },
-
-  // ─── Greetings & Small Talk (extended) ───────────────────────────────────
+  { id: 1, category: "Greetings & Small Talk", english: "Good morning! How are you?", german: "Guten Morgen! Wie geht es Ihnen?", pronunciation: "GOO-ten MOR-gen. vee gayt es EE-nen" },
+  { id: 2, category: "Greetings & Small Talk", english: "Good evening! Nice to meet you.", german: "Guten Abend! Schön, Sie kennenzulernen.", pronunciation: "GOO-ten AH-bent. shurn, zee KEN-en-tsoo-lair-nen" },
+  { id: 3, category: "Greetings & Small Talk", english: "Where have you been?", german: "Wo waren Sie?", pronunciation: "voh VAH-ren zee" },
+  { id: 4, category: "Greetings & Small Talk", english: "I'm doing well, thank you.", german: "Mir geht es gut, danke.", pronunciation: "meer gayt es goot, DAHN-keh" },
+  { id: 5, category: "Greetings & Small Talk", english: "What's your name?", german: "Wie heißen Sie?", pronunciation: "vee HY-ssen zee" },
+  { id: 6, category: "Greetings & Small Talk", english: "My name is Maria.", german: "Ich heiße Maria.", pronunciation: "ikh HY-sse mah-REE-ah" },
+  { id: 7, category: "Greetings & Small Talk", english: "Where are you from?", german: "Woher kommen Sie?", pronunciation: "voh-HAIR KOM-men zee" },
+  { id: 8, category: "Greetings & Small Talk", english: "I'm from the United States.", german: "Ich komme aus den USA.", pronunciation: "ikh KOM-eh owss dayn oo-es-AH" },
+  { id: 9, category: "Greetings & Small Talk", english: "Do you speak English?", german: "Sprechen Sie Englisch?", pronunciation: "SHPREH-khen zee ENG-lish" },
+  { id: 10, category: "Greetings & Small Talk", english: "I speak a little German.", german: "Ich spreche ein bisschen Deutsch.", pronunciation: "ikh SHPREH-kheh ine BISS-khen doych" },
+  { id: 11, category: "Greetings & Small Talk", english: "Please speak more slowly.", german: "Bitte sprechen Sie langsamer.", pronunciation: "BIT-eh SHPREH-khen zee LAHNG-zah-mer" },
+  { id: 12, category: "Greetings & Small Talk", english: "I don't understand.", german: "Ich verstehe nicht.", pronunciation: "ikh fehr-SHTAY-eh nikht" },
+  { id: 13, category: "Greetings & Small Talk", english: "Can you repeat that, please?", german: "Können Sie das bitte wiederholen?", pronunciation: "KUR-nen zee dahs BIT-eh VEE-der-hoh-len" },
+  { id: 14, category: "Greetings & Small Talk", english: "What does that mean?", german: "Was bedeutet das?", pronunciation: "vahs beh-DOY-tet dahs" },
+  { id: 15, category: "Greetings & Small Talk", english: "How's the weather today?", german: "Wie ist das Wetter heute?", pronunciation: "vee ist dahs VET-ter HOY-teh" },
+  { id: 16, category: "Greetings & Small Talk", english: "It's a beautiful day, isn't it?", german: "Es ist ein schöner Tag, nicht wahr?", pronunciation: "es ist ine SHUR-ner tahk, nikht vahr" },
+  { id: 17, category: "Greetings & Small Talk", english: "See you tomorrow!", german: "Bis morgen!", pronunciation: "biss MOR-gen" },
+  { id: 18, category: "Greetings & Small Talk", english: "Take care of yourself.", german: "Pass auf dich auf.", pronunciation: "pahss owf dikh owf" },
+  { id: 19, category: "Greetings & Small Talk", english: "Have a great weekend!", german: "Schönes Wochenende!", pronunciation: "SHUR-nes VOH-khen-en-deh" },
+  { id: 20, category: "Greetings & Small Talk", english: "Long time no see!", german: "Lange nicht gesehen!", pronunciation: "LAHNG-eh nikht geh-ZAY-en" },
+  { id: 21, category: "Greetings & Small Talk", english: "How was your trip?", german: "Wie war Ihre Reise?", pronunciation: "vee vahr EE-reh RY-zeh" },
+  { id: 22, category: "Greetings & Small Talk", english: "Are you enjoying Berlin?", german: "Gefällt Ihnen Berlin?", pronunciation: "geh-FELT EE-nen behr-LEEN" },
+  { id: 23, category: "Greetings & Small Talk", english: "What do you do for work?", german: "Was machen Sie beruflich?", pronunciation: "vahs MAHKH-en zee beh-ROOF-likh" },
+  { id: 24, category: "Greetings & Small Talk", english: "I'm a teacher.", german: "Ich bin Lehrer.", pronunciation: "ikh bin LAY-rer" },
+  { id: 25, category: "Greetings & Small Talk", english: "Do you have any siblings?", german: "Haben Sie Geschwister?", pronunciation: "HAH-ben zee geh-SHVIS-ter" },
+  { id: 26, category: "Greetings & Small Talk", english: "I have two brothers.", german: "Ich habe zwei Brüder.", pronunciation: "ikh HAH-beh tsvy BROO-der" },
+  { id: 27, category: "Greetings & Small Talk", english: "What are your hobbies?", german: "Was sind Ihre Hobbys?", pronunciation: "vahs zint EE-reh HOB-bees" },
+  { id: 28, category: "Greetings & Small Talk", english: "I enjoy reading and hiking.", german: "Ich lese gerne und wandere.", pronunciation: "ikh LAY-zeh GEHR-neh oont VAHN-deh-reh" },
+  { id: 29, category: "Greetings & Small Talk", english: "Good night! Sleep well.", german: "Gute Nacht! Schlaf gut.", pronunciation: "GOO-teh nakht. shlahf goot" },
+  { id: 30, category: "Greetings & Small Talk", english: "It was nice talking to you.", german: "Es war schön, mit Ihnen zu sprechen.", pronunciation: "es vahr shurn, mit EE-nen tsoo SHPREH-khen" },
+  { id: 31, category: "Greetings & Small Talk", english: "I have to go now.", german: "Ich muss jetzt gehen.", pronunciation: "ikh mooss yetst GAY-en" },
+  { id: 32, category: "Greetings & Small Talk", english: "Say hello to your family.", german: "Grüßen Sie Ihre Familie.", pronunciation: "GROO-ssen zee EE-reh fah-MEE-lee-eh" },
+  { id: 101, category: "Work & Professional", english: "I have a meeting at ten o'clock.", german: "Ich habe um zehn Uhr eine Besprechung.", pronunciation: "ikh HAH-beh oom tsayn oor EYE-neh beh-SPREH-khoong" },
+  { id: 102, category: "Work & Professional", english: "Can we reschedule the appointment?", german: "Können wir den Termin verschieben?", pronunciation: "KUR-nen veer dayn tehr-MEEN fehr-SHEE-ben" },
+  { id: 103, category: "Work & Professional", english: "Please send me the report by Friday.", german: "Bitte schicken Sie mir den Bericht bis Freitag.", pronunciation: "BIT-eh SHIK-en zee meer dayn beh-RIKHT biss FRY-tahk" },
+  { id: 104, category: "Work & Professional", english: "I work in marketing.", german: "Ich arbeite im Marketing.", pronunciation: "ikh AR-by-teh im MARK-eh-ting" },
+  { id: 105, category: "Work & Professional", english: "Who is responsible for this project?", german: "Wer ist für dieses Projekt verantwortlich?", pronunciation: "vehr ist fyur DEE-zes proh-YEKT fehr-ANT-vort-likh" },
+  { id: 106, category: "Work & Professional", english: "The deadline is next Monday.", german: "Die Frist ist nächsten Montag.", pronunciation: "dee frist ist NEKS-ten MON-tahk" },
+  { id: 107, category: "Work & Professional", english: "I need your signature on this document.", german: "Ich brauche Ihre Unterschrift auf diesem Dokument.", pronunciation: "ikh BROW-kheh EE-reh OON-ter-shrift owf DEE-zem doh-koo-MENT" },
+  { id: 108, category: "Work & Professional", english: "Could you review this proposal?", german: "Könnten Sie diesen Vorschlag prüfen?", pronunciation: "KUR-ten zee DEE-zen FOR-shlahk PROO-fen" },
+  { id: 109, category: "Work & Professional", english: "I'm out of office until Wednesday.", german: "Ich bin bis Mittwoch nicht im Büro.", pronunciation: "ikh bin biss MIT-vokh nikht im boo-ROH" },
+  { id: 110, category: "Work & Professional", english: "Let's set up a conference call.", german: "Lassen Sie uns eine Telefonkonferenz einrichten.", pronunciation: "LAHS-sen zee oons EYE-neh teh-leh-FON-kon-feh-rents EIN-rikh-ten" },
+  { id: 111, category: "Work & Professional", english: "I'd like to apply for this position.", german: "Ich möchte mich für diese Stelle bewerben.", pronunciation: "ikh MURK-teh mikh fyur DEE-zeh SHTEL-eh beh-VEHR-ben" },
+  { id: 112, category: "Work & Professional", english: "What is the salary for this role?", german: "Was ist das Gehalt für diese Stelle?", pronunciation: "vahs ist dahs geh-HALT fyur DEE-zeh SHTEL-eh" },
+  { id: 113, category: "Work & Professional", english: "The client is waiting in the lobby.", german: "Der Kunde wartet in der Lobby.", pronunciation: "dehr KOON-deh VAR-tet in dehr LOB-ee" },
+  { id: 114, category: "Work & Professional", english: "We need to cut costs this quarter.", german: "Wir müssen dieses Quartal Kosten reduzieren.", pronunciation: "veer MOOS-sen DEE-zes kvar-TAHL KOS-ten reh-doo-TSEE-ren" },
+  { id: 115, category: "Work & Professional", english: "The presentation went very well.", german: "Die Präsentation lief sehr gut.", pronunciation: "dee preh-zen-tah-TSYOHN leef zayr goot" },
+  { id: 116, category: "Work & Professional", english: "Please copy me on that email.", german: "Bitte setzen Sie mich in CC für diese E-Mail.", pronunciation: "BIT-eh ZET-sen zee mikh in tseh-TSEH fyur DEE-zeh EE-mayl" },
+  { id: 117, category: "Work & Professional", english: "I'm working from home today.", german: "Ich arbeite heute von zu Hause.", pronunciation: "ikh AR-by-teh HOY-teh fon tsoo HOW-zeh" },
+  { id: 118, category: "Work & Professional", english: "Can I take a vacation next month?", german: "Kann ich nächsten Monat Urlaub nehmen?", pronunciation: "kahn ikh NEKS-ten MOH-naht OOR-lowp NAY-men" },
+  { id: 119, category: "Work & Professional", english: "This task is urgent.", german: "Diese Aufgabe ist dringend.", pronunciation: "DEE-zeh OWF-gah-beh ist DRING-ent" },
+  { id: 120, category: "Work & Professional", english: "I'll finish it by end of day.", german: "Ich werde es bis Tagesende fertig haben.", pronunciation: "ikh VEHR-deh es biss TAH-ges-en-deh FEHR-tikh HAH-ben" },
+  { id: 121, category: "Work & Professional", english: "Let's brainstorm some ideas.", german: "Lassen Sie uns Ideen sammeln.", pronunciation: "LAHS-sen zee oons ee-DAY-en ZAH-meln" },
+  { id: 122, category: "Work & Professional", english: "I disagree with that approach.", german: "Ich bin mit diesem Ansatz nicht einverstanden.", pronunciation: "ikh bin mit DEE-zem AN-zahts nikht EIN-fehr-shtan-den" },
+  { id: 123, category: "Work & Professional", english: "Could you train me on this software?", german: "Könnten Sie mich in dieser Software einweisen?", pronunciation: "KUR-ten zee mikh in DEE-zer SOFT-vehr EIN-vy-zen" },
+  { id: 124, category: "Work & Professional", english: "Sales numbers are up this month.", german: "Die Verkaufszahlen sind diesen Monat gestiegen.", pronunciation: "dee fehr-KOWFS-tsah-len zint DEE-zen MOH-naht geh-SHTEE-gen" },
+  { id: 125, category: "Work & Professional", english: "I have a job interview tomorrow.", german: "Ich habe morgen ein Vorstellungsgespräch.", pronunciation: "ikh HAH-beh MOR-gen ine FOR-shtel-oongs-geh-shprekh" },
+  { id: 126, category: "Work & Professional", english: "The office is closed on public holidays.", german: "Das Büro ist an Feiertagen geschlossen.", pronunciation: "dahs boo-ROH ist ahn FY-er-tah-gen geh-SHLOS-sen" },
+  { id: 127, category: "Work & Professional", english: "I'll send you the invoice.", german: "Ich schicke Ihnen die Rechnung.", pronunciation: "ikh SHIK-eh EE-nen dee REKH-noong" },
+  { id: 128, category: "Work & Professional", english: "Let's wrap up for today.", german: "Lassen Sie uns für heute Schluss machen.", pronunciation: "LAHS-sen zee oons fyur HOY-teh shloos MAHKH-en" },
+  { id: 129, category: "Work & Professional", english: "I need access to the shared drive.", german: "Ich brauche Zugang zum gemeinsamen Laufwerk.", pronunciation: "ikh BROW-kheh TSOO-gahng tsom geh-MINE-zah-men LOWF-vehrk" },
+  { id: 130, category: "Work & Professional", english: "Great teamwork, everyone!", german: "Tolle Teamarbeit, alle zusammen!", pronunciation: "TOL-eh TEEM-ar-bite, AL-eh tsoo-ZAH-men" },
+  { id: 131, category: "Work & Professional", english: "The budget was approved.", german: "Das Budget wurde genehmigt.", pronunciation: "dahs boo-DJEH VOOR-deh geh-NAY-mikt" },
+  { id: 132, category: "Work & Professional", english: "Please confirm receipt of this email.", german: "Bitte bestätigen Sie den Eingang dieser E-Mail.", pronunciation: "BIT-eh beh-SHTAY-ti-gen zee dayn EIN-gahng DEE-zer EE-mayl" },
+  { id: 201, category: "Friends & Casual", english: "Hey, what's up?", german: "Hey, was geht ab?", pronunciation: "hey, vahs gayt ahp" },
+  { id: 202, category: "Friends & Casual", english: "Are you free tonight?", german: "Hast du heute Abend Zeit?", pronunciation: "hahst doo HOY-teh AH-bent tsyt" },
+  { id: 203, category: "Friends & Casual", english: "Let's hang out this weekend.", german: "Lass uns dieses Wochenende was unternehmen.", pronunciation: "lahs oons DEE-zes VOH-khen-en-deh vahs OON-ter-nay-men" },
+  { id: 204, category: "Friends & Casual", english: "That's hilarious!", german: "Das ist zum Totlachen!", pronunciation: "dahs ist tsom TOT-lahkh-en" },
+  { id: 205, category: "Friends & Casual", english: "I'm so tired today.", german: "Ich bin heute so müde.", pronunciation: "ikh bin HOY-teh zoh MOO-deh" },
+  { id: 206, category: "Friends & Casual", english: "Did you see that movie?", german: "Hast du den Film gesehen?", pronunciation: "hahst doo dayn film geh-ZAY-en" },
+  { id: 207, category: "Friends & Casual", english: "No way! I can't believe it.", german: "Kein Witz! Das glaube ich nicht.", pronunciation: "kine vits! dahs GLOW-beh ikh nikht" },
+  { id: 208, category: "Friends & Casual", english: "You look great today!", german: "Du siehst heute toll aus!", pronunciation: "doo zeest HOY-teh tol owss" },
+  { id: 209, category: "Friends & Casual", english: "Can I borrow your charger?", german: "Kann ich dein Ladekabel ausleihen?", pronunciation: "kahn ikh dyne LAH-deh-kah-bel OWS-ly-en" },
+  { id: 210, category: "Friends & Casual", english: "I'm starving. Let's get food.", german: "Ich habe Riesenhunger. Lass uns was essen.", pronunciation: "ikh HAH-beh REE-zen-hoong-er. lahs oons vahs ES-sen" },
+  { id: 211, category: "Friends & Casual", english: "What kind of music do you like?", german: "Was für Musik magst du?", pronunciation: "vahs fyur moo-ZEEK mahkst doo" },
+  { id: 212, category: "Friends & Casual", english: "I love that band.", german: "Ich liebe diese Band.", pronunciation: "ikh LEE-beh DEE-zeh bant" },
+  { id: 213, category: "Friends & Casual", english: "Do you want to play video games?", german: "Willst du Videospiele spielen?", pronunciation: "vilst doo VEE-deh-oh-shpee-leh SHPEE-len" },
+  { id: 214, category: "Friends & Casual", english: "That party was so much fun.", german: "Die Party hat so viel Spaß gemacht.", pronunciation: "dee PAR-tee haht zoh feel shpahs geh-MAHKHT" },
+  { id: 215, category: "Friends & Casual", english: "How did your date go?", german: "Wie lief dein Date?", pronunciation: "vee leef dyne dayt" },
+  { id: 216, category: "Friends & Casual", english: "I'm not feeling well today.", german: "Ich fühle mich heute nicht gut.", pronunciation: "ikh FOO-leh mikh HOY-teh nikht goot" },
+  { id: 217, category: "Friends & Casual", english: "Wanna grab a coffee?", german: "Willst du einen Kaffee trinken gehen?", pronunciation: "vilst doo EYE-nen KAH-feh TRIN-ken GAY-en" },
+  { id: 218, category: "Friends & Casual", english: "You were right about that.", german: "Da hattest du recht.", pronunciation: "dah HAH-test doo rekht" },
+  { id: 219, category: "Friends & Casual", english: "Let me know if you need anything.", german: "Sag mir Bescheid, wenn du was brauchst.", pronunciation: "zahk meer beh-SHIDE, ven doo vahs browkhst" },
+  { id: 220, category: "Friends & Casual", english: "Stop worrying so much!", german: "Hör auf, dir so viele Sorgen zu machen!", pronunciation: "hur owf, deer zoh FEE-leh ZOR-gen tsoo MAHKH-en" },
+  { id: 221, category: "Friends & Casual", english: "That's so annoying.", german: "Das ist so nervig.", pronunciation: "dahs ist zoh NEHR-vikh" },
+  { id: 222, category: "Friends & Casual", english: "Are you coming to the barbecue?", german: "Kommst du zum Grillen?", pronunciation: "komst doo tsom GRIL-en" },
+  { id: 223, category: "Friends & Casual", english: "I'll be there in ten minutes.", german: "Ich bin in zehn Minuten da.", pronunciation: "ikh bin in tsayn mee-NOO-ten dah" },
+  { id: 224, category: "Friends & Casual", english: "My phone is almost dead.", german: "Mein Handy ist fast leer.", pronunciation: "mine HAN-dee ist fahst layr" },
+  { id: 225, category: "Friends & Casual", english: "I just saw the news.", german: "Ich habe gerade die Nachrichten gesehen.", pronunciation: "ikh HAH-beh geh-RAH-deh dee NAHKH-rikh-ten geh-ZAY-en" },
+  { id: 226, category: "Friends & Casual", english: "We should do this more often.", german: "Das sollten wir öfter machen.", pronunciation: "dahs ZOL-ten veer UR-fter MAHKH-en" },
+  { id: 227, category: "Friends & Casual", english: "I miss you.", german: "Ich vermisse dich.", pronunciation: "ikh fehr-MIS-seh dikh" },
+  { id: 228, category: "Friends & Casual", english: "Cheers! To good times.", german: "Prost! Auf gute Zeiten.", pronunciation: "prohst! owf GOO-teh TSYE-ten" },
+  { id: 229, category: "Friends & Casual", english: "Want to split the bill?", german: "Wollen wir die Rechnung teilen?", pronunciation: "VOL-en veer dee REKH-noong TY-len" },
+  { id: 230, category: "Friends & Casual", english: "You're such a good friend.", german: "Du bist so ein guter Freund.", pronunciation: "doo bist zoh ine GOO-ter froynt" },
+  { id: 231, category: "Friends & Casual", english: "I haven't slept well lately.", german: "Ich habe in letzter Zeit schlecht geschlafen.", pronunciation: "ikh HAH-beh in LETS-ter tsyt shlekht geh-SHLAH-fen" },
+  { id: 232, category: "Friends & Casual", english: "That's the best idea ever!", german: "Das ist die beste Idee überhaupt!", pronunciation: "dahs ist dee BES-teh ee-DAY-eh OO-ber-howpt" },
+  { id: 301, category: "Travel & Directions", english: "Where is the train station?", german: "Wo ist der Bahnhof?", pronunciation: "voh ist dehr BAHN-hohf" },
+  { id: 302, category: "Travel & Directions", english: "How do I get to the city center?", german: "Wie komme ich in die Innenstadt?", pronunciation: "vee KOM-eh ikh in dee IN-en-shtat" },
+  { id: 303, category: "Travel & Directions", english: "Turn left at the traffic light.", german: "Biegen Sie an der Ampel links ab.", pronunciation: "BEE-gen zee ahn dehr AHM-pel links ahp" },
+  { id: 304, category: "Travel & Directions", english: "It's straight ahead.", german: "Es ist geradeaus.", pronunciation: "es ist geh-RAH-deh-owss" },
+  { id: 305, category: "Travel & Directions", english: "How far is it from here?", german: "Wie weit ist es von hier?", pronunciation: "vee vyt ist es fon heer" },
+  { id: 306, category: "Travel & Directions", english: "I'd like a one-way ticket to Munich.", german: "Ich möchte eine einfache Fahrkarte nach München.", pronunciation: "ikh MURK-teh EYE-neh EIN-fakh-eh FAHR-kar-teh nahkh MOON-khen" },
+  { id: 307, category: "Travel & Directions", english: "When does the next bus arrive?", german: "Wann kommt der nächste Bus?", pronunciation: "vahn komt dehr NEKHS-teh boos" },
+  { id: 308, category: "Travel & Directions", english: "I missed my train.", german: "Ich habe meinen Zug verpasst.", pronunciation: "ikh HAH-beh MY-nen tsook fehr-PAHST" },
+  { id: 309, category: "Travel & Directions", english: "Is this seat taken?", german: "Ist dieser Platz besetzt?", pronunciation: "ist DEE-zer plahts beh-ZETST" },
+  { id: 310, category: "Travel & Directions", english: "I have a reservation at this hotel.", german: "Ich habe eine Reservierung in diesem Hotel.", pronunciation: "ikh HAH-beh EYE-neh reh-zehr-VEER-oong in DEE-zem hoh-TEL" },
+  { id: 311, category: "Travel & Directions", english: "Can I have a map of the city?", german: "Kann ich einen Stadtplan bekommen?", pronunciation: "kahn ikh EYE-nen SHTAT-plahn beh-KOM-en" },
+  { id: 312, category: "Travel & Directions", english: "My luggage is lost.", german: "Mein Gepäck ist verloren gegangen.", pronunciation: "mine geh-PEK ist fehr-LOH-ren geh-GAHNG-en" },
+  { id: 313, category: "Travel & Directions", english: "Which platform does the train leave from?", german: "Von welchem Gleis fährt der Zug ab?", pronunciation: "fon VEL-khem glise fehrt dehr tsook ahp" },
+  { id: 314, category: "Travel & Directions", english: "I need a taxi to the airport.", german: "Ich brauche ein Taxi zum Flughafen.", pronunciation: "ikh BROW-kheh ine TAHK-see tsom FLOOK-hah-fen" },
+  { id: 315, category: "Travel & Directions", english: "How long does the journey take?", german: "Wie lange dauert die Fahrt?", pronunciation: "vee LAHNG-eh DOW-ert dee fahrt" },
+  { id: 316, category: "Travel & Directions", english: "Do you have any rooms available?", german: "Haben Sie noch Zimmer frei?", pronunciation: "HAH-ben zee nokh TSIM-er fry" },
+  { id: 317, category: "Travel & Directions", english: "I'd like to check in, please.", german: "Ich möchte einchecken, bitte.", pronunciation: "ikh MURK-teh EIN-chek-en, BIT-eh" },
+  { id: 318, category: "Travel & Directions", english: "What time is check-out?", german: "Wann ist der Check-out?", pronunciation: "vahn ist dehr CHEK-owt" },
+  { id: 319, category: "Travel & Directions", english: "Is breakfast included?", german: "Ist das Frühstück inklusive?", pronunciation: "ist dahs FROO-shtook in-kloo-ZEE-veh" },
+  { id: 320, category: "Travel & Directions", english: "Could you call me a cab?", german: "Könnten Sie mir ein Taxi rufen?", pronunciation: "KUR-ten zee meer ine TAHK-see ROO-fen" },
+  { id: 321, category: "Travel & Directions", english: "I'm looking for the museum.", german: "Ich suche das Museum.", pronunciation: "ikh ZOO-kheh dahs moo-ZAY-oom" },
+  { id: 322, category: "Travel & Directions", english: "Is there a pharmacy nearby?", german: "Gibt es eine Apotheke in der Nähe?", pronunciation: "gipt es EYE-neh ah-poh-TAY-keh in dehr NAY-eh" },
+  { id: 323, category: "Travel & Directions", english: "I'm lost. Can you help me?", german: "Ich habe mich verlaufen. Können Sie mir helfen?", pronunciation: "ikh HAH-beh mikh fehr-LOW-fen. KUR-nen zee meer HEL-fen" },
+  { id: 324, category: "Travel & Directions", english: "Cross the bridge and turn right.", german: "Überqueren Sie die Brücke und biegen Sie rechts ab.", pronunciation: "OO-ber-kveh-ren zee dee BROO-keh oont BEE-gen zee rekhts ahp" },
+  { id: 325, category: "Travel & Directions", english: "My flight is delayed.", german: "Mein Flug hat Verspätung.", pronunciation: "mine flook haht fehr-SHPAY-toong" },
+  { id: 326, category: "Travel & Directions", english: "Where can I rent a car?", german: "Wo kann ich ein Auto mieten?", pronunciation: "voh kahn ikh ine OW-toh MEE-ten" },
+  { id: 327, category: "Travel & Directions", english: "Do I need a visa?", german: "Brauche ich ein Visum?", pronunciation: "BROW-kheh ikh ine VEE-zoom" },
+  { id: 328, category: "Travel & Directions", english: "The view from here is beautiful.", german: "Der Ausblick von hier ist wunderschön.", pronunciation: "dehr OWS-blik fon heer ist VOON-der-shurn" },
+  { id: 329, category: "Travel & Directions", english: "Can I use this bus pass here?", german: "Kann ich diesen Buspass hier benutzen?", pronunciation: "kahn ikh DEE-zen BOOS-pahs heer beh-NOOT-sen" },
+  { id: 330, category: "Travel & Directions", english: "I'd like a window seat.", german: "Ich hätte gerne einen Fensterplatz.", pronunciation: "ikh HET-eh GEHR-neh EYE-nen FEN-ster-plahts" },
+  { id: 331, category: "Travel & Directions", english: "The subway is on the next corner.", german: "Die U-Bahn ist an der nächsten Ecke.", pronunciation: "dee OO-bahn ist ahn dehr NEKHS-ten EK-eh" },
+  { id: 332, category: "Travel & Directions", english: "Is it safe to walk here at night?", german: "Ist es sicher, hier nachts zu Fuß zu gehen?", pronunciation: "ist es ZIKH-er, heer nahkhts tsoo foos tsoo GAY-en" },
+  { id: 401, category: "Shopping", english: "How much does this cost?", german: "Was kostet das?", pronunciation: "vahs KOS-tet dahs" },
+  { id: 402, category: "Shopping", english: "Do you have this in a larger size?", german: "Haben Sie das in einer größeren Größe?", pronunciation: "HAH-ben zee dahs in EYE-ner GRUR-sse-ren GRUR-sse" },
+  { id: 403, category: "Shopping", english: "Can I try this on?", german: "Kann ich das anprobieren?", pronunciation: "kahn ikh dahs AHN-proh-bee-ren" },
+  { id: 404, category: "Shopping", english: "Where is the fitting room?", german: "Wo ist die Umkleidekabine?", pronunciation: "voh ist dee OOM-kly-deh-kah-bee-neh" },
+  { id: 405, category: "Shopping", english: "I'll take this one.", german: "Ich nehme dieses.", pronunciation: "ikh NAY-meh DEE-zes" },
+  { id: 406, category: "Shopping", english: "Do you accept credit cards?", german: "Akzeptieren Sie Kreditkarten?", pronunciation: "ahk-tsep-TEER-en zee kre-DEET-kar-ten" },
+  { id: 407, category: "Shopping", english: "Can I pay by card?", german: "Kann ich mit Karte zahlen?", pronunciation: "kahn ikh mit KAR-teh TSAH-len" },
+  { id: 408, category: "Shopping", english: "Is there a discount?", german: "Gibt es einen Rabatt?", pronunciation: "gipt es EYE-nen rah-BAHT" },
+  { id: 409, category: "Shopping", english: "I'd like to return this item.", german: "Ich möchte diesen Artikel zurückgeben.", pronunciation: "ikh MURK-teh DEE-zen ar-TEE-kel tsoo-ROOK-gay-ben" },
+  { id: 410, category: "Shopping", english: "Do you have a receipt?", german: "Haben Sie einen Kassenbon?", pronunciation: "HAH-ben zee EYE-nen KAHS-sen-bon" },
+  { id: 411, category: "Shopping", english: "I'm just browsing, thank you.", german: "Ich schaue mich nur um, danke.", pronunciation: "ikh SHOW-eh mikh noor oom, DAHN-keh" },
+  { id: 412, category: "Shopping", english: "Could you wrap this as a gift?", german: "Können Sie das als Geschenk einpacken?", pronunciation: "KUR-nen zee dahs ahls geh-SHENK EIN-pahk-en" },
+  { id: 413, category: "Shopping", english: "What time does the store close?", german: "Wann schließt das Geschäft?", pronunciation: "vahn shleest dahs geh-SHEFT" },
+  { id: 414, category: "Shopping", english: "Do you deliver?", german: "Liefern Sie?", pronunciation: "LEE-fern zee" },
+  { id: 415, category: "Shopping", english: "This is too expensive.", german: "Das ist zu teuer.", pronunciation: "dahs ist tsoo TOY-er" },
+  { id: 416, category: "Shopping", english: "I'm looking for a birthday gift.", german: "Ich suche ein Geburtstagsgeschenk.", pronunciation: "ikh ZOO-kheh ine geh-BOORTS-tahks-geh-shenk" },
+  { id: 417, category: "Shopping", english: "Where is the supermarket?", german: "Wo ist der Supermarkt?", pronunciation: "voh ist dehr ZOO-per-markt" },
+  { id: 418, category: "Shopping", english: "Can I get a bag, please?", german: "Kann ich bitte eine Tüte haben?", pronunciation: "kahn ikh BIT-eh EYE-neh TOO-teh HAH-ben" },
+  { id: 419, category: "Shopping", english: "This is on sale.", german: "Das ist im Angebot.", pronunciation: "dahs ist im AHN-geh-boht" },
+  { id: 420, category: "Shopping", english: "Do you have a loyalty card?", german: "Haben Sie eine Kundenkarte?", pronunciation: "HAH-ben zee EYE-neh KOON-den-kar-teh" },
+  { id: 421, category: "Shopping", english: "I need a medium size.", german: "Ich brauche Größe M.", pronunciation: "ikh BROW-kheh GRUR-sse em" },
+  { id: 422, category: "Shopping", english: "These shoes hurt my feet.", german: "Diese Schuhe drücken.", pronunciation: "DEE-zeh SHOO-eh DROO-ken" },
+  { id: 423, category: "Shopping", english: "I'll think about it.", german: "Ich überlege es mir.", pronunciation: "ikh OO-ber-lay-geh es meer" },
+  { id: 424, category: "Shopping", english: "Is there a sale on right now?", german: "Gibt es gerade einen Ausverkauf?", pronunciation: "gipt es geh-RAH-deh EYE-nen OWS-fehr-kowf" },
+  { id: 425, category: "Shopping", english: "Can I exchange this for a different color?", german: "Kann ich das gegen eine andere Farbe umtauschen?", pronunciation: "kahn ikh dahs GAY-gen EYE-neh AHN-deh-reh FAR-beh OOM-tow-shen" },
+  { id: 426, category: "Shopping", english: "I need batteries for this.", german: "Ich brauche Batterien dafür.", pronunciation: "ikh BROW-kheh bah-teh-REE-en dah-FYUR" },
+  { id: 427, category: "Shopping", english: "That color doesn't suit me.", german: "Diese Farbe steht mir nicht.", pronunciation: "DEE-zeh FAR-beh shtayt meer nikht" },
+  { id: 428, category: "Shopping", english: "Here is my payment.", german: "Hier ist meine Zahlung.", pronunciation: "heer ist MY-neh TSAH-loong" },
+  { id: 429, category: "Shopping", english: "Do you have anything cheaper?", german: "Haben Sie etwas Günstigeres?", pronunciation: "HAH-ben zee ET-vahs GOONS-ti-geh-res" },
+  { id: 430, category: "Shopping", english: "Keep the change.", german: "Behalten Sie das Wechselgeld.", pronunciation: "beh-HAHL-ten zee dahs VEK-sel-gelt" },
+  { id: 431, category: "Shopping", english: "Where are the fitting rooms?", german: "Wo sind die Umkleideräume?", pronunciation: "voh zint dee OOM-kly-deh-roy-meh" },
+  { id: 432, category: "Shopping", english: "I'm a size 40 in shoes.", german: "Ich habe Schuhgröße vierzig.", pronunciation: "ikh HAH-beh SHOO-grur-sse FEER-tsikh" },
+  { id: 501, category: "Restaurants & Food", english: "A table for two, please.", german: "Einen Tisch für zwei, bitte.", pronunciation: "EYE-nen tish fyur tsvy, BIT-eh" },
+  { id: 502, category: "Restaurants & Food", english: "Could I see the menu, please?", german: "Darf ich die Speisekarte sehen?", pronunciation: "darf ikh dee SHPY-zeh-kar-teh ZAY-en" },
+  { id: 503, category: "Restaurants & Food", english: "What do you recommend?", german: "Was empfehlen Sie?", pronunciation: "vahs em-PFAY-len zee" },
+  { id: 504, category: "Restaurants & Food", english: "I'm vegetarian.", german: "Ich bin Vegetarier.", pronunciation: "ikh bin veh-geh-TAH-ree-er" },
+  { id: 505, category: "Restaurants & Food", english: "I'm allergic to nuts.", german: "Ich bin allergisch gegen Nüsse.", pronunciation: "ikh bin ah-LEHR-gish GAY-gen NOO-sse" },
+  { id: 506, category: "Restaurants & Food", english: "The food is delicious.", german: "Das Essen ist köstlich.", pronunciation: "dahs ES-sen ist KURST-likh" },
+  { id: 507, category: "Restaurants & Food", english: "Could we get some water, please?", german: "Könnten wir bitte etwas Wasser bekommen?", pronunciation: "KUR-ten veer BIT-eh ET-vahs VAHS-ser beh-KOM-en" },
+  { id: 508, category: "Restaurants & Food", english: "I'd like to order the steak.", german: "Ich möchte das Steak bestellen.", pronunciation: "ikh MURK-teh dahs stayk beh-SHTEL-en" },
+  { id: 509, category: "Restaurants & Food", english: "Can I have the check, please?", german: "Kann ich bitte die Rechnung haben?", pronunciation: "kahn ikh BIT-eh dee REKH-noong HAH-ben" },
+  { id: 510, category: "Restaurants & Food", english: "Does this contain gluten?", german: "Enthält das Gluten?", pronunciation: "ent-HELT dahs gloo-TEN" },
+  { id: 511, category: "Restaurants & Food", english: "I'd like my steak medium-rare.", german: "Ich hätte mein Steak gerne medium.", pronunciation: "ikh HET-eh mine stayk GEHR-neh MEE-dee-oom" },
+  { id: 512, category: "Restaurants & Food", english: "This is too salty.", german: "Das ist zu salzig.", pronunciation: "dahs ist tsoo ZAHL-tsikh" },
+  { id: 513, category: "Restaurants & Food", english: "I'd like a glass of red wine.", german: "Ich möchte ein Glas Rotwein.", pronunciation: "ikh MURK-teh ine glahs ROHT-vine" },
+  { id: 514, category: "Restaurants & Food", english: "Can we sit outside?", german: "Können wir draußen sitzen?", pronunciation: "KUR-nen veer DROW-ssen ZIT-sen" },
+  { id: 515, category: "Restaurants & Food", english: "I have a reservation for six o'clock.", german: "Ich habe eine Reservierung für achtzehn Uhr.", pronunciation: "ikh HAH-beh EYE-neh reh-zehr-VEER-oong fyur AKH-tsayn oor" },
+  { id: 516, category: "Restaurants & Food", english: "What's the soup of the day?", german: "Was ist die Tagessuppe?", pronunciation: "vahs ist dee TAH-ges-zoo-peh" },
+  { id: 517, category: "Restaurants & Food", english: "Can I get this to go?", german: "Kann ich das zum Mitnehmen bekommen?", pronunciation: "kahn ikh dahs tsom MIT-nay-men beh-KOM-en" },
+  { id: 518, category: "Restaurants & Food", english: "We're ready to order.", german: "Wir sind bereit zu bestellen.", pronunciation: "veer zint beh-RITE tsoo beh-SHTEL-en" },
+  { id: 519, category: "Restaurants & Food", english: "I'd like dessert, please.", german: "Ich möchte bitte ein Dessert.", pronunciation: "ikh MURK-teh BIT-eh ine deh-SEHR" },
+  { id: 520, category: "Restaurants & Food", english: "This is not what I ordered.", german: "Das habe ich nicht bestellt.", pronunciation: "dahs HAH-beh ikh nikht beh-SHTELT" },
+  { id: 521, category: "Restaurants & Food", english: "Could you split the bill?", german: "Könnten Sie die Rechnung teilen?", pronunciation: "KUR-ten zee dee REKH-noong TY-len" },
+  { id: 522, category: "Restaurants & Food", english: "The service was excellent.", german: "Der Service war ausgezeichnet.", pronunciation: "dehr SEHR-vis vahr OWS-geh-tsysh-net" },
+  { id: 523, category: "Restaurants & Food", english: "Do you have a children's menu?", german: "Haben Sie eine Kinderkarte?", pronunciation: "HAH-ben zee EYE-neh KIN-der-kar-teh" },
+  { id: 524, category: "Restaurants & Food", english: "I'd like a coffee after the meal.", german: "Ich möchte nach dem Essen einen Kaffee.", pronunciation: "ikh MURK-teh nahkh daym ES-sen EYE-nen KAH-feh" },
+  { id: 525, category: "Restaurants & Food", english: "No ice in my drink, please.", german: "Ohne Eis in meinem Getränk, bitte.", pronunciation: "OH-neh ise in MY-nem geh-TRENK, BIT-eh" },
+  { id: 526, category: "Restaurants & Food", english: "The portion is very generous.", german: "Die Portion ist sehr großzügig.", pronunciation: "dee por-TSYOHN ist zayr GROHS-tsoo-gikh" },
+  { id: 527, category: "Restaurants & Food", english: "Do you have lactose-free milk?", german: "Haben Sie laktosefreie Milch?", pronunciation: "HAH-ben zee lahk-TOH-zeh-fry-eh milkh" },
+  { id: 528, category: "Restaurants & Food", english: "I'll have the same as him.", german: "Ich nehme dasselbe wie er.", pronunciation: "ikh NAY-meh dahs-ZEL-beh vee ehr" },
+  { id: 529, category: "Restaurants & Food", english: "This dish is too spicy for me.", german: "Dieses Gericht ist mir zu scharf.", pronunciation: "DEE-zes geh-RIKHT ist meer tsoo sharf" },
+  { id: 530, category: "Restaurants & Food", english: "Compliments to the chef!", german: "Kompliment an den Koch!", pronunciation: "kom-plee-MENT ahn dayn kokh" },
+  { id: 531, category: "Restaurants & Food", english: "Is there a vegetarian option?", german: "Gibt es eine vegetarische Option?", pronunciation: "gipt es EYE-neh veh-geh-TAH-ri-sheh op-TSYOHN" },
+  { id: 532, category: "Restaurants & Food", english: "We'd like to start with the appetizers.", german: "Wir möchten mit den Vorspeisen beginnen.", pronunciation: "veer MURK-ten mit dayn FOR-shpy-zen beh-GIN-en" },
+  { id: 601, category: "Health & Medical", english: "I need to see a doctor.", german: "Ich muss zum Arzt.", pronunciation: "ikh mooss tsom artst" },
+  { id: 602, category: "Health & Medical", english: "I have a headache.", german: "Ich habe Kopfschmerzen.", pronunciation: "ikh HAH-beh KOPF-shmehr-tsen" },
+  { id: 603, category: "Health & Medical", english: "My stomach hurts.", german: "Mein Bauch tut weh.", pronunciation: "mine bowkh toot vay" },
+  { id: 604, category: "Health & Medical", english: "I've had a fever for two days.", german: "Ich habe seit zwei Tagen Fieber.", pronunciation: "ikh HAH-beh zite tsvy TAH-gen FEE-ber" },
+  { id: 605, category: "Health & Medical", english: "Where is the nearest pharmacy?", german: "Wo ist die nächste Apotheke?", pronunciation: "voh ist dee NEKHS-teh ah-poh-TAY-keh" },
+  { id: 606, category: "Health & Medical", english: "I need a prescription for this medication.", german: "Ich brauche ein Rezept für dieses Medikament.", pronunciation: "ikh BROW-kheh ine reh-TSEPT fyur DEE-zes meh-dee-kah-MENT" },
+  { id: 607, category: "Health & Medical", english: "I'm allergic to penicillin.", german: "Ich bin allergisch gegen Penicillin.", pronunciation: "ikh bin ah-LEHR-gish GAY-gen peh-ni-tsil-EEN" },
+  { id: 608, category: "Health & Medical", english: "I've broken my arm.", german: "Ich habe mir den Arm gebrochen.", pronunciation: "ikh HAH-beh meer dayn arm geh-BROH-khen" },
+  { id: 609, category: "Health & Medical", english: "I feel dizzy.", german: "Mir ist schwindelig.", pronunciation: "meer ist SHVIN-deh-likh" },
+  { id: 610, category: "Health & Medical", english: "I haven't slept well recently.", german: "Ich habe in letzter Zeit schlecht geschlafen.", pronunciation: "ikh HAH-beh in LETS-ter tsyt shlekht geh-SHLAH-fen" },
+  { id: 611, category: "Health & Medical", english: "I need to make an appointment.", german: "Ich muss einen Termin machen.", pronunciation: "ikh mooss EYE-nen tehr-MEEN MAHKH-en" },
+  { id: 612, category: "Health & Medical", english: "Take this tablet twice a day.", german: "Nehmen Sie diese Tablette zweimal täglich.", pronunciation: "NAY-men zee DEE-zeh tah-BLET-eh TSVY-mahl TEG-likh" },
+  { id: 613, category: "Health & Medical", english: "I have a sore throat.", german: "Ich habe Halsschmerzen.", pronunciation: "ikh HAH-beh HAHLS-shmehr-tsen" },
+  { id: 614, category: "Health & Medical", english: "Do I need stitches?", german: "Brauche ich Nähte?", pronunciation: "BROW-kheh ikh NAY-teh" },
+  { id: 615, category: "Health & Medical", english: "I need to check my blood pressure.", german: "Ich muss meinen Blutdruck messen lassen.", pronunciation: "ikh mooss MY-nen BLOOT-drook MES-sen LAHS-sen" },
+  { id: 616, category: "Health & Medical", english: "I have a rash on my arm.", german: "Ich habe einen Ausschlag am Arm.", pronunciation: "ikh HAH-beh EYE-nen OWS-shlahk ahm arm" },
+  { id: 617, category: "Health & Medical", english: "Are you vaccinated?", german: "Sind Sie geimpft?", pronunciation: "zint zee geh-IMPFT" },
+  { id: 618, category: "Health & Medical", english: "I'd like a referral to a specialist.", german: "Ich möchte eine Überweisung zum Facharzt.", pronunciation: "ikh MURK-teh EYE-neh OO-ber-vy-zoong tsom FAKH-artst" },
+  { id: 619, category: "Health & Medical", english: "How long will recovery take?", german: "Wie lange wird die Genesung dauern?", pronunciation: "vee LAHNG-eh virt dee geh-NAY-zoong DOW-ern" },
+  { id: 620, category: "Health & Medical", english: "I have diabetes.", german: "Ich habe Diabetes.", pronunciation: "ikh HAH-beh dee-ah-BAY-tes" },
+  { id: 621, category: "Health & Medical", english: "My knee is swollen.", german: "Mein Knie ist geschwollen.", pronunciation: "mine knee ist geh-SHVOL-en" },
+  { id: 622, category: "Health & Medical", english: "I need a blood test.", german: "Ich brauche einen Bluttest.", pronunciation: "ikh BROW-kheh EYE-nen BLOOT-test" },
+  { id: 623, category: "Health & Medical", english: "I've been feeling anxious lately.", german: "Ich fühle mich in letzter Zeit ängstlich.", pronunciation: "ikh FOO-leh mikh in LETS-ter tsyt ENGST-likh" },
+  { id: 624, category: "Health & Medical", english: "Can you prescribe something for the pain?", german: "Können Sie mir etwas gegen die Schmerzen verschreiben?", pronunciation: "KUR-nen zee meer ET-vahs GAY-gen dee SHMEHR-tsen fehr-SHRY-ben" },
+  { id: 625, category: "Health & Medical", english: "I feel much better now.", german: "Mir geht es jetzt viel besser.", pronunciation: "meer gayt es yetst feel BES-ser" },
+  { id: 626, category: "Health & Medical", english: "Do I need to fast before the test?", german: "Muss ich vor dem Test nüchtern sein?", pronunciation: "mooss ikh for daym test NOOKH-tern zine" },
+  { id: 627, category: "Health & Medical", english: "What are the side effects?", german: "Was sind die Nebenwirkungen?", pronunciation: "vahs zint dee NAY-ben-veer-koong-en" },
+  { id: 628, category: "Health & Medical", english: "I need to see an eye doctor.", german: "Ich muss zum Augenarzt.", pronunciation: "ikh mooss tsom OW-gen-artst" },
+  { id: 629, category: "Health & Medical", english: "My back has been hurting for a week.", german: "Mein Rücken schmerzt seit einer Woche.", pronunciation: "mine ROO-ken shmertst zite EYE-ner VOH-kheh" },
+  { id: 630, category: "Health & Medical", english: "Is this contagious?", german: "Ist das ansteckend?", pronunciation: "ist dahs AHN-shtek-ent" },
+  { id: 631, category: "Health & Medical", english: "Please fill out this health form.", german: "Bitte füllen Sie dieses Gesundheitsformular aus.", pronunciation: "BIT-eh FOO-len zee DEE-zes geh-ZOONT-hites-for-moo-lahr owss" },
+  { id: 632, category: "Health & Medical", english: "I'm eight weeks pregnant.", german: "Ich bin in der achten Schwangerschaftswoche.", pronunciation: "ikh bin in dehr AHKH-ten SHVAHNG-er-shahfts-voh-kheh" },
+  { id: 701, category: "Emergency", english: "Help! Call the police!", german: "Hilfe! Rufen Sie die Polizei!", pronunciation: "HIL-feh! ROO-fen zee dee poh-lee-TSYE" },
+  { id: 702, category: "Emergency", english: "There's been an accident.", german: "Es hat einen Unfall gegeben.", pronunciation: "es haht EYE-nen OON-fahl geh-GAY-ben" },
+  { id: 703, category: "Emergency", english: "Call an ambulance, please!", german: "Rufen Sie bitte einen Krankenwagen!", pronunciation: "ROO-fen zee BIT-eh EYE-nen KRAHN-ken-vah-gen" },
+  { id: 704, category: "Emergency", english: "I need help!", german: "Ich brauche Hilfe!", pronunciation: "ikh BROW-kheh HIL-feh" },
+  { id: 705, category: "Emergency", english: "Fire! Get out of the building!", german: "Feuer! Verlassen Sie das Gebäude!", pronunciation: "FOY-er! fehr-LAHS-sen zee dahs geh-BOY-deh" },
+  { id: 706, category: "Emergency", english: "My wallet has been stolen.", german: "Meine Brieftasche wurde gestohlen.", pronunciation: "MY-neh BREEF-tah-sheh VOOR-deh geh-SHTOH-len" },
+  { id: 707, category: "Emergency", english: "I've lost my passport.", german: "Ich habe meinen Reisepass verloren.", pronunciation: "ikh HAH-beh MY-nen RY-zeh-pahs fehr-LOH-ren" },
+  { id: 708, category: "Emergency", english: "I need to call my embassy.", german: "Ich muss meine Botschaft anrufen.", pronunciation: "ikh mooss MY-neh BOT-shahft AHN-roo-fen" },
+  { id: 709, category: "Emergency", english: "Someone is following me.", german: "Jemand folgt mir.", pronunciation: "YAY-mahnt folkt meer" },
+  { id: 710, category: "Emergency", english: "I've been in a car accident.", german: "Ich war in einen Autounfall verwickelt.", pronunciation: "ikh vahr in EYE-nen OW-toh-oon-fahl fehr-VIK-elt" },
+  { id: 711, category: "Emergency", english: "The person is unconscious.", german: "Die Person ist bewusstlos.", pronunciation: "dee pehr-ZOHN ist beh-VOOST-lohs" },
+  { id: 712, category: "Emergency", english: "He's not breathing.", german: "Er atmet nicht.", pronunciation: "ehr AHT-met nikht" },
+  { id: 713, category: "Emergency", english: "There's a gas leak.", german: "Es gibt ein Gasleck.", pronunciation: "es gipt ine GAHS-lek" },
+  { id: 714, category: "Emergency", english: "Where is the nearest hospital?", german: "Wo ist das nächste Krankenhaus?", pronunciation: "voh ist dahs NEKHS-teh KRAHN-ken-howss" },
+  { id: 715, category: "Emergency", english: "I've swallowed something dangerous.", german: "Ich habe etwas Gefährliches geschluckt.", pronunciation: "ikh HAH-beh ET-vahs geh-FEHR-li-khes geh-SHLUKT" },
+  { id: 716, category: "Emergency", english: "My child is missing.", german: "Mein Kind wird vermisst.", pronunciation: "mine kint virt fehr-MIST" },
+  { id: 717, category: "Emergency", english: "Stop the thief!", german: "Haltet den Dieb!", pronunciation: "HAHL-tet dayn deep" },
+  { id: 718, category: "Emergency", english: "Is everyone okay?", german: "Ist alle okay?", pronunciation: "ist AL-eh oh-KAY" },
+  { id: 719, category: "Emergency", english: "Can you do CPR?", german: "Können Sie Wiederbelebung durchführen?", pronunciation: "KUR-nen zee VEE-der-beh-lay-boong DOORKH-fyoo-ren" },
+  { id: 720, category: "Emergency", english: "I think I'm having a heart attack.", german: "Ich glaube, ich habe einen Herzanfall.", pronunciation: "ikh GLOW-beh, ikh HAH-beh EYE-nen HERTS-ahn-fahl" },
+  { id: 721, category: "Emergency", english: "We need to evacuate immediately.", german: "Wir müssen sofort evakuieren.", pronunciation: "veer MOOS-sen ZOH-fort eh-vah-koo-EE-ren" },
+  { id: 722, category: "Emergency", english: "Please don't leave me alone.", german: "Bitte lassen Sie mich nicht allein.", pronunciation: "BIT-eh LAHS-sen zee mikh nikht ah-LINE" },
+  { id: 723, category: "Emergency", english: "I've been robbed.", german: "Ich wurde ausgeraubt.", pronunciation: "ikh VOOR-deh OWS-geh-rowpt" },
+  { id: 724, category: "Emergency", english: "The emergency number in Germany is 112.", german: "Die Notrufnummer in Deutschland ist eins eins zwei.", pronunciation: "dee NOHT-roof-noom-mer in DOYCH-lahnt ist ines ines tsvy" },
+  { id: 725, category: "Emergency", english: "I need a police report for my insurance.", german: "Ich brauche ein Polizeiprotokoll für meine Versicherung.", pronunciation: "ikh BROW-kheh ine poh-lee-TSYE-proh-toh-kol fyur MY-neh fehr-ZIKH-eh-roong" },
+  { id: 726, category: "Emergency", english: "She's having an allergic reaction.", german: "Sie hat eine allergische Reaktion.", pronunciation: "zee haht EYE-neh ah-LEHR-gi-sheh reh-ahk-TSYOHN" },
+  { id: 727, category: "Emergency", english: "There is smoke coming from the building.", german: "Rauch steigt aus dem Gebäude auf.", pronunciation: "rowkh shtike owss daym geh-BOY-deh owf" },
+  { id: 728, category: "Emergency", english: "Do you have a first aid kit?", german: "Haben Sie einen Erste-Hilfe-Kasten?", pronunciation: "HAH-ben zee EYE-nen EHR-steh-HIL-feh-kahs-ten" },
+  { id: 729, category: "Emergency", english: "I can't find my children.", german: "Ich kann meine Kinder nicht finden.", pronunciation: "ikh kahn MY-neh KIN-der nikht FIN-den" },
+  { id: 730, category: "Emergency", english: "Please stay calm.", german: "Bitte bleiben Sie ruhig.", pronunciation: "BIT-eh BLY-ben zee ROO-ikh" },
+  { id: 731, category: "Emergency", english: "He's bleeding heavily.", german: "Er blutet stark.", pronunciation: "ehr BLOO-tet shtark" },
+  { id: 732, category: "Emergency", english: "The road is blocked.", german: "Die Straße ist gesperrt.", pronunciation: "dee SHTRAH-sse ist geh-SHPEHRT" },
+  { id: 801, category: "Family", english: "This is my wife.", german: "Das ist meine Frau.", pronunciation: "dahs ist MY-neh frow" },
+  { id: 802, category: "Family", english: "Do you have children?", german: "Haben Sie Kinder?", pronunciation: "HAH-ben zee KIN-der" },
+  { id: 803, category: "Family", english: "My daughter is three years old.", german: "Meine Tochter ist drei Jahre alt.", pronunciation: "MY-neh TOKH-ter ist dry YAH-reh ahlt" },
+  { id: 804, category: "Family", english: "My parents live in Hamburg.", german: "Meine Eltern wohnen in Hamburg.", pronunciation: "MY-neh EL-tern VOH-nen in HAHM-boork" },
+  { id: 805, category: "Family", english: "We're expecting a baby.", german: "Wir erwarten ein Baby.", pronunciation: "veer ehr-VAHR-ten ine BAY-bee" },
+  { id: 806, category: "Family", english: "My grandmother just turned eighty.", german: "Meine Großmutter ist gerade achtzig geworden.", pronunciation: "MY-neh GROHS-moo-ter ist geh-RAH-deh AHKH-tsikh geh-VOR-den" },
+  { id: 807, category: "Family", english: "My brother and I don't get along.", german: "Mein Bruder und ich verstehen uns nicht.", pronunciation: "mine BROO-der oont ikh fehr-SHTAY-en oons nikht" },
+  { id: 808, category: "Family", english: "We're going to my in-laws for Christmas.", german: "Wir fahren Weihnachten zu meinen Schwiegereltern.", pronunciation: "veer FAH-ren VY-nahkh-ten tsoo MY-nen SHVEE-ger-el-tern" },
+  { id: 809, category: "Family", english: "My son is starting school this year.", german: "Mein Sohn kommt dieses Jahr in die Schule.", pronunciation: "mine zohn komt DEE-zes yahr in dee SHOO-leh" },
+  { id: 810, category: "Family", english: "My sister got married last year.", german: "Meine Schwester hat letztes Jahr geheiratet.", pronunciation: "MY-neh SHVES-ter haht LETS-tes yahr geh-HY-rah-tet" },
+  { id: 811, category: "Family", english: "We have a family reunion every summer.", german: "Wir haben jedes Jahr ein Familientreffen im Sommer.", pronunciation: "veer HAH-ben YAY-des yahr ine fah-MEEL-yen-tref-en im ZOM-er" },
+  { id: 812, category: "Family", english: "My father is a retired engineer.", german: "Mein Vater ist pensionierter Ingenieur.", pronunciation: "mine FAH-ter ist pen-syo-NEER-ter in-jhen-YOOR" },
+  { id: 813, category: "Family", english: "She takes after her mother.", german: "Sie kommt nach ihrer Mutter.", pronunciation: "zee komt nahkh EE-rer MOOT-ter" },
+  { id: 814, category: "Family", english: "He's my half-brother.", german: "Er ist mein Halbbruder.", pronunciation: "ehr ist mine HAHLP-broo-der" },
+  { id: 815, category: "Family", english: "Are you an only child?", german: "Bist du ein Einzelkind?", pronunciation: "bist doo ine EIN-tsel-kint" },
+  { id: 816, category: "Family", english: "My nephew is studying medicine.", german: "Mein Neffe studiert Medizin.", pronunciation: "mine NEF-eh shtoo-DEERT meh-dee-TSEEN" },
+  { id: 817, category: "Family", english: "We named our son after his grandfather.", german: "Wir haben unseren Sohn nach seinem Großvater benannt.", pronunciation: "veer HAH-ben OON-zeh-ren zohn nahkh ZY-nem GROHS-fah-ter beh-NAHNT" },
+  { id: 818, category: "Family", english: "My aunt makes the best cake.", german: "Meine Tante macht den besten Kuchen.", pronunciation: "MY-neh TAHN-teh mahkht dayn BES-ten KOO-khen" },
+  { id: 819, category: "Family", english: "My parents are divorced.", german: "Meine Eltern sind geschieden.", pronunciation: "MY-neh EL-tern zint geh-SHEE-den" },
+  { id: 820, category: "Family", english: "Our family has grown a lot.", german: "Unsere Familie ist sehr gewachsen.", pronunciation: "OON-zeh-reh fah-MEE-lee-eh ist zayr geh-VAHKH-sen" },
+  { id: 821, category: "Family", english: "I'm the youngest of four children.", german: "Ich bin das jüngste von vier Kindern.", pronunciation: "ikh bin dahs YOONG-steh fon feer KIN-dern" },
+  { id: 822, category: "Family", english: "My cousin lives in Vienna.", german: "Meine Cousine lebt in Wien.", pronunciation: "MY-neh koo-ZEE-neh laybt in veen" },
+  { id: 823, category: "Family", english: "The kids are at school.", german: "Die Kinder sind in der Schule.", pronunciation: "dee KIN-der zint in dehr SHOO-leh" },
+  { id: 824, category: "Family", english: "We had a family argument.", german: "Wir hatten einen Familienstreit.", pronunciation: "veer HAH-ten EYE-nen fah-MEEL-yen-shtrite" },
+  { id: 825, category: "Family", english: "My mother-in-law is visiting this week.", german: "Meine Schwiegermutter besucht uns diese Woche.", pronunciation: "MY-neh SHVEE-ger-moo-ter beh-ZOOKHT oons DEE-zeh VOH-kheh" },
+  { id: 826, category: "Family", english: "I look like my dad.", german: "Ich sehe meinem Vater ähnlich.", pronunciation: "ikh ZAY-eh MY-nem FAH-ter EN-likh" },
+  { id: 827, category: "Family", english: "We're a big family.", german: "Wir sind eine große Familie.", pronunciation: "veer zint EYE-neh GROH-sse fah-MEE-lee-eh" },
+  { id: 828, category: "Family", english: "My grandmother raised me.", german: "Meine Großmutter hat mich aufgezogen.", pronunciation: "MY-neh GROHS-moo-ter haht mikh OWF-geh-tsoh-gen" },
+  { id: 829, category: "Family", english: "The children are fast asleep.", german: "Die Kinder schlafen tief und fest.", pronunciation: "dee KIN-der SHLAH-fen teef oont fest" },
+  { id: 830, category: "Family", english: "My parents want grandchildren.", german: "Meine Eltern möchten Enkel.", pronunciation: "MY-neh EL-tern MURK-ten ENK-el" },
+  { id: 831, category: "Family", english: "We're celebrating my grandfather's birthday.", german: "Wir feiern den Geburtstag meines Großvaters.", pronunciation: "veer FY-ern dayn geh-BOORTS-tahk MY-nes GROHS-fah-ters" },
+  { id: 832, category: "Family", english: "Family is the most important thing to me.", german: "Familie ist mir das Wichtigste.", pronunciation: "fah-MEE-lee-eh ist meer dahs VIKH-tikh-steh" },
+  { id: 901, category: "Dating & Romance", english: "You have a beautiful smile.", german: "Sie haben ein wunderschönes Lächeln.", pronunciation: "zee HAH-ben ine VOON-der-shur-nes LEKH-eln" },
+  { id: 902, category: "Dating & Romance", english: "Would you like to go on a date with me?", german: "Würdest du gerne mit mir ausgehen?", pronunciation: "VOOR-dest doo GEHR-neh mit meer OWS-gay-en" },
+  { id: 903, category: "Dating & Romance", english: "I've been thinking about you.", german: "Ich habe an dich gedacht.", pronunciation: "ikh HAH-beh ahn dikh geh-DAHKHT" },
+  { id: 904, category: "Dating & Romance", english: "You mean a lot to me.", german: "Du bedeutest mir viel.", pronunciation: "doo beh-DOY-test meer feel" },
+  { id: 905, category: "Dating & Romance", english: "I love you.", german: "Ich liebe dich.", pronunciation: "ikh LEE-beh dikh" },
+  { id: 906, category: "Dating & Romance", english: "Are you single?", german: "Bist du Single?", pronunciation: "bist doo SING-el" },
+  { id: 907, category: "Dating & Romance", english: "I have a crush on you.", german: "Ich stehe auf dich.", pronunciation: "ikh SHTAY-eh owf dikh" },
+  { id: 908, category: "Dating & Romance", english: "Can I have your phone number?", german: "Darf ich deine Telefonnummer haben?", pronunciation: "darf ikh DY-neh teh-leh-FON-noom-er HAH-ben" },
+  { id: 909, category: "Dating & Romance", english: "You're really funny.", german: "Du bist wirklich lustig.", pronunciation: "doo bist VEER-klikh LOOS-tikh" },
+  { id: 910, category: "Dating & Romance", english: "I'm in a relationship.", german: "Ich bin in einer Beziehung.", pronunciation: "ikh bin in EYE-ner beh-TSEE-oong" },
+  { id: 911, category: "Dating & Romance", english: "Do you want to meet for coffee?", german: "Wollen wir uns auf einen Kaffee treffen?", pronunciation: "VOL-en veer oons owf EYE-nen KAH-feh TREF-en" },
+  { id: 912, category: "Dating & Romance", english: "You look amazing tonight.", german: "Du siehst heute Abend wunderschön aus.", pronunciation: "doo zeest HOY-teh AH-bent VOON-der-shurn owss" },
+  { id: 913, category: "Dating & Romance", english: "I really enjoy spending time with you.", german: "Ich verbringe wirklich gerne Zeit mit dir.", pronunciation: "ikh fehr-BRING-eh VEER-klikh GEHR-neh tsyt mit deer" },
+  { id: 914, category: "Dating & Romance", english: "Will you be my girlfriend?", german: "Willst du meine Freundin sein?", pronunciation: "vilst doo MY-neh FROYN-din zine" },
+  { id: 915, category: "Dating & Romance", english: "I'm not ready for a relationship right now.", german: "Ich bin gerade nicht bereit für eine Beziehung.", pronunciation: "ikh bin geh-RAH-deh nikht beh-RITE fyur EYE-neh beh-TSEE-oong" },
+  { id: 916, category: "Dating & Romance", english: "Let's take things slow.", german: "Lass uns langsam machen.", pronunciation: "lahs oons LAHNG-zahm MAHKH-en" },
+  { id: 917, category: "Dating & Romance", english: "I fell in love with you the moment I saw you.", german: "Ich habe mich in dem Moment verliebt, als ich dich sah.", pronunciation: "ikh HAH-beh mikh in daym mo-MENT fehr-LEEPT, ahls ikh dikh zah" },
+  { id: 918, category: "Dating & Romance", english: "I missed you so much.", german: "Ich habe dich so sehr vermisst.", pronunciation: "ikh HAH-beh dikh zoh zayr fehr-MIST" },
+  { id: 919, category: "Dating & Romance", english: "We should do this again.", german: "Das sollten wir wiederholen.", pronunciation: "dahs ZOL-ten veer VEE-der-hoh-len" },
+  { id: 920, category: "Dating & Romance", english: "I think we're moving too fast.", german: "Ich denke, wir bewegen uns zu schnell.", pronunciation: "ikh DEN-keh, veer beh-VAY-gen oons tsoo shnel" },
+  { id: 921, category: "Dating & Romance", english: "I'd like to introduce you to my friends.", german: "Ich würde dich gerne meinen Freunden vorstellen.", pronunciation: "ikh VOOR-deh dikh GEHR-neh MY-nen FROYN-den FOR-shtel-en" },
+  { id: 922, category: "Dating & Romance", english: "Happy anniversary, my love.", german: "Herzlichen Glückwunsch zum Jahrestag, mein Schatz.", pronunciation: "HERTS-li-khen GLOOK-voonsh tsom YAH-res-tahk, mine shahts" },
+  { id: 923, category: "Dating & Romance", english: "Will you marry me?", german: "Willst du mich heiraten?", pronunciation: "vilst doo mikh HY-rah-ten" },
+  { id: 924, category: "Dating & Romance", english: "You make me so happy.", german: "Du machst mich so glücklich.", pronunciation: "doo mahkhst mikh zoh GLOOK-likh" },
+  { id: 925, category: "Dating & Romance", english: "I can't imagine my life without you.", german: "Ich kann mir mein Leben ohne dich nicht vorstellen.", pronunciation: "ikh kahn meer mine LAY-ben OH-neh dikh nikht FOR-shtel-en" },
+  { id: 926, category: "Dating & Romance", english: "We should talk about our future.", german: "Wir sollten über unsere Zukunft reden.", pronunciation: "veer ZOL-ten OO-ber OON-zeh-reh TSOO-koonft RAY-den" },
+  { id: 927, category: "Dating & Romance", english: "I feel safe with you.", german: "Ich fühle mich bei dir sicher.", pronunciation: "ikh FOO-leh mikh by deer ZIKH-er" },
+  { id: 928, category: "Dating & Romance", english: "You're my best friend.", german: "Du bist mein bester Freund.", pronunciation: "doo bist mine BES-ter froynt" },
+  { id: 929, category: "Dating & Romance", english: "I'd like to know everything about you.", german: "Ich möchte alles über dich wissen.", pronunciation: "ikh MURK-teh AL-es OO-ber dikh VIS-en" },
+  { id: 930, category: "Dating & Romance", english: "You're unlike anyone I've ever met.", german: "Du bist anders als alle, die ich je getroffen habe.", pronunciation: "doo bist AHN-ders ahls AL-eh, dee ikh yeh geh-TROF-en HAH-beh" },
+  { id: 931, category: "Dating & Romance", english: "Let's spend the weekend together.", german: "Lass uns das Wochenende zusammen verbringen.", pronunciation: "lahs oons dahs VOH-khen-en-deh tsoo-ZAH-men fehr-BRING-en" },
+  { id: 932, category: "Dating & Romance", english: "I'm so lucky to have you in my life.", german: "Ich bin so froh, dich in meinem Leben zu haben.", pronunciation: "ikh bin zoh froh, dikh in MY-nem LAY-ben tsoo HAH-ben" },
   { id: 933, category: "Greetings & Small Talk", english: "Good afternoon!", german: "Guten Tag!", pronunciation: "GOO-ten tahk" },
-  { id: 934, category: "Greetings & Small Talk", english: "See you tomorrow!", german: "Bis morgen!", pronunciation: "biss MOR-gen" },
   { id: 935, category: "Greetings & Small Talk", english: "See you later!", german: "Bis später!", pronunciation: "biss SHPAY-ter" },
   { id: 936, category: "Greetings & Small Talk", english: "Take care!", german: "Pass auf dich auf!", pronunciation: "pahs owf dikh owf" },
   { id: 937, category: "Greetings & Small Talk", english: "Have a good day!", german: "Einen schönen Tag!", pronunciation: "EYE-nen SHUR-nen tahk" },
-  { id: 938, category: "Greetings & Small Talk", english: "Have a great weekend!", german: "Schönes Wochenende!", pronunciation: "SHUR-nes VOH-khen-en-deh" },
   { id: 939, category: "Greetings & Small Talk", english: "Happy birthday!", german: "Herzlichen Glückwunsch zum Geburtstag!", pronunciation: "HERTS-li-khen GLOOK-voonsh tsom geh-BOORTS-tahk" },
   { id: 940, category: "Greetings & Small Talk", english: "Merry Christmas!", german: "Frohe Weihnachten!", pronunciation: "FROH-eh VY-nahkh-ten" },
   { id: 941, category: "Greetings & Small Talk", english: "Happy New Year!", german: "Frohes neues Jahr!", pronunciation: "FROH-es NOY-es yahr" },
@@ -2285,7 +342,6 @@ const sentences = [
   { id: 955, category: "Greetings & Small Talk", english: "I beg your pardon?", german: "Wie bitte?", pronunciation: "vee BIT-eh" },
   { id: 956, category: "Greetings & Small Talk", english: "That's interesting!", german: "Das ist interessant!", pronunciation: "dahs ist in-teh-reh-SAHNT" },
   { id: 957, category: "Greetings & Small Talk", english: "Really? I didn't know that.", german: "Wirklich? Das wusste ich nicht.", pronunciation: "VEER-klikh? dahs VOOS-teh ikh nikht" },
-  { id: 958, category: "Greetings & Small Talk", english: "What do you do for a living?", german: "Was machen Sie beruflich?", pronunciation: "vahs MAHKH-en zee beh-ROOF-likh" },
   { id: 959, category: "Greetings & Small Talk", english: "I work in IT.", german: "Ich arbeite in der IT-Branche.", pronunciation: "ikh AR-by-teh in dehr ee-TAY-brahn-kheh" },
   { id: 960, category: "Greetings & Small Talk", english: "Do you live around here?", german: "Wohnen Sie hier in der Nähe?", pronunciation: "VOH-nen zee heer in dehr NAY-eh" },
   { id: 961, category: "Greetings & Small Talk", english: "I just moved here.", german: "Ich bin gerade erst hierher gezogen.", pronunciation: "ikh bin geh-RAH-deh ehrst HEER-her geh-TSOH-gen" },
@@ -2328,8 +384,6 @@ const sentences = [
   { id: 998, category: "Greetings & Small Talk", english: "It was a pleasure meeting you.", german: "Es war mir ein Vergnügen, Sie kennenzulernen.", pronunciation: "es vahr meer ine fehr-GNOO-gen, zee KEN-en-tsoo-lair-nen" },
   { id: 999, category: "Greetings & Small Talk", english: "Same to you!", german: "Ganz meinerseits!", pronunciation: "gahnts MY-ner-zy-tes" },
   { id: 1000, category: "Greetings & Small Talk", english: "I'll see you around.", german: "Wir sehen uns.", pronunciation: "veer ZAY-en oons" },
-
-  // ─── Work & Professional (extended) ─────────────────────────────────────
   { id: 1001, category: "Work & Professional", english: "Can we schedule a meeting?", german: "Können wir ein Meeting planen?", pronunciation: "KUR-nen veer ine MEE-ting PLAH-nen" },
   { id: 1002, category: "Work & Professional", english: "I'll send you the agenda.", german: "Ich schicke Ihnen die Tagesordnung.", pronunciation: "ikh SHIK-eh EE-nen dee TAH-ges-ord-noong" },
   { id: 1003, category: "Work & Professional", english: "When is the deadline?", german: "Wann ist die Frist?", pronunciation: "vahn ist dee frist" },
@@ -2349,12 +403,9 @@ const sentences = [
   { id: 1017, category: "Work & Professional", english: "I'd like to discuss a raise.", german: "Ich würde gerne eine Gehaltserhöhung besprechen.", pronunciation: "ikh VOOR-deh GEHR-neh EYE-neh geh-HAHLT-ehr-hur-oong beh-SHPREH-khen" },
   { id: 1018, category: "Work & Professional", english: "This report is due Monday.", german: "Dieser Bericht ist Montag fällig.", pronunciation: "DEE-zer beh-RIKHT ist MON-tahk FEL-ikh" },
   { id: 1019, category: "Work & Professional", english: "Could you proofread this for me?", german: "Könnten Sie das bitte Korrektur lesen?", pronunciation: "KUR-ten zee dahs BIT-eh koh-REK-toor LAY-zen" },
-  { id: 1020, category: "Work & Professional", english: "The budget has been approved.", german: "Das Budget wurde genehmigt.", pronunciation: "dahs BOO-jet VOOR-deh geh-NAY-mikt" },
   { id: 1021, category: "Work & Professional", english: "We're over budget.", german: "Wir haben das Budget überschritten.", pronunciation: "veer HAH-ben dahs BOO-jet OO-ber-shrit-en" },
-  { id: 1022, category: "Work & Professional", english: "Let's brainstorm ideas.", german: "Lassen Sie uns Ideen sammeln.", pronunciation: "LAHS-sen zee oons ee-DAY-en ZAH-meln" },
   { id: 1023, category: "Work & Professional", english: "I'll follow up with you tomorrow.", german: "Ich melde mich morgen bei Ihnen.", pronunciation: "ikh MEL-deh mikh MOR-gen by EE-nen" },
   { id: 1024, category: "Work & Professional", english: "Can you send me the files?", german: "Können Sie mir die Dateien schicken?", pronunciation: "KUR-nen zee meer dee dah-TY-en SHIK-en" },
-  { id: 1025, category: "Work & Professional", english: "I'm working from home today.", german: "Ich arbeite heute von zu Hause.", pronunciation: "ikh AR-by-teh HOY-teh fon tsoo HOW-zeh" },
   { id: 1026, category: "Work & Professional", english: "The client is very satisfied.", german: "Der Kunde ist sehr zufrieden.", pronunciation: "dehr KOON-deh ist zayr tsoo-FREE-den" },
   { id: 1027, category: "Work & Professional", english: "We need to improve our service.", german: "Wir müssen unseren Service verbessern.", pronunciation: "veer MOOS-sen OON-zeh-ren SEHR-vis fehr-BES-ern" },
   { id: 1028, category: "Work & Professional", english: "Can we reschedule the meeting?", german: "Können wir das Meeting verschieben?", pronunciation: "KUR-nen veer dahs MEE-ting fehr-SHEE-ben" },
@@ -2366,7 +417,6 @@ const sentences = [
   { id: 1034, category: "Work & Professional", english: "I'm on a tight deadline.", german: "Ich stehe unter Zeitdruck.", pronunciation: "ikh SHTAY-eh OON-ter TSYT-drook" },
   { id: 1035, category: "Work & Professional", english: "Let's set priorities.", german: "Lassen Sie uns Prioritäten setzen.", pronunciation: "LAHS-sen zee oons pree-or-i-TEY-ten ZET-tsen" },
   { id: 1036, category: "Work & Professional", english: "This is a top priority.", german: "Das hat höchste Priorität.", pronunciation: "dahs haht HURKHK-steh pree-or-i-TEYT" },
-  { id: 1037, category: "Work & Professional", english: "I disagree with that approach.", german: "Ich bin mit diesem Ansatz nicht einverstanden.", pronunciation: "ikh bin mit DEE-zem AHN-zahts nikht INE-fehr-shtahn-den" },
   { id: 1038, category: "Work & Professional", english: "Let me check my calendar.", german: "Lassen Sie mich meinen Kalender prüfen.", pronunciation: "LAHS-sen zee mikh MY-nen kah-LEN-der PROO-fen" },
   { id: 1039, category: "Work & Professional", english: "I'm available Thursday afternoon.", german: "Ich bin Donnerstagnachmittag verfügbar.", pronunciation: "ikh bin DON-ners-tahk-nahkh-mit-tahk fehr-FYOOK-bahr" },
   { id: 1040, category: "Work & Professional", english: "My colleague will handle that.", german: "Mein Kollege wird sich darum kümmern.", pronunciation: "mine koh-LAY-geh virt zikh DAH-room KOM-ern" },
@@ -2380,14 +430,11 @@ const sentences = [
   { id: 1048, category: "Work & Professional", english: "This needs management approval.", german: "Das benötigt die Zustimmung der Geschäftsführung.", pronunciation: "dahs beh-NUR-tigt dee TSOO-shtim-oong dehr geh-SHEFTS-foo-roong" },
   { id: 1049, category: "Work & Professional", english: "We're launching next quarter.", german: "Wir starten im nächsten Quartal.", pronunciation: "veer SHTAHR-ten im NEKHS-ten kvah-TAHL" },
   { id: 1050, category: "Work & Professional", english: "Please keep me informed.", german: "Bitte halten Sie mich auf dem Laufenden.", pronunciation: "BIT-eh HAHL-ten zee mikh owf daym LOW-fen-den" },
-
-  // ─── Friends & Casual (extended) ──────────────────────────────────────────
   { id: 1051, category: "Friends & Casual", english: "What's up?", german: "Was geht ab?", pronunciation: "vahs gayt ahp" },
   { id: 1052, category: "Friends & Casual", english: "Nothing much, just chilling.", german: "Nicht viel, entspanne mich nur.", pronunciation: "nikht feel, ent-SHPAHN-eh mikh noor" },
   { id: 1053, category: "Friends & Casual", english: "Are you free tonight?", german: "Bist du heute Abend frei?", pronunciation: "bist doo HOY-teh AH-bent fry" },
   { id: 1054, category: "Friends & Casual", english: "Let's grab a beer.", german: "Lass uns ein Bier trinken gehen.", pronunciation: "lahs oons ine beer TRIN-ken GAY-en" },
   { id: 1055, category: "Friends & Casual", english: "Want to watch a movie?", german: "Willst du einen Film schauen?", pronunciation: "vilst doo EYE-nen film SHOW-en" },
-  { id: 1056, category: "Friends & Casual", english: "I'll be there in ten minutes.", german: "Ich bin in zehn Minuten da.", pronunciation: "ikh bin in tsayn mi-NOO-ten dah" },
   { id: 1057, category: "Friends & Casual", english: "I'm running a bit late.", german: "Ich komme ein bisschen zu spät.", pronunciation: "ikh KOM-eh ine BISS-khen tsoo shpayt" },
   { id: 1058, category: "Friends & Casual", english: "No worries, take your time.", german: "Kein Stress, lass dir Zeit.", pronunciation: "kine shtres, lahs deer tsyt" },
   { id: 1059, category: "Friends & Casual", english: "That was so funny!", german: "Das war so lustig!", pronunciation: "dahs vahr zoh LOOS-tikh" },
@@ -2432,17 +479,10 @@ const sentences = [
   { id: 1098, category: "Friends & Casual", english: "I'll transfer you the money.", german: "Ich überweise dir das Geld.", pronunciation: "ikh OO-ber-vy-zeh deer dahs gelt" },
   { id: 1099, category: "Friends & Casual", english: "Are you coming to the party?", german: "Kommst du zur Party?", pronunciation: "komst doo tsoor PAR-tee" },
   { id: 1100, category: "Friends & Casual", english: "Wouldn't miss it for the world.", german: "Um nichts in der Welt würde ich das verpassen.", pronunciation: "oom nikhts in dehr velt VOOR-deh ikh dahs fehr-PAHS-sen" },
-
-  // ─── Travel & Directions (extended) ─────────────────────────────────────
-  { id: 1101, category: "Travel & Directions", english: "Where is the train station?", german: "Wo ist der Bahnhof?", pronunciation: "voh ist dehr BAHN-hohf" },
-  { id: 1102, category: "Travel & Directions", english: "How far is it from here?", german: "Wie weit ist es von hier?", pronunciation: "vee vyte ist es fon heer" },
   { id: 1103, category: "Travel & Directions", english: "Turn left at the traffic lights.", german: "Biegen Sie bei der Ampel links ab.", pronunciation: "BEE-gen zee by dehr AHM-pel links ahp" },
   { id: 1104, category: "Travel & Directions", english: "Turn right at the corner.", german: "Biegen Sie an der Ecke rechts ab.", pronunciation: "BEE-gen zee ahn dehr EK-eh rekhts ahp" },
   { id: 1105, category: "Travel & Directions", english: "Go straight ahead.", german: "Gehen Sie geradeaus.", pronunciation: "GAY-en zee geh-RAH-deh-owss" },
   { id: 1106, category: "Travel & Directions", english: "Is there a bus stop nearby?", german: "Gibt es eine Bushaltestelle in der Nähe?", pronunciation: "gipt es EYE-neh BOOS-hahl-teh-shtel-eh in dehr NAY-eh" },
-  { id: 1107, category: "Travel & Directions", english: "Which platform does it leave from?", german: "Von welchem Gleis fährt der Zug ab?", pronunciation: "fon VEL-khem glice fehrt dehr tsook ahp" },
-  { id: 1108, category: "Travel & Directions", english: "I'd like a window seat, please.", german: "Ich hätte gerne einen Fensterplatz.", pronunciation: "ikh HET-eh GEHR-neh EYE-nen FEN-ster-plahts" },
-  { id: 1109, category: "Travel & Directions", english: "Is this seat taken?", german: "Ist dieser Platz besetzt?", pronunciation: "ist DEE-zer plahts beh-ZETST" },
   { id: 1110, category: "Travel & Directions", english: "I need to check in my luggage.", german: "Ich muss mein Gepäck aufgeben.", pronunciation: "ikh mooss mine geh-PEK OWF-gay-ben" },
   { id: 1111, category: "Travel & Directions", english: "My flight has been delayed.", german: "Mein Flug hat sich verspätet.", pronunciation: "mine floog haht zikh fehr-SHPAY-tet" },
   { id: 1112, category: "Travel & Directions", english: "Where is the baggage claim?", german: "Wo ist die Gepäckausgabe?", pronunciation: "voh ist dee geh-PEK-owss-gah-beh" },
@@ -2478,17 +518,11 @@ const sentences = [
   { id: 1142, category: "Travel & Directions", english: "I need to change money.", german: "Ich muss Geld wechseln.", pronunciation: "ikh mooss gelt VEK-seln" },
   { id: 1143, category: "Travel & Directions", english: "Where is the nearest ATM?", german: "Wo ist der nächste Geldautomat?", pronunciation: "voh ist dehr NEKHS-teh GELT-ow-toh-maht" },
   { id: 1144, category: "Travel & Directions", english: "What's the weather forecast?", german: "Wie ist die Wettervorhersage?", pronunciation: "vee ist dee VET-ter-for-hehr-zah-geh" },
-  { id: 1145, category: "Travel & Directions", english: "Do I need a visa?", german: "Brauche ich ein Visum?", pronunciation: "BROW-kheh ikh ine VEE-zoom" },
   { id: 1146, category: "Travel & Directions", english: "My passport is in the safe.", german: "Mein Reisepass ist im Safe.", pronunciation: "mine RY-zeh-pahs ist im sayf" },
   { id: 1147, category: "Travel & Directions", english: "Is there a direct train?", german: "Gibt es einen Direktzug?", pronunciation: "gipt es EYE-nen di-REKT-tsook" },
   { id: 1148, category: "Travel & Directions", english: "I'd like to upgrade my seat.", german: "Ich möchte meinen Platz upgraden.", pronunciation: "ikh MURK-teh MY-nen plahts UP-gray-den" },
   { id: 1149, category: "Travel & Directions", english: "The taxi rank is outside.", german: "Der Taxistand ist draußen.", pronunciation: "dehr TAHK-si-shtahnt ist DROW-ssen" },
-  { id: 1150, category: "Travel & Directions", english: "How long is the journey?", german: "Wie lange dauert die Fahrt?", pronunciation: "vee LAHNG-eh DOW-ert dee fahrt" },
-
-  // ─── Shopping (extended) ──────────────────────────────────────────────────
-  { id: 1151, category: "Shopping", english: "Do you have this in a larger size?", german: "Haben Sie das in einer größeren Größe?", pronunciation: "HAH-ben zee dahs in EYE-ner GRUR-sseh-ren GRUR-seh" },
   { id: 1152, category: "Shopping", english: "Do you have this in a smaller size?", german: "Haben Sie das in einer kleineren Größe?", pronunciation: "HAH-ben zee dahs in EYE-ner KLY-neh-ren GRUR-seh" },
-  { id: 1153, category: "Shopping", english: "Can I try this on?", german: "Kann ich das anprobieren?", pronunciation: "kahn ikh dahs AHN-proh-bee-ren" },
   { id: 1154, category: "Shopping", english: "Where are the fitting rooms?", german: "Wo sind die Umkleidekabinen?", pronunciation: "voh zint dee OOM-kly-deh-kah-bee-nen" },
   { id: 1155, category: "Shopping", english: "It doesn't fit me.", german: "Es passt mir nicht.", pronunciation: "es pahst meer nikht" },
   { id: 1156, category: "Shopping", english: "It fits perfectly.", german: "Es passt perfekt.", pronunciation: "es pahst pehr-FEKT" },
@@ -2496,27 +530,22 @@ const sentences = [
   { id: 1158, category: "Shopping", english: "I'll leave it, thank you.", german: "Ich lasse es, danke.", pronunciation: "ikh LAHS-seh es, DAHN-keh" },
   { id: 1159, category: "Shopping", english: "Do you accept credit cards?", german: "Nehmen Sie Kreditkarten?", pronunciation: "NAY-men zee kreh-DEET-kahr-ten" },
   { id: 1160, category: "Shopping", english: "I'd prefer to pay cash.", german: "Ich zahle lieber bar.", pronunciation: "ikh TSAH-leh LEE-ber bahr" },
-  { id: 1161, category: "Shopping", english: "Is there a sale on?", german: "Gibt es gerade einen Ausverkauf?", pronunciation: "gipt es geh-RAH-deh EYE-nen OWS-fehr-kowf" },
   { id: 1162, category: "Shopping", english: "What is the discount?", german: "Wie hoch ist der Rabatt?", pronunciation: "vee hohkh ist dehr rah-BAHT" },
   { id: 1163, category: "Shopping", english: "Can I get a receipt, please?", german: "Kann ich bitte einen Kassenbon bekommen?", pronunciation: "kahn ikh BIT-eh EYE-nen KAHS-sen-bon beh-KOM-en" },
-  { id: 1164, category: "Shopping", english: "I'd like to return this item.", german: "Ich möchte diesen Artikel zurückgeben.", pronunciation: "ikh MURK-teh DEE-zen ar-TEE-kel tsoo-ROOK-gay-ben" },
   { id: 1165, category: "Shopping", english: "This is defective.", german: "Das ist defekt.", pronunciation: "dahs ist deh-FEKT" },
   { id: 1166, category: "Shopping", english: "I'd like an exchange.", german: "Ich möchte es umtauschen.", pronunciation: "ikh MURK-teh es OOM-tow-shen" },
   { id: 1167, category: "Shopping", english: "Where is the checkout?", german: "Wo ist die Kasse?", pronunciation: "voh ist dee KAHS-seh" },
   { id: 1168, category: "Shopping", english: "Can I have a bag?", german: "Kann ich eine Tüte haben?", pronunciation: "kahn ikh EYE-neh TOO-teh HAH-ben" },
   { id: 1169, category: "Shopping", english: "Is gift wrapping available?", german: "Bieten Sie Geschenkverpackung an?", pronunciation: "BEE-ten zee geh-SHENK-fehr-pah-koong ahn" },
   { id: 1170, category: "Shopping", english: "What's your return policy?", german: "Was sind Ihre Rückgabebedingungen?", pronunciation: "vahs zint EE-reh ROOK-gah-beh-beh-ding-oong-en" },
-  { id: 1171, category: "Shopping", english: "I'm looking for a birthday gift.", german: "Ich suche ein Geburtstagsgeschenk.", pronunciation: "ikh ZOO-kheh ine geh-BOORTS-tahks-geh-shenk" },
   { id: 1172, category: "Shopping", english: "Do you have this in black?", german: "Haben Sie das in Schwarz?", pronunciation: "HAH-ben zee dahs in shvarts" },
   { id: 1173, category: "Shopping", english: "What colours does it come in?", german: "In welchen Farben gibt es das?", pronunciation: "in VEL-khen FAR-ben gipt es dahs" },
   { id: 1174, category: "Shopping", english: "Is this hand-made?", german: "Ist das handgemacht?", pronunciation: "ist dahs HAHNT-geh-mahkht" },
   { id: 1175, category: "Shopping", english: "What material is this made of?", german: "Aus welchem Material ist das gemacht?", pronunciation: "owss VEL-khem mah-teh-ree-AHL ist dahs geh-MAHKHT" },
   { id: 1176, category: "Shopping", english: "Is this genuine leather?", german: "Ist das echtes Leder?", pronunciation: "ist dahs EKH-tes LAY-der" },
-  { id: 1177, category: "Shopping", english: "I'm just browsing, thank you.", german: "Ich schaue mich nur um, danke.", pronunciation: "ikh SHOW-eh mikh noor oom, DAHN-keh" },
   { id: 1178, category: "Shopping", english: "Can you help me find something?", german: "Können Sie mir helfen, etwas zu finden?", pronunciation: "KUR-nen zee meer HEL-fen, ET-vahs tsoo FIN-den" },
   { id: 1179, category: "Shopping", english: "I'm looking for the electronics section.", german: "Ich suche die Elektronikabteilung.", pronunciation: "ikh ZOO-kheh dee eh-lek-TROH-nik-ahp-ty-loong" },
   { id: 1180, category: "Shopping", english: "How much is this altogether?", german: "Wie viel kostet das insgesamt?", pronunciation: "vee feel KOS-tet dahs INS-geh-zahmt" },
-  { id: 1181, category: "Shopping", english: "Do you have a loyalty card?", german: "Haben Sie eine Kundenkarte?", pronunciation: "HAH-ben zee EYE-neh KOON-den-kahr-teh" },
   { id: 1182, category: "Shopping", english: "I'd like to order this online.", german: "Ich möchte das online bestellen.", pronunciation: "ikh MURK-teh dahs ON-line beh-SHTEL-en" },
   { id: 1183, category: "Shopping", english: "When will it be delivered?", german: "Wann wird es geliefert?", pronunciation: "vahn virt es geh-LEE-fert" },
   { id: 1184, category: "Shopping", english: "Is free delivery available?", german: "Gibt es kostenlosen Versand?", pronunciation: "gipt es KOS-ten-loh-zen fehr-ZAHNT" },
@@ -2524,7 +553,6 @@ const sentences = [
   { id: 1186, category: "Shopping", english: "I'll come back later to pick it up.", german: "Ich komme später, um es abzuholen.", pronunciation: "ikh KOM-eh SHPAY-ter, oom es AHP-tsoo-hoh-len" },
   { id: 1187, category: "Shopping", english: "This is too expensive for me.", german: "Das ist mir zu teuer.", pronunciation: "dahs ist meer tsoo TOY-er" },
   { id: 1188, category: "Shopping", english: "Is there a cheaper option?", german: "Gibt es eine günstigere Option?", pronunciation: "gipt es EYE-neh GOONS-ti-geh-reh op-TSYOHN" },
-  { id: 1189, category: "Shopping", english: "I'll think about it.", german: "Ich überlege es mir.", pronunciation: "ikh OO-ber-lay-geh es meer" },
   { id: 1190, category: "Shopping", english: "Do you do price matching?", german: "Bieten Sie Preisanpassung an?", pronunciation: "BEE-ten zee PRYCE-ahn-pahs-oong ahn" },
   { id: 1191, category: "Shopping", english: "Is there a warranty?", german: "Gibt es eine Garantie?", pronunciation: "gipt es EYE-neh gah-rahn-TEE" },
   { id: 1192, category: "Shopping", english: "The warranty is two years.", german: "Die Garantie beträgt zwei Jahre.", pronunciation: "dee gah-rahn-TEE beh-TREKT tsvy YAH-reh" },
@@ -2536,8 +564,6 @@ const sentences = [
   { id: 1198, category: "Shopping", english: "Can you order it for me?", german: "Können Sie es für mich bestellen?", pronunciation: "KUR-nen zee es fyur mikh beh-SHTEL-en" },
   { id: 1199, category: "Shopping", english: "I'd like two of these.", german: "Ich hätte gerne zwei davon.", pronunciation: "ikh HET-eh GEHR-neh tsvy dah-FON" },
   { id: 1200, category: "Shopping", english: "Keep the change.", german: "Stimmt so.", pronunciation: "shtimt zoh" },
-
-  // ─── Restaurants & Food (extended) ────────────────────────────────────────
   { id: 1201, category: "Restaurants & Food", english: "I'd like to make a reservation for two.", german: "Ich möchte einen Tisch für zwei reservieren.", pronunciation: "ikh MURK-teh EYE-nen tish fyur tsvy reh-zer-VEER-en" },
   { id: 1202, category: "Restaurants & Food", english: "We have a reservation under Schmidt.", german: "Wir haben eine Reservierung auf den Namen Schmidt.", pronunciation: "veer HAH-ben EYE-neh reh-zer-VEER-oong owf dayn NAH-men shmit" },
   { id: 1203, category: "Restaurants & Food", english: "Do you have a table for four?", german: "Haben Sie einen Tisch für vier?", pronunciation: "HAH-ben zee EYE-nen tish fyur feer" },
@@ -2545,12 +571,9 @@ const sentences = [
   { id: 1205, category: "Restaurants & Food", english: "Could we have some water please?", german: "Könnten wir bitte Wasser haben?", pronunciation: "KUR-ten veer BIT-eh VAHS-ser HAH-ben" },
   { id: 1206, category: "Restaurants & Food", english: "Sparkling or still water?", german: "Sprudelwasser oder stilles Wasser?", pronunciation: "SHPROO-del-vahs-ser OH-der SHTIL-es VAHS-ser" },
   { id: 1207, category: "Restaurants & Food", english: "I'll have the steak, medium rare.", german: "Ich nehme das Steak, medium rare.", pronunciation: "ikh NAY-meh dahs stayk, MEE-dee-oom rehr" },
-  { id: 1208, category: "Restaurants & Food", english: "What do you recommend?", german: "Was empfehlen Sie?", pronunciation: "vahs emp-FAY-len zee" },
   { id: 1209, category: "Restaurants & Food", english: "What's the daily special?", german: "Was ist das Tagesgericht?", pronunciation: "vahs ist dahs TAH-ges-geh-rikht" },
   { id: 1210, category: "Restaurants & Food", english: "Is there anything without meat?", german: "Gibt es etwas ohne Fleisch?", pronunciation: "gipt es ET-vahs OH-neh flysh" },
-  { id: 1211, category: "Restaurants & Food", english: "I have a nut allergy.", german: "Ich bin allergisch gegen Nüsse.", pronunciation: "ikh bin ah-LEHR-gish GAY-gen NOOS-seh" },
   { id: 1212, category: "Restaurants & Food", english: "I'm vegan.", german: "Ich bin Veganer.", pronunciation: "ikh bin veh-GAH-ner" },
-  { id: 1213, category: "Restaurants & Food", english: "Does this contain gluten?", german: "Enthält das Gluten?", pronunciation: "ent-HELT dahs gloo-TAYN" },
   { id: 1214, category: "Restaurants & Food", english: "Can you make it less salty?", german: "Können Sie es weniger salzig machen?", pronunciation: "KUR-nen zee es VAY-ni-ger ZAHLT-sikh MAHKH-en" },
   { id: 1215, category: "Restaurants & Food", english: "No onions please.", german: "Keine Zwiebeln bitte.", pronunciation: "KY-neh TSVEE-beln BIT-eh" },
   { id: 1216, category: "Restaurants & Food", english: "Another round of drinks please.", german: "Noch eine Runde Getränke bitte.", pronunciation: "nokh EYE-neh ROON-deh geh-TRENK-eh BIT-eh" },
@@ -2588,8 +611,6 @@ const sentences = [
   { id: 1248, category: "Restaurants & Food", english: "Smoking or non-smoking section?", german: "Raucher- oder Nichtraucherbereich?", pronunciation: "ROW-kher OH-der NIKHT-row-kher-beh-rysh" },
   { id: 1249, category: "Restaurants & Food", english: "Could you bring a highchair?", german: "Könnten Sie einen Hochstuhl bringen?", pronunciation: "KUR-ten zee EYE-nen HOHKH-shtool BRING-en" },
   { id: 1250, category: "Restaurants & Food", english: "This is exactly what I wanted.", german: "Das ist genau das, was ich wollte.", pronunciation: "dahs ist geh-NOW dahs, vahs ikh VOL-teh" },
-
-  // ─── Health & Medical (extended) ──────────────────────────────────────────
   { id: 1301, category: "Health & Medical", english: "I need to see a dentist.", german: "Ich muss zum Zahnarzt.", pronunciation: "ikh mooss tsom TSAHN-artst" },
   { id: 1302, category: "Health & Medical", english: "I have a toothache.", german: "Ich habe Zahnschmerzen.", pronunciation: "ikh HAH-beh TSAHN-shmehr-tsen" },
   { id: 1303, category: "Health & Medical", english: "I broke a tooth.", german: "Ich habe mir einen Zahn gebrochen.", pronunciation: "ikh HAH-beh meer EYE-nen tsahn geh-BROH-khen" },
@@ -2622,8 +643,6 @@ const sentences = [
   { id: 1330, category: "Health & Medical", english: "I'd like to be referred to a hospital.", german: "Ich möchte ins Krankenhaus überwiesen werden.", pronunciation: "ikh MURK-teh ins KRAHN-ken-howss OO-ber-vee-zen VEHR-den" },
   { id: 1331, category: "Health & Medical", english: "I take vitamins daily.", german: "Ich nehme täglich Vitamine.", pronunciation: "ikh NAY-meh TEG-likh vi-tah-MEE-neh" },
   { id: 1332, category: "Health & Medical", english: "I want to quit smoking.", german: "Ich möchte mit dem Rauchen aufhören.", pronunciation: "ikh MURK-teh mit daym ROW-khen OWF-hur-en" },
-
-  // ─── Emergency (extended) ─────────────────────────────────────────────────
   { id: 1401, category: "Emergency", english: "Watch out!", german: "Vorsicht!", pronunciation: "FOR-zikht" },
   { id: 1402, category: "Emergency", english: "Get out of the way!", german: "Gehen Sie aus dem Weg!", pronunciation: "GAY-en zee owss daym vayk" },
   { id: 1403, category: "Emergency", english: "I need to call the police.", german: "Ich muss die Polizei rufen.", pronunciation: "ikh mooss dee poh-lee-TSYE ROO-fen" },
@@ -2656,8 +675,6 @@ const sentences = [
   { id: 1430, category: "Emergency", english: "Don't move him.", german: "Bewegen Sie ihn nicht.", pronunciation: "beh-VAY-gen zee een nikht" },
   { id: 1431, category: "Emergency", english: "Apply pressure to the wound.", german: "Drücken Sie auf die Wunde.", pronunciation: "DROO-ken zee owf dee VOON-deh" },
   { id: 1432, category: "Emergency", english: "Keep him warm until help arrives.", german: "Halten Sie ihn warm, bis Hilfe kommt.", pronunciation: "HAHL-ten zee een vahrm, biss HIL-feh komt" },
-
-  // ─── Family (extended) ────────────────────────────────────────────────────
   { id: 1501, category: "Family", english: "How many siblings do you have?", german: "Wie viele Geschwister haben Sie?", pronunciation: "vee FEE-leh geh-SHVIS-ter HAH-ben zee" },
   { id: 1502, category: "Family", english: "I have two sisters and one brother.", german: "Ich habe zwei Schwestern und einen Bruder.", pronunciation: "ikh HAH-beh tsvy SHVES-tern oont EYE-nen BROO-der" },
   { id: 1503, category: "Family", english: "My parents got married in 1985.", german: "Meine Eltern haben 1985 geheiratet.", pronunciation: "MY-neh EL-tern HAH-ben NOYNtsayn-FOONF-oont-AHKH-tsikh geh-HY-rah-tet" },
@@ -2690,8 +707,6 @@ const sentences = [
   { id: 1530, category: "Family", english: "My twin sister lives in Canada.", german: "Meine Zwillingsschwester lebt in Kanada.", pronunciation: "MY-neh TSVIL-ings-shves-ter laybt in KAH-nah-dah" },
   { id: 1531, category: "Family", english: "We just welcomed our second child.", german: "Wir haben unser zweites Kind bekommen.", pronunciation: "veer HAH-ben OON-zer TSVY-tes kint beh-KOM-en" },
   { id: 1532, category: "Family", english: "He takes after his father.", german: "Er kommt nach seinem Vater.", pronunciation: "ehr komt nahkh ZY-nem FAH-ter" },
-
-  // ─── Dating & Romance (extended) ──────────────────────────────────────────
   { id: 1601, category: "Dating & Romance", english: "I find you very attractive.", german: "Ich finde dich sehr attraktiv.", pronunciation: "ikh FIN-deh dikh zayr ah-trahk-TEEF" },
   { id: 1602, category: "Dating & Romance", english: "You have beautiful eyes.", german: "Du hast wunderschöne Augen.", pronunciation: "doo hahst VOON-der-shur-neh OW-gen" },
   { id: 1603, category: "Dating & Romance", english: "I've never felt this way before.", german: "Ich habe mich noch nie so gefühlt.", pronunciation: "ikh HAH-beh mikh nokh nee zoh geh-FOOLT" },
@@ -2724,8 +739,6 @@ const sentences = [
   { id: 1630, category: "Dating & Romance", english: "I'd love to travel the world with you.", german: "Ich würde gerne die Welt mit dir bereisen.", pronunciation: "ikh VOOR-deh GEHR-neh dee velt mit deer beh-RY-zen" },
   { id: 1631, category: "Dating & Romance", english: "You're the first thing I think of every morning.", german: "Du bist das Erste, woran ich jeden Morgen denke.", pronunciation: "doo bist dahs EHR-steh, voh-RAHN ikh YAY-den MOR-gen DEN-keh" },
   { id: 1632, category: "Dating & Romance", english: "I love you just the way you are.", german: "Ich liebe dich so, wie du bist.", pronunciation: "ikh LEE-beh dikh zoh, vee doo bist" },
-
-  // ─── Additional cross-category fill ───────────────────────────────────────
   { id: 1700, category: "Greetings & Small Talk", english: "What time is it?", german: "Wie viel Uhr ist es?", pronunciation: "vee feel oor ist es" },
   { id: 1701, category: "Greetings & Small Talk", english: "It's half past three.", german: "Es ist halb vier.", pronunciation: "es ist hahlp feer" },
   { id: 1702, category: "Greetings & Small Talk", english: "I'll be right back.", german: "Ich komme gleich zurück.", pronunciation: "ikh KOM-eh glysh tsoo-ROOK" },
@@ -2739,9 +752,7 @@ const sentences = [
   { id: 1710, category: "Friends & Casual", english: "That's hilarious!", german: "Das ist zum Brüllen!", pronunciation: "dahs ist tsom BROOL-en" },
   { id: 1711, category: "Friends & Casual", english: "I'm so proud of you.", german: "Ich bin so stolz auf dich.", pronunciation: "ikh bin zoh shtolts owf dikh" },
   { id: 1712, category: "Friends & Casual", english: "You always know what to say.", german: "Du weißt immer, was du sagen sollst.", pronunciation: "doo vyste IM-er, vahs doo ZAH-gen zolst" },
-  { id: 1713, category: "Friends & Casual", english: "We should do this more often.", german: "Das sollten wir öfter machen.", pronunciation: "dahs ZOL-ten veer UHF-ter MAHKH-en" },
   { id: 1714, category: "Friends & Casual", english: "I'm always here for you.", german: "Ich bin immer für dich da.", pronunciation: "ikh bin IM-er fyur dikh dah" },
-  { id: 1715, category: "Travel & Directions", english: "Could you call me a taxi?", german: "Könnten Sie mir ein Taxi rufen?", pronunciation: "KUR-ten zee meer ine TAHK-si ROO-fen" },
   { id: 1716, category: "Travel & Directions", english: "How much to the airport?", german: "Wie viel kostet es zum Flughafen?", pronunciation: "vee feel KOS-tet es tsom FLOOK-hah-fen" },
   { id: 1717, category: "Travel & Directions", english: "I'd like to extend my stay.", german: "Ich möchte meinen Aufenthalt verlängern.", pronunciation: "ikh MURK-teh MY-nen OWF-ent-hahlt fehr-LENG-ern" },
   { id: 1718, category: "Travel & Directions", english: "Is breakfast included?", german: "Ist Frühstück inklusive?", pronunciation: "ist FROO-shtook in-kloo-ZEE-veh" },
@@ -2827,8 +838,6 @@ const sentences = [
   { id: 1798, category: "Dating & Romance", english: "You light up my world.", german: "Du erhellst meine Welt.", pronunciation: "doo ehr-HELIST MY-neh velt" },
   { id: 1799, category: "Dating & Romance", english: "Every moment with you is precious.", german: "Jeder Augenblick mit dir ist kostbar.", pronunciation: "YAY-der OW-gen-blik mit deer ist KOST-bahr" },
   { id: 1800, category: "Dating & Romance", english: "You are my home.", german: "Du bist mein Zuhause.", pronunciation: "doo bist mine TSOO-how-zeh" },
-
-  // ─── Greetings & Small Talk (batch 3) ────────────────────────────────────
   { id: 1801, category: "Greetings & Small Talk", english: "How is your family?", german: "Wie geht es Ihrer Familie?", pronunciation: "vee gayt es EE-rer fah-MEE-lee-eh" },
   { id: 1802, category: "Greetings & Small Talk", english: "Give my best to your husband.", german: "Viele Grüße an Ihren Mann.", pronunciation: "FEE-leh GROO-seh ahn EE-ren mahn" },
   { id: 1803, category: "Greetings & Small Talk", english: "I heard you moved.", german: "Ich habe gehört, Sie sind umgezogen.", pronunciation: "ikh HAH-beh geh-HURT, zee zint OOM-geh-tsoh-gen" },
@@ -2869,8 +878,6 @@ const sentences = [
   { id: 1838, category: "Greetings & Small Talk", english: "Don't be a stranger.", german: "Komm uns mal wieder besuchen.", pronunciation: "kom oons mahl VEE-der beh-ZOO-khen" },
   { id: 1839, category: "Greetings & Small Talk", english: "Take good care of yourself!", german: "Pass gut auf dich auf!", pronunciation: "pahs goot owf dikh owf" },
   { id: 1840, category: "Greetings & Small Talk", english: "Have a safe trip!", german: "Gute Reise!", pronunciation: "GOO-teh RY-zeh" },
-
-  // ─── Work & Professional (batch 3) ────────────────────────────────────────
   { id: 1841, category: "Work & Professional", english: "The office is on the fourth floor.", german: "Das Büro ist im vierten Stockwerk.", pronunciation: "dahs BOO-roh ist im FEER-ten SHTOK-vehrk" },
   { id: 1842, category: "Work & Professional", english: "We have an open-plan office.", german: "Wir haben ein Großraumbüro.", pronunciation: "veer HAH-ben ine GROHS-rowm-boo-roh" },
   { id: 1843, category: "Work & Professional", english: "I work from home three days a week.", german: "Ich arbeite drei Tage pro Woche von zu Hause.", pronunciation: "ikh AR-by-teh dry TAH-geh proh VOH-kheh fon tsoo HOW-zeh" },
@@ -2895,14 +902,11 @@ const sentences = [
   { id: 1862, category: "Work & Professional", english: "I have a performance review today.", german: "Ich habe heute mein Mitarbeitergespräch.", pronunciation: "ikh HAH-beh HOY-teh mine MIT-ar-by-ter-geh-shprech" },
   { id: 1863, category: "Work & Professional", english: "I'd like a transfer to another department.", german: "Ich möchte in eine andere Abteilung wechseln.", pronunciation: "ikh MURK-teh in EYE-neh AHN-deh-reh AHP-ty-loong VEK-seln" },
   { id: 1864, category: "Work & Professional", english: "Is there a staff cafeteria?", german: "Gibt es eine Mitarbeiterkantine?", pronunciation: "gipt es EYE-neh MIT-ar-by-ter-kahn-tee-neh" },
-  { id: 1865, category: "Work & Professional", english: "I'd like to apply for this position.", german: "Ich möchte mich für diese Stelle bewerben.", pronunciation: "ikh MURK-teh mikh fyur DEE-zeh SHTEL-eh beh-VEHR-ben" },
   { id: 1866, category: "Work & Professional", english: "My notice period is three months.", german: "Meine Kündigungsfrist beträgt drei Monate.", pronunciation: "MY-neh KOON-di-goongs-frist beh-TREKT dry MOH-nah-teh" },
   { id: 1867, category: "Work & Professional", english: "Do you offer flexible working hours?", german: "Bieten Sie flexible Arbeitszeiten an?", pronunciation: "BEE-ten zee FLEK-si-bleh AR-bytes-tsy-ten ahn" },
   { id: 1868, category: "Work & Professional", english: "I work shifts at the hospital.", german: "Ich arbeite im Krankenhaus in Schichten.", pronunciation: "ikh AR-by-teh im KRAHN-ken-howss in SHIKH-ten" },
   { id: 1869, category: "Work & Professional", english: "Overtime is paid at a higher rate.", german: "Überstunden werden höher vergütet.", pronunciation: "OO-ber-shtoond-en VEHR-den HUR-er fehr-GOO-tet" },
   { id: 1870, category: "Work & Professional", english: "I was offered a bonus.", german: "Mir wurde ein Bonus angeboten.", pronunciation: "meer VOOR-deh ine BOH-noos AHN-geh-boh-ten" },
-
-  // ─── Friends & Casual (batch 3) ───────────────────────────────────────────
   { id: 1871, category: "Friends & Casual", english: "What did you do last night?", german: "Was hast du gestern Abend gemacht?", pronunciation: "vahs hahst doo GES-tern AH-bent geh-MAHKHT" },
   { id: 1872, category: "Friends & Casual", english: "I went to a concert.", german: "Ich war auf einem Konzert.", pronunciation: "ikh vahr owf EYE-nem kon-TSEHRT" },
   { id: 1873, category: "Friends & Casual", english: "How was the concert?", german: "Wie war das Konzert?", pronunciation: "vee vahr dahs kon-TSEHRT" },
@@ -2933,8 +937,6 @@ const sentences = [
   { id: 1898, category: "Friends & Casual", english: "Have you tried that new restaurant?", german: "Hast du das neue Restaurant ausprobiert?", pronunciation: "hahst doo dahs NOY-eh res-toh-RAHNG OWS-proh-beert" },
   { id: 1899, category: "Friends & Casual", english: "The food there is to die for.", german: "Das Essen dort ist zum Sterben gut.", pronunciation: "dahs ES-sen dort ist tsom SHTER-ben goot" },
   { id: 1900, category: "Friends & Casual", english: "Let's definitely go there together.", german: "Da müssen wir unbedingt zusammen hingehen.", pronunciation: "dah MOOS-sen veer oon-beh-DINGKT tsoo-ZAH-men HIN-gay-en" },
-
-  // ─── Travel & Directions (batch 3) ───────────────────────────────────────
   { id: 1901, category: "Travel & Directions", english: "I'd like a single room.", german: "Ich möchte ein Einzelzimmer.", pronunciation: "ikh MURK-teh ine EIN-tsel-tsim-er" },
   { id: 1902, category: "Travel & Directions", english: "Do you have a double room available?", german: "Haben Sie ein Doppelzimmer frei?", pronunciation: "HAH-ben zee ine DOP-el-tsim-er fry" },
   { id: 1903, category: "Travel & Directions", english: "What time is check-in?", german: "Um wie viel Uhr ist der Check-in?", pronunciation: "oom vee feel oor ist dehr CHEK-in" },
@@ -2965,8 +967,6 @@ const sentences = [
   { id: 1928, category: "Travel & Directions", english: "I'd like to visit the old town.", german: "Ich möchte die Altstadt besuchen.", pronunciation: "ikh MURK-teh dee AHLT-shtaht beh-ZOO-khen" },
   { id: 1929, category: "Travel & Directions", english: "Is there a guided tour available?", german: "Gibt es eine geführte Tour?", pronunciation: "gipt es EYE-neh geh-FYOOR-teh toor" },
   { id: 1930, category: "Travel & Directions", english: "I'd like a souvenir of this place.", german: "Ich möchte ein Souvenir von diesem Ort.", pronunciation: "ikh MURK-teh ine zoo-veh-NEER fon DEE-zem ort" },
-
-  // ─── Shopping (batch 3) ───────────────────────────────────────────────────
   { id: 1931, category: "Shopping", english: "What floor is the clothing department on?", german: "In welchem Stockwerk ist die Kleiderabteilung?", pronunciation: "in VEL-khem SHTOK-vehrk ist dee KLY-der-ahp-ty-loong" },
   { id: 1932, category: "Shopping", english: "Is there a lift to get upstairs?", german: "Gibt es einen Aufzug nach oben?", pronunciation: "gipt es EYE-nen OWF-tsook nahkh OH-ben" },
   { id: 1933, category: "Shopping", english: "Where is the toy section?", german: "Wo ist die Spielzeugabteilung?", pronunciation: "voh ist dee SHPEEL-tsoyg-ahp-ty-loong" },
@@ -2997,8 +997,6 @@ const sentences = [
   { id: 1958, category: "Shopping", english: "This was a gift, do you have the receipt?", german: "Das war ein Geschenk, haben Sie den Kassenbon?", pronunciation: "dahs vahr ine geh-SHENK, HAH-ben zee dayn KAHS-sen-bon" },
   { id: 1959, category: "Shopping", english: "Can I exchange it without a receipt?", german: "Kann ich es ohne Kassenbon umtauschen?", pronunciation: "kahn ikh es OH-neh KAHS-sen-bon OOM-tow-shen" },
   { id: 1960, category: "Shopping", english: "Thank you, have a great day!", german: "Danke, einen schönen Tag noch!", pronunciation: "DAHN-keh, EYE-nen SHUR-nen tahk nokh" },
-
-  // ─── Restaurants & Food (batch 3) ─────────────────────────────────────────
   { id: 1961, category: "Restaurants & Food", english: "What's good here?", german: "Was ist hier gut?", pronunciation: "vahs ist heer goot" },
   { id: 1962, category: "Restaurants & Food", english: "The locals all eat here.", german: "Die Einheimischen essen alle hier.", pronunciation: "dee INE-hy-mi-shen ES-sen AL-eh heer" },
   { id: 1963, category: "Restaurants & Food", english: "I'd like a table outside.", german: "Ich möchte einen Tisch draußen.", pronunciation: "ikh MURK-teh EYE-nen tish DROW-ssen" },
@@ -3029,8 +1027,6 @@ const sentences = [
   { id: 1988, category: "Restaurants & Food", english: "I'll have the same as last time.", german: "Ich nehme dasselbe wie letztes Mal.", pronunciation: "ikh NAY-meh dahs-ZEL-beh vee LETS-tes mahl" },
   { id: 1989, category: "Restaurants & Food", english: "The atmosphere here is lovely.", german: "Die Atmosphäre hier ist wunderbar.", pronunciation: "dee aht-moh-SFEH-reh heer ist VOON-der-bahr" },
   { id: 1990, category: "Restaurants & Food", english: "We'll definitely recommend this place.", german: "Wir werden diesen Ort auf jeden Fall weiterempfehlen.", pronunciation: "veer VEHR-den DEE-zen ort owf YAY-den fahl VY-ter-emp-fay-len" },
-
-  // ─── Health & Medical (batch 3) ───────────────────────────────────────────
   { id: 2001, category: "Health & Medical", english: "I have hay fever.", german: "Ich habe Heuschnupfen.", pronunciation: "ikh HAH-beh HOY-shnoop-fen" },
   { id: 2002, category: "Health & Medical", english: "I'm allergic to cats.", german: "Ich bin allergisch gegen Katzen.", pronunciation: "ikh bin ah-LEHR-gish GAY-gen KAHT-tsen" },
   { id: 2003, category: "Health & Medical", english: "My eyes are itchy.", german: "Meine Augen jucken.", pronunciation: "MY-neh OW-gen YOO-ken" },
@@ -3061,13 +1057,10 @@ const sentences = [
   { id: 2028, category: "Health & Medical", english: "My baby has a fever.", german: "Mein Baby hat Fieber.", pronunciation: "mine BAY-bee haht FEE-ber" },
   { id: 2029, category: "Health & Medical", english: "I need my vaccinations updated.", german: "Ich muss meine Impfungen auffrischen.", pronunciation: "ikh mooss MY-neh IMP-foong-en OWF-fri-shen" },
   { id: 2030, category: "Health & Medical", english: "How many times a day should I apply this cream?", german: "Wie oft täglich soll ich diese Creme auftragen?", pronunciation: "vee oft TEG-likh zol ikh DEE-zeh kraym OWF-trah-gen" },
-
-  // ─── Emergency (batch 3) ──────────────────────────────────────────────────
   { id: 2031, category: "Emergency", english: "I'm locked out of my house.", german: "Ich bin ausgesperrt.", pronunciation: "ikh bin OWS-geh-shpehrt" },
   { id: 2032, category: "Emergency", english: "I smell gas.", german: "Ich rieche Gas.", pronunciation: "ikh REE-kheh gahs" },
   { id: 2033, category: "Emergency", english: "There's been an explosion nearby.", german: "In der Nähe gab es eine Explosion.", pronunciation: "in dehr NAY-eh gahp es EYE-neh eks-ploh-ZYOHN" },
   { id: 2034, category: "Emergency", english: "The water is rising fast.", german: "Das Wasser steigt schnell.", pronunciation: "dahs VAHS-ser shtike shnel" },
-  { id: 2035, category: "Emergency", english: "We need to evacuate immediately.", german: "Wir müssen sofort evakuieren.", pronunciation: "veer MOOS-sen ZOH-fort eh-vah-koo-EE-ren" },
   { id: 2036, category: "Emergency", english: "Where is the nearest shelter?", german: "Wo ist die nächste Notunterkunft?", pronunciation: "voh ist dee NEKHS-teh NOHT-oon-ter-koonft" },
   { id: 2037, category: "Emergency", english: "I need a blanket, I'm in shock.", german: "Ich brauche eine Decke, ich stehe unter Schock.", pronunciation: "ikh BROW-kheh EYE-neh DEK-eh, ikh SHTAY-eh OON-ter shok" },
   { id: 2038, category: "Emergency", english: "Someone collapsed in the street.", german: "Jemand ist auf der Straße zusammengebrochen.", pronunciation: "YAY-mahnt ist owf dehr SHTRAH-seh tsoo-ZAH-men-geh-broh-khen" },
@@ -3095,8 +1088,6 @@ const sentences = [
   { id: 2060, category: "Emergency", english: "Please wait for the police.", german: "Bitte warten Sie auf die Polizei.", pronunciation: "BIT-eh VAHR-ten zee owf dee poh-lee-TSYE" },
   { id: 2061, category: "Emergency", english: "I need to file a report.", german: "Ich muss eine Anzeige erstatten.", pronunciation: "ikh mooss EYE-neh AHN-tsy-geh ehr-SHTAHT-ten" },
   { id: 2062, category: "Emergency", english: "What happened here exactly?", german: "Was ist hier genau passiert?", pronunciation: "vahs ist heer geh-NOW pah-SEERT" },
-
-  // ─── Family (batch 3) ─────────────────────────────────────────────────────
   { id: 2101, category: "Family", english: "I have a big extended family.", german: "Ich habe eine große Großfamilie.", pronunciation: "ikh HAH-beh EYE-neh GROH-seh GROHS-fah-mee-lee-eh" },
   { id: 2102, category: "Family", english: "My family comes first.", german: "Meine Familie geht vor.", pronunciation: "MY-neh fah-MEE-lee-eh gayt for" },
   { id: 2103, category: "Family", english: "We take turns cooking dinner.", german: "Wir kochen abwechselnd das Abendessen.", pronunciation: "veer KOH-khen AHP-vek-seln dahs AH-bent-es-sen" },
@@ -3129,8 +1120,6 @@ const sentences = [
   { id: 2130, category: "Family", english: "No matter what, family is always there.", german: "Egal was passiert, die Familie ist immer da.", pronunciation: "eh-GAHL vahs pah-SEERT, dee fah-MEE-lee-eh ist IM-er dah" },
   { id: 2131, category: "Family", english: "My daughter is getting married next spring.", german: "Meine Tochter heiratet nächsten Frühling.", pronunciation: "MY-neh TOKH-ter HY-rah-tet NEKHS-ten FROO-ling" },
   { id: 2132, category: "Family", english: "We're very excited about the wedding.", german: "Wir sind sehr aufgeregt wegen der Hochzeit.", pronunciation: "veer zint zayr OWF-geh-raykt VAY-gen dehr HOHKH-tsyt" },
-
-  // ─── Dating & Romance (batch 3) ───────────────────────────────────────────
   { id: 2201, category: "Dating & Romance", english: "I'd like to get to know you better.", german: "Ich würde dich gerne besser kennenlernen.", pronunciation: "ikh VOOR-deh dikh GEHR-neh BES-ser KEN-en-lair-nen" },
   { id: 2202, category: "Dating & Romance", english: "You make my heart race.", german: "Du lässt mein Herz rasen.", pronunciation: "doo lest mine herts RAH-zen" },
   { id: 2203, category: "Dating & Romance", english: "I love the way you think.", german: "Ich liebe die Art, wie du denkst.", pronunciation: "ikh LEE-beh dee art, vee doo denkst" },
@@ -3161,8 +1150,6 @@ const sentences = [
   { id: 2228, category: "Dating & Romance", english: "I'd choose you every single time.", german: "Ich würde dich jedes Mal wieder wählen.", pronunciation: "ikh VOOR-deh dikh YAY-des mahl VEE-der VEH-len" },
   { id: 2229, category: "Dating & Romance", english: "You have my whole heart.", german: "Du hast mein ganzes Herz.", pronunciation: "doo hahst mine GAHN-tses herts" },
   { id: 2230, category: "Dating & Romance", english: "I love you to the moon and back.", german: "Ich liebe dich bis zum Mond und zurück.", pronunciation: "ikh LEE-beh dikh biss tsom mohnt oont tsoo-ROOK" },
-
-  // ─── Greetings & Small Talk (batch 4) ────────────────────────────────────
   { id: 2301, category: "Greetings & Small Talk", english: "May I introduce myself?", german: "Darf ich mich vorstellen?", pronunciation: "darf ikh mikh FOR-shtel-en" },
   { id: 2302, category: "Greetings & Small Talk", english: "Pleased to meet you, I'm Anna.", german: "Schön, Sie kennenzulernen, ich bin Anna.", pronunciation: "shurn, zee KEN-en-tsoo-lair-nen, ikh bin AH-nah" },
   { id: 2303, category: "Greetings & Small Talk", english: "I've heard so much about you.", german: "Ich habe so viel von Ihnen gehört.", pronunciation: "ikh HAH-beh zoh feel fon EE-nen geh-HURT" },
@@ -3185,8 +1172,6 @@ const sentences = [
   { id: 2320, category: "Greetings & Small Talk", english: "Of course! That would be great.", german: "Natürlich! Das wäre toll.", pronunciation: "nah-TOOR-likh! dahs VEH-reh tol" },
   { id: 2321, category: "Greetings & Small Talk", english: "Forgive me if I make mistakes.", german: "Verzeihen Sie mir, wenn ich Fehler mache.", pronunciation: "fehr-TSYE-en zee meer, ven ikh FAY-ler MAHKH-eh" },
   { id: 2322, category: "Greetings & Small Talk", english: "Don't worry, mistakes are how we learn.", german: "Kein Problem, Fehler sind normal beim Lernen.", pronunciation: "kine proh-BLAYM, FAY-ler zint nor-MAHL byme LEHR-nen" },
-
-  // ─── Work & Professional (batch 4) ───────────────────────────────────────
   { id: 2323, category: "Work & Professional", english: "What industry do you work in?", german: "In welcher Branche arbeiten Sie?", pronunciation: "in VEL-kher BRAHN-kheh AR-by-ten zee" },
   { id: 2324, category: "Work & Professional", english: "I work in the tech sector.", german: "Ich arbeite im Technologiesektor.", pronunciation: "ikh AR-by-teh im tekh-noh-loh-GEE-zek-tor" },
   { id: 2325, category: "Work & Professional", english: "How long have you been with the company?", german: "Wie lange sind Sie schon beim Unternehmen?", pronunciation: "vee LAHNG-eh zint zee shon byme oon-ter-NAY-men" },
@@ -3209,8 +1194,6 @@ const sentences = [
   { id: 2342, category: "Work & Professional", english: "I'll need this in writing.", german: "Ich benötige das schriftlich.", pronunciation: "ikh beh-NUR-ti-geh dahs SHRIFT-likh" },
   { id: 2343, category: "Work & Professional", english: "I'm attending a trade fair next week.", german: "Ich nehme nächste Woche an einer Messe teil.", pronunciation: "ikh NAY-meh NEKHS-teh VOH-kheh ahn EYE-ner MES-seh tile" },
   { id: 2344, category: "Work & Professional", english: "Our booth is in Hall B.", german: "Unser Stand ist in Halle B.", pronunciation: "OON-zer shtahnt ist in HAHL-eh bay" },
-
-  // ─── Friends & Casual (batch 4) ──────────────────────────────────────────
   { id: 2345, category: "Friends & Casual", english: "I'm learning to cook.", german: "Ich lerne kochen.", pronunciation: "ikh LEHR-neh KOKH-en" },
   { id: 2346, category: "Friends & Casual", english: "I tried a new recipe last night.", german: "Ich habe gestern Abend ein neues Rezept ausprobiert.", pronunciation: "ikh HAH-beh GES-tern AH-bent ine NOY-es reh-TSEPT OWS-proh-beert" },
   { id: 2347, category: "Friends & Casual", english: "It turned out really well!", german: "Es ist wirklich gut geworden!", pronunciation: "es ist VEER-klikh goot geh-VOR-den" },
@@ -3233,8 +1216,6 @@ const sentences = [
   { id: 2364, category: "Friends & Casual", english: "I'll be fashionably late.", german: "Ich komme stylish zu spät.", pronunciation: "ikh KOM-eh STYE-lish tsoo shpayt" },
   { id: 2365, category: "Friends & Casual", english: "Don't you dare!", german: "Das wagst du besser nicht!", pronunciation: "dahs vahkst doo BES-ser nikht" },
   { id: 2366, category: "Friends & Casual", english: "I'm just joking!", german: "Ich mache nur Witze!", pronunciation: "ikh MAHKH-eh noor VIT-tseh" },
-
-  // ─── Travel & Directions (batch 4) ───────────────────────────────────────
   { id: 2367, category: "Travel & Directions", english: "I'd like to go sightseeing today.", german: "Ich möchte heute Sightseeing machen.", pronunciation: "ikh MURK-teh HOY-teh SITE-see-ing MAHKH-en" },
   { id: 2368, category: "Travel & Directions", english: "What are the must-see attractions?", german: "Was sind die Sehenswürdigkeiten, die man gesehen haben muss?", pronunciation: "vahs zint dee ZAY-ens-voor-dikh-ky-ten, dee mahn geh-ZAY-en HAH-ben mooss" },
   { id: 2369, category: "Travel & Directions", english: "Don't miss the old cathedral.", german: "Verpassen Sie nicht die alte Kathedrale.", pronunciation: "fehr-PAHS-sen zee nikht dee AHL-teh kah-teh-DRAHL-eh" },
@@ -3257,8 +1238,6 @@ const sentences = [
   { id: 2386, category: "Travel & Directions", english: "Are there cycle paths here?", german: "Gibt es hier Radwege?", pronunciation: "gipt es heer RAHT-vay-geh" },
   { id: 2387, category: "Travel & Directions", english: "The scenery is breathtaking.", german: "Die Landschaft ist atemberaubend.", pronunciation: "dee LAHNT-shahft ist AH-tem-beh-row-bent" },
   { id: 2388, category: "Travel & Directions", english: "I'd love to come back here.", german: "Ich würde wirklich gerne hierher zurückkommen.", pronunciation: "ikh VOOR-deh VEER-klikh GEHR-neh HEER-her tsoo-ROOK-kom-en" },
-
-  // ─── Shopping (batch 4) ───────────────────────────────────────────────────
   { id: 2389, category: "Shopping", english: "Do you have a bigger selection?", german: "Haben Sie eine größere Auswahl?", pronunciation: "HAH-ben zee EYE-neh GRUR-seh-reh OWS-vahl" },
   { id: 2390, category: "Shopping", english: "Is this the only style available?", german: "Ist das der einzige verfügbare Stil?", pronunciation: "ist dahs dehr EIN-tsi-geh fehr-FYOOK-bah-reh shteel" },
   { id: 2391, category: "Shopping", english: "Can you order it in a different colour?", german: "Können Sie es in einer anderen Farbe bestellen?", pronunciation: "KUR-nen zee es in EYE-ner AHN-deh-ren FAR-beh beh-SHTEL-en" },
@@ -3281,10 +1260,7 @@ const sentences = [
   { id: 2408, category: "Shopping", english: "Thank you for sorting that out.", german: "Danke, dass Sie das geklärt haben.", pronunciation: "DAHN-keh, dahs zee dahs geh-KLEHRT HAH-ben" },
   { id: 2409, category: "Shopping", english: "I'll leave a five-star review.", german: "Ich hinterlasse eine Fünf-Sterne-Bewertung.", pronunciation: "ikh HIN-ter-lahs-seh EYE-neh foonf-SHTER-neh-beh-vehr-toong" },
   { id: 2410, category: "Shopping", english: "Excellent customer service!", german: "Ausgezeichneter Kundenservice!", pronunciation: "OWS-geh-tsysh-neh-ter KOON-den-zehr-vis" },
-
-  // ─── Restaurants & Food (batch 4) ─────────────────────────────────────────
   { id: 2411, category: "Restaurants & Food", english: "Could we see the menu in English?", german: "Können wir die Speisekarte auf Englisch haben?", pronunciation: "KUR-nen veer dee SHPY-zeh-kahr-teh owf ENG-lish HAH-ben" },
-  { id: 2412, category: "Restaurants & Food", english: "What's the soup of the day?", german: "Was ist die Tagessuppe?", pronunciation: "vahs ist dee TAH-ges-zoo-peh" },
   { id: 2413, category: "Restaurants & Food", english: "I'll go with the chef's recommendation.", german: "Ich nehme die Empfehlung des Küchenchefs.", pronunciation: "ikh NAY-meh dee emp-FAY-loong des KOO-khen-shefs" },
   { id: 2414, category: "Restaurants & Food", english: "I'll start with a salad.", german: "Ich fange mit einem Salat an.", pronunciation: "ikh FAHNG-eh mit EYE-nem zah-LAHT ahn" },
   { id: 2415, category: "Restaurants & Food", english: "What dressings do you have?", german: "Welche Dressings haben Sie?", pronunciation: "VEL-kheh DRES-sings HAH-ben zee" },
@@ -3305,8 +1281,6 @@ const sentences = [
   { id: 2430, category: "Restaurants & Food", english: "Thank you for a wonderful evening.", german: "Danke für einen wunderschönen Abend.", pronunciation: "DAHN-keh fyur EYE-nen VOON-der-shur-nen AH-bent" },
   { id: 2431, category: "Restaurants & Food", english: "We'll be back very soon.", german: "Wir kommen sehr bald wieder.", pronunciation: "veer KOM-en zayr bahlt VEE-der" },
   { id: 2432, category: "Restaurants & Food", english: "Our compliments to the whole team.", german: "Unser Kompliment an das ganze Team.", pronunciation: "OON-zer kom-plee-MENT ahn dahs GAHN-tseh teem" },
-
-  // ─── Health & Medical (batch 4) ───────────────────────────────────────────
   { id: 2433, category: "Health & Medical", english: "I'd like a health check before my trip.", german: "Ich möchte vor meiner Reise einen Gesundheitscheck.", pronunciation: "ikh MURK-teh for MY-ner RY-zeh EYE-nen geh-ZOONT-hites-chek" },
   { id: 2434, category: "Health & Medical", english: "Do I need any vaccinations for my destination?", german: "Brauche ich Impfungen für mein Reiseziel?", pronunciation: "BROW-kheh ikh IMP-foong-en fyur mine RY-zeh-tseel" },
   { id: 2435, category: "Health & Medical", english: "I need malaria medication.", german: "Ich brauche Malaria-Medikamente.", pronunciation: "ikh BROW-kheh mah-LAH-ree-ah meh-dee-kah-MEN-teh" },
@@ -3329,8 +1303,6 @@ const sentences = [
   { id: 2452, category: "Health & Medical", english: "She needs her inhaler.", german: "Sie braucht ihren Inhalator.", pronunciation: "zee browkht EE-ren in-hah-lah-TOR" },
   { id: 2453, category: "Health & Medical", english: "I need to see a dermatologist.", german: "Ich muss zu einem Hautarzt.", pronunciation: "ikh mooss tsoo EYE-nem HOWT-artst" },
   { id: 2454, category: "Health & Medical", english: "I have a skin condition.", german: "Ich habe ein Hautproblem.", pronunciation: "ikh HAH-beh ine HOWT-proh-blaym" },
-
-  // ─── Emergency (batch 4) ─────────────────────────────────────────────────
   { id: 2455, category: "Emergency", english: "Somebody help me!", german: "Jemand soll mir helfen!", pronunciation: "YAY-mahnt zol meer HEL-fen" },
   { id: 2456, category: "Emergency", english: "There's a medical emergency.", german: "Es ist ein medizinischer Notfall.", pronunciation: "es ist ine meh-di-TSEE-ni-sher NOHT-fahl" },
   { id: 2457, category: "Emergency", english: "Please call emergency services.", german: "Bitte rufen Sie den Notruf.", pronunciation: "BIT-eh ROO-fen zee dayn NOHT-roof" },
@@ -3353,8 +1325,6 @@ const sentences = [
   { id: 2474, category: "Emergency", english: "I'd like to speak to an officer.", german: "Ich möchte mit einem Polizisten sprechen.", pronunciation: "ikh MURK-teh mit EYE-nem poh-li-TSIST-en SHPREH-khen" },
   { id: 2475, category: "Emergency", english: "I need a written crime reference number.", german: "Ich brauche eine Aktenzeichen-Nummer.", pronunciation: "ikh BROW-kheh EYE-neh AHK-ten-tsysh-en-noom-er" },
   { id: 2476, category: "Emergency", english: "I do not consent to a search.", german: "Ich stimme einer Durchsuchung nicht zu.", pronunciation: "ikh SHTIM-eh EYE-ner DOORKH-zoo-khoong nikht tsoo" },
-
-  // ─── Family (batch 4) ────────────────────────────────────────────────────
   { id: 2477, category: "Family", english: "I'm proud of everything my children have achieved.", german: "Ich bin stolz auf alles, was meine Kinder erreicht haben.", pronunciation: "ikh bin shtolts owf AL-es, vahs MY-neh KIN-der ehr-RYSHT HAH-ben" },
   { id: 2478, category: "Family", english: "We raised them the best we could.", german: "Wir haben sie so gut wie möglich erzogen.", pronunciation: "veer HAH-ben zee zoh goot vee MUR-glikh ehr-TSOH-gen" },
   { id: 2479, category: "Family", english: "My parents sacrificed so much for us.", german: "Meine Eltern haben so viel für uns geopfert.", pronunciation: "MY-neh EL-tern HAH-ben zoh feel fyur oons geh-OP-fert" },
@@ -3377,8 +1347,6 @@ const sentences = [
   { id: 2496, category: "Family", english: "Some traditions are worth keeping.", german: "Manche Traditionen sind es wert, bewahrt zu werden.", pronunciation: "MAHN-kheh trah-di-TSYOH-nen zint es vehrt, beh-VAHRT tsoo VEHR-den" },
   { id: 2497, category: "Family", english: "I try to be a present parent.", german: "Ich versuche, ein präsenter Elternteil zu sein.", pronunciation: "ikh fehr-ZOO-kheh, ine preh-ZEN-ter EL-tern-tile tsoo zine" },
   { id: 2498, category: "Family", english: "Quality time is more important than quantity.", german: "Qualitätszeit ist wichtiger als Quantität.", pronunciation: "kvah-li-TEYTS-tsyt ist VIK-ti-ger ahls kvahn-ti-TEYT" },
-
-  // ─── Dating & Romance (batch 4) ───────────────────────────────────────────
   { id: 2499, category: "Dating & Romance", english: "My heart skips a beat when I see you.", german: "Mein Herz macht einen Satz, wenn ich dich sehe.", pronunciation: "mine herts mahkht EYE-nen zahts, ven ikh dikh ZAY-eh" },
   { id: 2500, category: "Dating & Romance", english: "I never believed in love at first sight until I met you.", german: "Ich glaubte nicht an Liebe auf den ersten Blick, bis ich dich traf.", pronunciation: "ikh GLOW-beh nikht ahn LEE-beh owf dayn EHR-sten blik, biss ikh dikh trahf" },
   { id: 2501, category: "Dating & Romance", english: "Let's go on an adventure together.", german: "Lass uns gemeinsam ein Abenteuer erleben.", pronunciation: "lahs oons geh-MINE-zahm ine AH-ben-toy-er ehr-LAY-ben" },
@@ -3403,14 +1371,11 @@ const sentences = [
   { id: 2520, category: "Dating & Romance", english: "With you, I feel complete.", german: "Mit dir fühle ich mich vollständig.", pronunciation: "mit deer FOO-leh ikh mikh FOL-shten-dikh" },
   { id: 2521, category: "Greetings & Small Talk", english: "Good evening!", german: "Guten Abend!", pronunciation: "GOO-ten AH-bent" },
   { id: 2522, category: "Greetings & Small Talk", english: "Sleep well!", german: "Schlaf gut!", pronunciation: "shlahf goot" },
-  { id: 2523, category: "Greetings & Small Talk", english: "Have a nice weekend!", german: "Schönes Wochenende!", pronunciation: "SHUR-nes VOH-khen-en-deh" },
   { id: 2524, category: "Greetings & Small Talk", english: "How are you doing these days?", german: "Wie geht es dir so?", pronunciation: "vee gayt es deer zo" },
   { id: 2525, category: "Greetings & Small Talk", english: "It's been ages!", german: "Das ist ja ewig her!", pronunciation: "das ist ya AY-vikh hehr" },
   { id: 2526, category: "Greetings & Small Talk", english: "What have you been up to?", german: "Was hast du so gemacht?", pronunciation: "vas hast doo zo geh-MAKHT" },
-  { id: 2527, category: "Greetings & Small Talk", english: "I've been really busy.", german: "Ich war sehr beschäftigt.", pronunciation: "ikh vahr zehr beh-SHEF-tigt" },
   { id: 2528, category: "Greetings & Small Talk", english: "Same as always.", german: "Wie immer.", pronunciation: "vee IM-mer" },
   { id: 2529, category: "Greetings & Small Talk", english: "I'm doing better now.", german: "Es geht mir jetzt besser.", pronunciation: "es gayt meer yetst BES-ser" },
-  { id: 2530, category: "Greetings & Small Talk", english: "What a small world!", german: "Was für eine kleine Welt!", pronunciation: "vas fyoor EYE-neh KLY-neh velt" },
   { id: 2531, category: "Greetings & Small Talk", english: "Are you from around here?", german: "Kommen Sie von hier?", pronunciation: "KOM-men zee fon heer" },
   { id: 2532, category: "Greetings & Small Talk", english: "I'm just visiting.", german: "Ich bin nur zu Besuch.", pronunciation: "ikh bin noor tsoo beh-ZOOKH" },
   { id: 2533, category: "Greetings & Small Talk", english: "The weather is beautiful today.", german: "Das Wetter ist heute schön.", pronunciation: "das VET-ter ist HOY-teh shurn" },
@@ -3421,7 +1386,6 @@ const sentences = [
   { id: 2538, category: "Greetings & Small Talk", english: "I moved here recently.", german: "Ich bin kürzlich hierher gezogen.", pronunciation: "ikh bin KYORTS-likh HEER-hehr geh-TSOH-gen" },
   { id: 2539, category: "Greetings & Small Talk", english: "What do you do for fun?", german: "Was machst du zum Spaß?", pronunciation: "vas makhst doo tsoom shpahs" },
   { id: 2540, category: "Greetings & Small Talk", english: "I enjoy hiking.", german: "Ich wandere gern.", pronunciation: "ikh VAN-deh-reh gehrn" },
-  { id: 2541, category: "Greetings & Small Talk", english: "Do you have any pets?", german: "Haben Sie Haustiere?", pronunciation: "HAH-ben zee HOWS-tee-reh" },
   { id: 2542, category: "Greetings & Small Talk", english: "I have a dog.", german: "Ich habe einen Hund.", pronunciation: "ikh HAH-beh EYE-nen hoont" },
   { id: 2543, category: "Greetings & Small Talk", english: "What's your favorite season?", german: "Was ist Ihre Lieblingsjahreszeit?", pronunciation: "vas ist EE-reh LEEB-lings-yah-res-tsayt" },
   { id: 2544, category: "Greetings & Small Talk", english: "I love summer.", german: "Ich liebe den Sommer.", pronunciation: "ikh LEE-beh den ZOM-mer" },
@@ -3432,23 +1396,15 @@ const sentences = [
   { id: 2549, category: "Greetings & Small Talk", english: "I grew up in the countryside.", german: "Ich bin auf dem Land aufgewachsen.", pronunciation: "ikh bin owf dem lant OWF-geh-vakh-sen" },
   { id: 2550, category: "Greetings & Small Talk", english: "What languages do you speak?", german: "Welche Sprachen sprechen Sie?", pronunciation: "VEL-kheh SHPRAH-khen SHPREH-khen zee" },
   { id: 2551, category: "Greetings & Small Talk", english: "I'm learning German.", german: "Ich lerne Deutsch.", pronunciation: "ikh LEHR-neh doytsh" },
-  { id: 2552, category: "Greetings & Small Talk", english: "Your German is very good!", german: "Ihr Deutsch ist sehr gut!", pronunciation: "eer doytsh ist zehr goot" },
   { id: 2553, category: "Greetings & Small Talk", english: "I still have a lot to learn.", german: "Ich habe noch viel zu lernen.", pronunciation: "ikh HAH-beh nokh feel tsoo LEHR-nen" },
   { id: 2554, category: "Greetings & Small Talk", english: "Nice to meet you!", german: "Schön, Sie kennenzulernen!", pronunciation: "shurn zee KEN-nen-tsoo-lehr-nen" },
   { id: 2555, category: "Greetings & Small Talk", english: "The pleasure is mine.", german: "Ganz meinerseits.", pronunciation: "gants MY-ner-zyts" },
-  { id: 2556, category: "Greetings & Small Talk", english: "Give my regards to your family.", german: "Grüßen Sie Ihre Familie von mir.", pronunciation: "GROO-sen zee EE-reh fah-MEE-lee-eh fon meer" },
-  { id: 2557, category: "Greetings & Small Talk", english: "Take care of yourself.", german: "Pass auf dich auf.", pronunciation: "pas owf dikh owf" },
   { id: 2558, category: "Greetings & Small Talk", english: "Until next time!", german: "Bis zum nächsten Mal!", pronunciation: "bis tsoom NEKHS-ten mahl" },
   { id: 2559, category: "Greetings & Small Talk", english: "I'm glad we ran into each other.", german: "Ich bin froh, dass wir uns getroffen haben.", pronunciation: "ikh bin fro das veer oons geh-TROF-fen HAH-ben" },
   { id: 2560, category: "Greetings & Small Talk", english: "Let's catch up soon.", german: "Lass uns bald wieder treffen.", pronunciation: "las oons balt VEE-der TREH-fen" },
   { id: 2561, category: "Greetings & Small Talk", english: "I'll text you later.", german: "Ich schreibe dir später.", pronunciation: "ikh SHRY-beh deer SHPAY-ter" },
   { id: 2562, category: "Greetings & Small Talk", english: "Do you have WhatsApp?", german: "Haben Sie WhatsApp?", pronunciation: "HAH-ben zee WhatsApp" },
-  { id: 2563, category: "Greetings & Small Talk", english: "Congratulations!", german: "Herzlichen Glückwunsch!", pronunciation: "HERTS-likh-en GLYOOK-voonsh" },
   { id: 2564, category: "Greetings & Small Talk", english: "Happy birthday!", german: "Alles Gute zum Geburtstag!", pronunciation: "AL-les GOO-teh tsoom geh-BOORTZ-tahk" },
-  { id: 2565, category: "Greetings & Small Talk", english: "Merry Christmas!", german: "Frohe Weihnachten!", pronunciation: "FRO-heh VY-nakh-ten" },
-  { id: 2566, category: "Greetings & Small Talk", english: "Happy New Year!", german: "Frohes neues Jahr!", pronunciation: "FRO-hes NOY-es yahr" },
-  { id: 2567, category: "Greetings & Small Talk", english: "Have a safe trip!", german: "Gute Reise!", pronunciation: "GOO-teh RY-zeh" },
-  { id: 2568, category: "Greetings & Small Talk", english: "Good luck!", german: "Viel Glück!", pronunciation: "feel glyook" },
   { id: 2569, category: "Greetings & Small Talk", english: "I'll miss you.", german: "Ich werde dich vermissen.", pronunciation: "ikh VEHR-deh dikh fer-MIS-sen" },
   { id: 2570, category: "Greetings & Small Talk", english: "Come visit us sometime.", german: "Besuche uns mal.", pronunciation: "beh-ZOO-kheh oons mahl" },
   { id: 2571, category: "Greetings & Small Talk", english: "Thank you for everything.", german: "Danke für alles.", pronunciation: "DANK-eh fyoor AL-les" },
@@ -3471,11 +1427,9 @@ const sentences = [
   { id: 2588, category: "Greetings & Small Talk", english: "Keep in touch!", german: "Bleib in Kontakt!", pronunciation: "blyp in kon-TAKT" },
   { id: 2589, category: "Greetings & Small Talk", english: "It was wonderful seeing you.", german: "Es war wunderschön, dich zu sehen.", pronunciation: "es vahr VOON-der-shurn dikh tsoo ZEH-en" },
   { id: 2590, category: "Greetings & Small Talk", english: "Say hi to everyone for me.", german: "Grüß alle von mir.", pronunciation: "groos AL-leh fon meer" },
-  { id: 2601, category: "Work & Professional", english: "I have a job interview today.", german: "Ich habe heute ein Vorstellungsgespräch.", pronunciation: "ikh HAH-beh HOY-teh yn FOR-shtel-oonks-geh-shpraykh" },
   { id: 2602, category: "Work & Professional", english: "What are your strengths?", german: "Was sind Ihre Stärken?", pronunciation: "vas zint EE-reh SHTER-ken" },
   { id: 2603, category: "Work & Professional", english: "I'm a team player.", german: "Ich bin ein Teamplayer.", pronunciation: "ikh bin yn team-play-er" },
   { id: 2604, category: "Work & Professional", english: "I work well under pressure.", german: "Ich arbeite gut unter Druck.", pronunciation: "ikh AR-by-teh goot OON-ter drook" },
-  { id: 2605, category: "Work & Professional", english: "When can you start?", german: "Wann können Sie anfangen?", pronunciation: "van KUR-nen zee AN-fang-en" },
   { id: 2606, category: "Work & Professional", english: "I'm available immediately.", german: "Ich bin sofort verfügbar.", pronunciation: "ikh bin zo-FORT fer-FYOOK-bar" },
   { id: 2607, category: "Work & Professional", english: "What is the salary range?", german: "Wie ist die Gehaltsspanne?", pronunciation: "vee ist dee geh-HALTS-shpan-neh" },
   { id: 2608, category: "Work & Professional", english: "I'd like to negotiate the salary.", german: "Ich möchte das Gehalt verhandeln.", pronunciation: "ikh MURK-teh das geh-HALT fer-HAN-deln" },
@@ -3502,7 +1456,6 @@ const sentences = [
   { id: 2629, category: "Work & Professional", english: "I'll follow up by email.", german: "Ich melde mich per E-Mail.", pronunciation: "ikh MEL-deh mikh pehr ee-mayl" },
   { id: 2630, category: "Work & Professional", english: "I work in human resources.", german: "Ich arbeite in der Personalabteilung.", pronunciation: "ikh AR-by-teh in dehr per-zo-NAHL-ap-ty-loong" },
   { id: 2631, category: "Work & Professional", english: "Performance reviews are next week.", german: "Die Leistungsbeurteilungen sind nächste Woche.", pronunciation: "dee LYS-toonks-beh-oor-ty-loong-en zint NEKHS-teh VOH-kheh" },
-  { id: 2632, category: "Work & Professional", english: "I got a promotion!", german: "Ich wurde befördert!", pronunciation: "ikh VOOR-deh beh-FUR-dert" },
   { id: 2633, category: "Work & Professional", english: "I'm resigning from my position.", german: "Ich kündige meine Stelle.", pronunciation: "ikh KYOON-di-geh MY-neh SHTEL-leh" },
   { id: 2634, category: "Work & Professional", english: "I'm on sick leave today.", german: "Ich bin heute krank gemeldet.", pronunciation: "ikh bin HOY-teh krank geh-MEL-det" },
   { id: 2635, category: "Work & Professional", english: "My vacation starts Monday.", german: "Mein Urlaub beginnt am Montag.", pronunciation: "myn OOR-lowp beh-GINT am MON-tahk" },
@@ -3535,8 +1488,6 @@ const sentences = [
   { id: 2712, category: "Friends & Casual", english: "Let's take a selfie!", german: "Lass uns ein Selfie machen!", pronunciation: "las oons yn SEL-fee MAH-khen" },
   { id: 2713, category: "Friends & Casual", english: "Can I borrow some cash?", german: "Kann ich mir etwas Geld leihen?", pronunciation: "kan ikh meer ET-vas gelt LY-en" },
   { id: 2714, category: "Friends & Casual", english: "I'll pay you back tomorrow.", german: "Ich zahle es dir morgen zurück.", pronunciation: "ikh TSAH-leh es deer MOR-gen tsoo-RYOOK" },
-  { id: 2715, category: "Friends & Casual", english: "You're such a good friend.", german: "Du bist so ein guter Freund.", pronunciation: "doo bist zo yn GOO-ter froynt" },
-  { id: 2716, category: "Friends & Casual", english: "I owe you one.", german: "Ich stehe in deiner Schuld.", pronunciation: "ikh SHTEH-heh in DY-ner shoolt" },
   { id: 2717, category: "Friends & Casual", english: "You always have my back.", german: "Du stehst immer zu mir.", pronunciation: "doo shtayst IM-mer tsoo meer" },
   { id: 2718, category: "Friends & Casual", english: "I'm so glad we're friends.", german: "Ich bin so froh, dass wir Freunde sind.", pronunciation: "ikh bin zo fro das veer FROYN-deh zint" },
   { id: 2719, category: "Friends & Casual", english: "I heard some good news!", german: "Ich habe gute Neuigkeiten gehört!", pronunciation: "ikh HAH-beh GOO-teh NOY-ikh-ky-ten geh-HURT" },
@@ -3558,7 +1509,6 @@ const sentences = [
   { id: 2735, category: "Friends & Casual", english: "Those were the best times.", german: "Das waren die besten Zeiten.", pronunciation: "das VAH-ren dee BES-ten TSAY-ten" },
   { id: 2736, category: "Friends & Casual", english: "We really need to hang out more.", german: "Wir müssen uns wirklich öfter treffen.", pronunciation: "veer MYOOS-sen oons VEER-klikh UR-fter TREH-fen" },
   { id: 2737, category: "Friends & Casual", english: "I need to vent a little.", german: "Ich muss mich ein bisschen auskotzen.", pronunciation: "ikh moos mikh yn BIS-khen OWS-kot-tsen" },
-  { id: 2738, category: "Friends & Casual", english: "I'm always here for you.", german: "Ich bin immer für dich da.", pronunciation: "ikh bin IM-mer fyoor dikh dah" },
   { id: 2739, category: "Friends & Casual", english: "Things will get better.", german: "Es wird besser werden.", pronunciation: "es veert BES-ser VEHR-den" },
   { id: 2740, category: "Friends & Casual", english: "You've got this!", german: "Du schaffst das!", pronunciation: "doo shafst das" },
   { id: 2741, category: "Friends & Casual", english: "Let's throw a party!", german: "Lass uns eine Party schmeißen!", pronunciation: "las oons EYE-neh PAR-tee SHMY-sen" },
@@ -3584,13 +1534,11 @@ const sentences = [
   { id: 2811, category: "Travel & Directions", english: "How much is the taxi fare?", german: "Was kostet die Taxifahrt?", pronunciation: "vas KOS-tet dee TAK-si-fahrt" },
   { id: 2812, category: "Travel & Directions", english: "Please use the meter.", german: "Bitte benutzen Sie das Taxameter.", pronunciation: "BIT-teh beh-NOOT-tsen zee das tak-sah-MAY-ter" },
   { id: 2813, category: "Travel & Directions", english: "Stop here please.", german: "Halten Sie hier bitte an.", pronunciation: "HAL-ten zee heer BIT-teh an" },
-  { id: 2814, category: "Travel & Directions", english: "Where can I rent a car?", german: "Wo kann ich ein Auto mieten?", pronunciation: "vo kan ikh yn OW-to MEE-ten" },
   { id: 2815, category: "Travel & Directions", english: "Is insurance included?", german: "Ist die Versicherung inbegriffen?", pronunciation: "ist dee fer-ZIKH-er-oong IN-beh-grif-fen" },
   { id: 2816, category: "Travel & Directions", english: "Fill it up, please.", german: "Bitte volltanken.", pronunciation: "BIT-teh FOL-tan-ken" },
   { id: 2817, category: "Travel & Directions", english: "I'm lost, can you help?", german: "Ich habe mich verfahren, können Sie helfen?", pronunciation: "ikh HAH-beh mikh fer-FAH-ren KUR-nen zee HEL-fen" },
   { id: 2818, category: "Travel & Directions", english: "Is it walkable from here?", german: "Kann man von hier zu Fuß gehen?", pronunciation: "kan man fon heer tsoo foos GAY-en" },
   { id: 2819, category: "Travel & Directions", english: "It's a 10-minute walk.", german: "Es sind 10 Minuten zu Fuß.", pronunciation: "es zint tsehn mi-NOO-ten tsoo foos" },
-  { id: 2820, category: "Travel & Directions", english: "Go straight ahead.", german: "Gehen Sie geradeaus.", pronunciation: "GAY-en zee geh-RAH-deh-ows" },
   { id: 2821, category: "Travel & Directions", english: "Turn right at the traffic light.", german: "Biegen Sie an der Ampel rechts ab.", pronunciation: "BEE-gen zee an dehr AM-pel rekhts ap" },
   { id: 2822, category: "Travel & Directions", english: "It's on the left side.", german: "Es ist auf der linken Seite.", pronunciation: "es ist owf dehr LIN-ken ZY-teh" },
   { id: 2823, category: "Travel & Directions", english: "You can't miss it.", german: "Sie können es nicht verfehlen.", pronunciation: "zee KUR-nen es nikht fer-FAY-len" },
@@ -3598,13 +1546,10 @@ const sentences = [
   { id: 2825, category: "Travel & Directions", english: "Is breakfast included?", german: "Ist das Frühstück inbegriffen?", pronunciation: "ist das FRYOO-shtyk IN-beh-grif-fen" },
   { id: 2826, category: "Travel & Directions", english: "Can I have a non-smoking room?", german: "Kann ich ein Nichtraucherzimmer haben?", pronunciation: "kan ikh yn NIKHT-row-kher-tsim-mer HAH-ben" },
   { id: 2827, category: "Travel & Directions", english: "The air conditioning isn't working.", german: "Die Klimaanlage funktioniert nicht.", pronunciation: "dee KLEE-mah-an-lah-geh foonk-tsyo-NEERT nikht" },
-  { id: 2828, category: "Travel & Directions", english: "What time is check-out?", german: "Wann ist der Check-out?", pronunciation: "van ist dehr check-owt" },
   { id: 2829, category: "Travel & Directions", english: "Can I store my luggage?", german: "Kann ich mein Gepäck aufbewahren?", pronunciation: "kan ikh myn geh-PEK OWF-beh-vah-ren" },
   { id: 2830, category: "Travel & Directions", english: "My flight is at seven.", german: "Mein Flug ist um sieben Uhr.", pronunciation: "myn flook ist oom ZEE-ben oor" },
-  { id: 2831, category: "Travel & Directions", english: "I need to check my luggage.", german: "Ich muss mein Gepäck aufgeben.", pronunciation: "ikh moos myn geh-PEK OWF-gay-ben" },
   { id: 2832, category: "Travel & Directions", english: "Where is the gate?", german: "Wo ist das Gate?", pronunciation: "vo ist das gayt" },
   { id: 2833, category: "Travel & Directions", english: "I have only carry-on luggage.", german: "Ich habe nur Handgepäck.", pronunciation: "ikh HAH-beh noor HANT-geh-pek" },
-  { id: 2834, category: "Travel & Directions", english: "Is this seat taken?", german: "Ist dieser Platz besetzt?", pronunciation: "ist DEE-zer plats beh-ZETST" },
   { id: 2835, category: "Travel & Directions", english: "What attractions are nearby?", german: "Welche Sehenswürdigkeiten gibt es in der Nähe?", pronunciation: "VEL-kheh ZEH-ens-vyoor-dikh-ky-ten gipt es in dehr NAY-heh" },
   { id: 2836, category: "Travel & Directions", english: "Is there a guided tour?", german: "Gibt es eine Führung?", pronunciation: "gipt es EYE-neh FYOO-roong" },
   { id: 2837, category: "Travel & Directions", english: "Where can I exchange money?", german: "Wo kann ich Geld wechseln?", pronunciation: "vo kan ikh gelt VEK-seln" },
@@ -3621,29 +1566,21 @@ const sentences = [
   { id: 2848, category: "Travel & Directions", english: "This place is absolutely beautiful.", german: "Dieser Ort ist absolut wunderschön.", pronunciation: "DEE-zer ort ist ap-zo-LOOT VOON-der-shurn" },
   { id: 2849, category: "Travel & Directions", english: "I'll definitely come back.", german: "Ich komme definitiv wieder.", pronunciation: "ikh KOM-meh deh-fi-ni-TEEF VEE-der" },
   { id: 2850, category: "Travel & Directions", english: "Is tipping customary here?", german: "Ist Trinkgeld hier üblich?", pronunciation: "ist TRINK-gelt heer YOO-blikh" },
-  { id: 2901, category: "Shopping", english: "Do you have this in a larger size?", german: "Haben Sie das in einer größeren Größe?", pronunciation: "HAH-ben zee das in EYE-ner GRUR-se-ren GRUR-seh" },
   { id: 2902, category: "Shopping", english: "This is too tight.", german: "Das ist zu eng.", pronunciation: "das ist tsoo eng" },
-  { id: 2903, category: "Shopping", english: "Do you have this in black?", german: "Haben Sie das in Schwarz?", pronunciation: "HAH-ben zee das in shvarts" },
   { id: 2904, category: "Shopping", english: "I'm just browsing.", german: "Ich schaue mich nur um.", pronunciation: "ikh SHOW-eh mikh noor oom" },
   { id: 2905, category: "Shopping", english: "May I try this on?", german: "Darf ich das anprobieren?", pronunciation: "darf ikh das AN-pro-bee-ren" },
-  { id: 2906, category: "Shopping", english: "Where are the fitting rooms?", german: "Wo sind die Umkleidekabinen?", pronunciation: "vo zint dee OOM-kly-deh-kah-bee-nen" },
   { id: 2907, category: "Shopping", english: "This doesn't fit well.", german: "Das sitzt nicht gut.", pronunciation: "das zitst nikht goot" },
   { id: 2908, category: "Shopping", english: "I'll take it!", german: "Ich nehme es!", pronunciation: "ikh NAY-meh es" },
   { id: 2909, category: "Shopping", english: "Do you accept contactless payment?", german: "Akzeptieren Sie kontaktloses Zahlen?", pronunciation: "ak-tsep-TEE-ren zee kon-TAKT-loh-zes TSAH-len" },
   { id: 2910, category: "Shopping", english: "I need a receipt.", german: "Ich brauche eine Quittung.", pronunciation: "ikh BROW-kheh EYE-neh KVIT-toong" },
   { id: 2911, category: "Shopping", english: "Can you wrap it as a gift?", german: "Können Sie es als Geschenk einpacken?", pronunciation: "KUR-nen zee es als geh-SHENK EYN-pak-ken" },
   { id: 2912, category: "Shopping", english: "I found it cheaper elsewhere.", german: "Ich habe es woanders günstiger gefunden.", pronunciation: "ikh HAH-beh es vo-AN-ders GYOON-stih-ger geh-FOON-den" },
-  { id: 2913, category: "Shopping", english: "Do you offer a student discount?", german: "Gibt es einen Studentenrabatt?", pronunciation: "gipt es EYE-nen shtoo-DEN-ten-rah-bat" },
-  { id: 2914, category: "Shopping", english: "I'd like to return this item.", german: "Ich möchte diesen Artikel zurückgeben.", pronunciation: "ikh MURK-teh DEE-zen ar-TEE-kel tsoo-RYOOK-gay-ben" },
   { id: 2915, category: "Shopping", english: "Can I exchange it?", german: "Kann ich es umtauschen?", pronunciation: "kan ikh es OOM-tow-shen" },
-  { id: 2916, category: "Shopping", english: "The zipper is broken.", german: "Der Reißverschluss ist kaputt.", pronunciation: "dehr RYS-fer-shloos ist kah-POOT" },
   { id: 2917, category: "Shopping", english: "Is this made of leather?", german: "Ist das aus Leder?", pronunciation: "ist das ows LAY-der" },
   { id: 2918, category: "Shopping", english: "How do I wash this?", german: "Wie wasche ich das?", pronunciation: "vee VAH-sheh ikh das" },
   { id: 2919, category: "Shopping", english: "I'm looking for a gift for my mother.", german: "Ich suche ein Geschenk für meine Mutter.", pronunciation: "ikh ZOO-kheh yn geh-SHENK fyoor MY-neh MOOT-ter" },
-  { id: 2920, category: "Shopping", english: "Do you have something more affordable?", german: "Haben Sie etwas Günstigeres?", pronunciation: "HAH-ben zee ET-vas GYOON-stih-geh-res" },
   { id: 2921, category: "Shopping", english: "Do you sell electronics here?", german: "Verkaufen Sie hier Elektronik?", pronunciation: "fer-KOW-fen zee heer eh-lek-TROH-nik" },
   { id: 2922, category: "Shopping", english: "I need a phone charger.", german: "Ich brauche ein Ladekabel.", pronunciation: "ikh BROW-kheh yn LAH-deh-kah-bel" },
-  { id: 2923, category: "Shopping", english: "Is there a warranty?", german: "Gibt es eine Garantie?", pronunciation: "gipt es EYE-neh gah-ran-TEE" },
   { id: 2924, category: "Shopping", english: "When will it be back in stock?", german: "Wann ist es wieder vorrätig?", pronunciation: "van ist es VEE-der FOR-ray-tikh" },
   { id: 2925, category: "Shopping", english: "The package arrived damaged.", german: "Das Paket kam beschädigt an.", pronunciation: "das pah-KAYT kam beh-SHAY-digt an" },
   { id: 2926, category: "Shopping", english: "This isn't what I ordered.", german: "Das ist nicht das, was ich bestellt habe.", pronunciation: "das ist nikht das vas ikh beh-SHTELT HAH-beh" },
@@ -3668,13 +1605,8 @@ const sentences = [
   { id: 3001, category: "Restaurants & Food", english: "Do you have a table for two?", german: "Haben Sie einen Tisch für zwei Personen?", pronunciation: "HAH-ben zee EYE-nen tish fyoor tsvy per-ZOH-nen" },
   { id: 3002, category: "Restaurants & Food", english: "I'd like to make a reservation.", german: "Ich möchte einen Tisch reservieren.", pronunciation: "ikh MURK-teh EYE-nen tish reh-zer-VEE-ren" },
   { id: 3003, category: "Restaurants & Food", english: "Do you have a vegetarian menu?", german: "Haben Sie eine vegetarische Speisekarte?", pronunciation: "HAH-ben zee EYE-neh veh-geh-TAH-ri-sheh SHPY-zeh-kar-teh" },
-  { id: 3004, category: "Restaurants & Food", english: "What's the soup of the day?", german: "Was ist die Tagessuppe?", pronunciation: "vas ist dee TAH-ges-zoop-peh" },
-  { id: 3005, category: "Restaurants & Food", english: "I'll have what he's having.", german: "Ich nehme dasselbe wie er.", pronunciation: "ikh NAY-meh das-ZEL-beh vee ehr" },
   { id: 3006, category: "Restaurants & Food", english: "Can I see the wine list?", german: "Kann ich die Weinkarte sehen?", pronunciation: "kan ikh dee VYN-kar-teh ZEH-en" },
-  { id: 3007, category: "Restaurants & Food", english: "I'd like a glass of red wine.", german: "Ich hätte gerne ein Glas Rotwein.", pronunciation: "ikh HET-teh GEHR-neh yn glahs ROT-vyn" },
-  { id: 3008, category: "Restaurants & Food", english: "What do you recommend?", german: "Was empfehlen Sie?", pronunciation: "vas em-PFAY-len zee" },
   { id: 3009, category: "Restaurants & Food", english: "Is this dish spicy?", german: "Ist dieses Gericht scharf?", pronunciation: "ist DEE-zes geh-RIKHT sharf" },
-  { id: 3010, category: "Restaurants & Food", english: "I'm allergic to nuts.", german: "Ich bin allergisch gegen Nüsse.", pronunciation: "ikh bin ah-LER-gish GAY-gen NYOOS-seh" },
   { id: 3011, category: "Restaurants & Food", english: "No onions, please.", german: "Ohne Zwiebeln, bitte.", pronunciation: "OH-neh TSVEE-beln BIT-teh" },
   { id: 3012, category: "Restaurants & Food", english: "Can I substitute the fries?", german: "Kann ich die Pommes ersetzen?", pronunciation: "kan ikh dee POM-mes er-ZET-tsen" },
   { id: 3013, category: "Restaurants & Food", english: "That was delicious!", german: "Das war köstlich!", pronunciation: "das vahr KURTS-likh" },
@@ -3686,7 +1618,6 @@ const sentences = [
   { id: 3019, category: "Restaurants & Food", english: "Can I speak to the manager?", german: "Kann ich mit dem Manager sprechen?", pronunciation: "kan ikh mit dem MA-nah-ger SHPREH-khen" },
   { id: 3020, category: "Restaurants & Food", english: "We're celebrating a birthday.", german: "Wir feiern einen Geburtstag.", pronunciation: "veer FY-ern EYE-nen geh-BOORTZ-tahk" },
   { id: 3021, category: "Restaurants & Food", english: "Can you bring a candle?", german: "Können Sie eine Kerze bringen?", pronunciation: "KUR-nen zee EYE-neh KER-tseh BRIN-gen" },
-  { id: 3022, category: "Restaurants & Food", english: "Do you have a kids' menu?", german: "Haben Sie eine Kinderkarte?", pronunciation: "HAH-ben zee EYE-neh KIN-der-kar-teh" },
   { id: 3023, category: "Restaurants & Food", english: "A high chair please.", german: "Einen Kinderstuhl bitte.", pronunciation: "EYE-nen KIN-der-shtool BIT-teh" },
   { id: 3024, category: "Restaurants & Food", english: "We'll share a dessert.", german: "Wir teilen ein Dessert.", pronunciation: "veer TY-len yn deh-ZERT" },
   { id: 3025, category: "Restaurants & Food", english: "What do you have for dessert?", german: "Was haben Sie zum Nachtisch?", pronunciation: "vas HAH-ben zee tsoom NAKH-tish" },
@@ -3699,14 +1630,12 @@ const sentences = [
   { id: 3032, category: "Restaurants & Food", english: "Can we get the food quickly?", german: "Können wir das Essen schnell bekommen?", pronunciation: "KUR-nen veer das ES-sen shnel beh-KOM-men" },
   { id: 3033, category: "Restaurants & Food", english: "We'd like separate bills.", german: "Wir möchten getrennte Rechnungen.", pronunciation: "veer MURK-ten geh-TREN-teh REKH-noong-en" },
   { id: 3034, category: "Restaurants & Food", english: "Keep the change.", german: "Behalten Sie das Wechselgeld.", pronunciation: "beh-HAL-ten zee das VEK-sel-gelt" },
-  { id: 3035, category: "Restaurants & Food", english: "The service was excellent.", german: "Der Service war ausgezeichnet.", pronunciation: "dehr SER-vis vahr OWS-geh-tsykh-net" },
   { id: 3036, category: "Restaurants & Food", english: "I'd like to order takeaway.", german: "Ich möchte etwas zum Mitnehmen bestellen.", pronunciation: "ikh MURK-teh ET-vas tsoom MIT-nay-men beh-SHTEL-len" },
   { id: 3037, category: "Restaurants & Food", english: "How long is the wait?", german: "Wie lange ist die Wartezeit?", pronunciation: "vee LANG-eh ist dee VAR-teh-tsayt" },
   { id: 3038, category: "Restaurants & Food", english: "Do you deliver?", german: "Liefern Sie?", pronunciation: "LEE-fern zee" },
   { id: 3039, category: "Restaurants & Food", english: "I'd like to add a tip.", german: "Ich möchte Trinkgeld geben.", pronunciation: "ikh MURK-teh TRINK-gelt GAY-ben" },
   { id: 3040, category: "Restaurants & Food", english: "The portions are huge.", german: "Die Portionen sind riesig.", pronunciation: "dee por-TSYO-nen zint REE-zikh" },
   { id: 3041, category: "Restaurants & Food", english: "Can I get a doggy bag?", german: "Kann ich das Essen einpacken lassen?", pronunciation: "kan ikh das ES-sen EYN-pak-ken LAS-sen" },
-  { id: 3042, category: "Restaurants & Food", english: "This is my favorite restaurant.", german: "Das ist mein Lieblingsrestaurant.", pronunciation: "das ist myn LEEB-lings-res-to-rang" },
   { id: 3043, category: "Restaurants & Food", english: "I've been here before.", german: "Ich war schon einmal hier.", pronunciation: "ikh vahr shon EYN-mahl heer" },
   { id: 3044, category: "Restaurants & Food", english: "It's always busy on weekends.", german: "Am Wochenende ist es immer voll.", pronunciation: "am VOH-khen-en-deh ist es IM-mer fol" },
   { id: 3045, category: "Restaurants & Food", english: "I heard it's Michelin-starred.", german: "Ich habe gehört, es hat einen Michelin-Stern.", pronunciation: "ikh HAH-beh geh-HURT es hat EYE-nen MEE-sheh-lan-shtern" },
@@ -3714,12 +1643,10 @@ const sentences = [
   { id: 3047, category: "Restaurants & Food", english: "Is it a buffet?", german: "Ist es ein Buffet?", pronunciation: "ist es yn boo-FAY" },
   { id: 3048, category: "Restaurants & Food", english: "What's included in the set menu?", german: "Was ist im Menü inbegriffen?", pronunciation: "vas ist im meh-NYOO IN-beh-grif-fen" },
   { id: 3049, category: "Restaurants & Food", english: "I'd like a table by the window.", german: "Ich hätte gerne einen Tisch am Fenster.", pronunciation: "ikh HET-teh GEHR-neh EYE-nen tish am FEN-ster" },
-  { id: 3050, category: "Restaurants & Food", english: "Can we sit outside?", german: "Können wir draußen sitzen?", pronunciation: "KUR-nen veer DROW-sen ZIT-tsen" },
   { id: 3051, category: "Restaurants & Food", english: "The terrace is full.", german: "Die Terrasse ist besetzt.", pronunciation: "dee teh-RAS-seh ist beh-ZETST" },
   { id: 3052, category: "Restaurants & Food", english: "Is there a dress code?", german: "Gibt es eine Kleiderordnung?", pronunciation: "gipt es EYE-neh KLY-der-ord-noong" },
   { id: 3053, category: "Restaurants & Food", english: "Can I order at the counter?", german: "Kann ich an der Theke bestellen?", pronunciation: "kan ikh an dehr TAY-keh beh-SHTEL-len" },
   { id: 3054, category: "Restaurants & Food", english: "I'm lactose intolerant.", german: "Ich bin laktoseintolerant.", pronunciation: "ikh bin lak-TOH-zeh-in-to-leh-RANT" },
-  { id: 3055, category: "Restaurants & Food", english: "Does this contain gluten?", german: "Enthält das Gluten?", pronunciation: "ent-HELT das gloo-TEN" },
   { id: 3056, category: "Restaurants & Food", english: "I'll have the daily special.", german: "Ich nehme das Tagesgericht.", pronunciation: "ikh NAY-meh das TAH-ges-geh-rikht" },
   { id: 3057, category: "Restaurants & Food", english: "Can I have a side salad?", german: "Kann ich einen Beilagensalat haben?", pronunciation: "kan ikh EYE-nen BY-lah-gen-zah-laht HAH-ben" },
   { id: 3058, category: "Restaurants & Food", english: "Extra sauce on the side please.", german: "Extra Soße auf der Seite bitte.", pronunciation: "EKS-trah ZO-seh owf dehr ZY-teh BIT-teh" },
@@ -3734,28 +1661,20 @@ const sentences = [
   { id: 3067, category: "Restaurants & Food", english: "Can you call me a taxi?", german: "Können Sie mir ein Taxi rufen?", pronunciation: "KUR-nen zee meer yn TAK-si ROO-fen" },
   { id: 3068, category: "Restaurants & Food", english: "The food took too long.", german: "Das Essen hat zu lange gedauert.", pronunciation: "das ES-sen hat tsoo LANG-eh geh-DOW-ert" },
   { id: 3069, category: "Restaurants & Food", english: "My order is wrong.", german: "Meine Bestellung ist falsch.", pronunciation: "MY-neh beh-SHTEL-loong ist falsh" },
-  { id: 3070, category: "Restaurants & Food", english: "I didn't order this.", german: "Das habe ich nicht bestellt.", pronunciation: "das HAH-beh ikh nikht beh-SHTELT" },
   { id: 3071, category: "Restaurants & Food", english: "The bill seems incorrect.", german: "Die Rechnung scheint falsch zu sein.", pronunciation: "dee REKH-noong shynt falsh tsoo zyn" },
   { id: 3072, category: "Restaurants & Food", english: "Thank you, everything was perfect.", german: "Danke, alles war perfekt.", pronunciation: "DANK-eh AL-les vahr per-FEKT" },
-  { id: 3101, category: "Health & Medical", english: "I need to see a doctor.", german: "Ich muss zum Arzt.", pronunciation: "ikh moos tsoom artst" },
-  { id: 3102, category: "Health & Medical", english: "I have a headache.", german: "Ich habe Kopfschmerzen.", pronunciation: "ikh HAH-beh KOPF-shmer-tsen" },
   { id: 3103, category: "Health & Medical", english: "My back is killing me.", german: "Mein Rücken tut schrecklich weh.", pronunciation: "myn RYOO-ken toot SHREK-likh vay" },
-  { id: 3104, category: "Health & Medical", english: "I feel nauseous.", german: "Mir ist übel.", pronunciation: "meer ist YOO-bel" },
   { id: 3105, category: "Health & Medical", english: "I've been vomiting.", german: "Ich musste mich übergeben.", pronunciation: "ikh MOOS-teh mikh YOO-ber-gay-ben" },
   { id: 3106, category: "Health & Medical", english: "I have a high fever.", german: "Ich habe hohes Fieber.", pronunciation: "ikh HAH-beh HOH-hes FEE-ber" },
   { id: 3107, category: "Health & Medical", english: "My temperature is 39 degrees.", german: "Meine Temperatur beträgt 39 Grad.", pronunciation: "MY-neh tem-peh-rah-TOOR beh-TRYKT noyn-oont-DRIES-sikh grahd" },
-  { id: 3108, category: "Health & Medical", english: "I have a sore throat.", german: "Ich habe Halsschmerzen.", pronunciation: "ikh HAH-beh HALS-shmer-tsen" },
   { id: 3109, category: "Health & Medical", english: "My ear hurts.", german: "Mein Ohr tut weh.", pronunciation: "myn or toot vay" },
   { id: 3110, category: "Health & Medical", english: "I think I have an infection.", german: "Ich glaube, ich habe eine Infektion.", pronunciation: "ikh GLOW-beh ikh HAH-beh EYE-neh in-fek-TSYON" },
   { id: 3111, category: "Health & Medical", english: "I'm diabetic.", german: "Ich bin Diabetiker.", pronunciation: "ikh bin dee-ah-BAY-ti-ker" },
   { id: 3112, category: "Health & Medical", english: "I take blood pressure medication.", german: "Ich nehme Blutdruckmittel.", pronunciation: "ikh NAY-meh BLOOT-drook-mit-tel" },
-  { id: 3113, category: "Health & Medical", english: "I'm on blood thinners.", german: "Ich nehme Blutverdünner.", pronunciation: "ikh NAY-meh BLOOT-fer-dyoo-ner" },
   { id: 3114, category: "Health & Medical", english: "I'm pregnant.", german: "Ich bin schwanger.", pronunciation: "ikh bin SHVANG-er" },
   { id: 3115, category: "Health & Medical", english: "I'm breastfeeding.", german: "Ich stille.", pronunciation: "ikh SHTIL-leh" },
   { id: 3116, category: "Health & Medical", english: "Where is the nearest hospital?", german: "Wo ist das nächste Krankenhaus?", pronunciation: "vo ist das NEKHS-teh KRANK-en-hows" },
   { id: 3117, category: "Health & Medical", english: "I need to go to the emergency room.", german: "Ich muss in die Notaufnahme.", pronunciation: "ikh moos in dee NOT-owf-nah-meh" },
-  { id: 3118, category: "Health & Medical", english: "Do I need stitches?", german: "Brauche ich Nähte?", pronunciation: "BROW-kheh ikh NAY-teh" },
-  { id: 3119, category: "Health & Medical", english: "I twisted my ankle.", german: "Ich habe mir den Knöchel verstaucht.", pronunciation: "ikh HAH-beh meer den KNUR-khel fer-SHTOWKHT" },
   { id: 3120, category: "Health & Medical", english: "I think I broke my arm.", german: "Ich glaube, mein Arm ist gebrochen.", pronunciation: "ikh GLOW-beh myn arm ist geh-BROKH-en" },
   { id: 3121, category: "Health & Medical", english: "I need an X-ray.", german: "Ich brauche ein Röntgenbild.", pronunciation: "ikh BROW-kheh yn RUNT-gen-bilt" },
   { id: 3122, category: "Health & Medical", english: "Can you prescribe something?", german: "Können Sie mir etwas verschreiben?", pronunciation: "KUR-nen zee meer ET-vas fer-SHRY-ben" },
@@ -3774,11 +1693,9 @@ const sentences = [
   { id: 3135, category: "Health & Medical", english: "I'd like a second opinion.", german: "Ich möchte eine zweite Meinung einholen.", pronunciation: "ikh MURK-teh EYE-neh TSVY-teh MY-noong EYN-hoh-len" },
   { id: 3136, category: "Health & Medical", english: "My insurance covers this.", german: "Meine Versicherung deckt das.", pronunciation: "MY-neh fer-ZIKH-er-oong dekt das" },
   { id: 3137, category: "Health & Medical", english: "Do you accept my insurance?", german: "Akzeptieren Sie meine Krankenversicherung?", pronunciation: "ak-tsep-TEE-ren zee MY-neh KRANK-en-fer-zikh-er-oong" },
-  { id: 3138, category: "Health & Medical", english: "I have travel insurance.", german: "Ich habe eine Reiseversicherung.", pronunciation: "ikh HAH-beh EYE-neh RY-zeh-fer-zikh-er-oong" },
   { id: 3139, category: "Health & Medical", english: "I need an interpreter.", german: "Ich brauche einen Dolmetscher.", pronunciation: "ikh BROW-kheh EYE-nen DOL-met-sher" },
   { id: 3140, category: "Health & Medical", english: "I have trouble sleeping.", german: "Ich habe Schlafprobleme.", pronunciation: "ikh HAH-beh SHLAHF-pro-blay-meh" },
   { id: 3141, category: "Health & Medical", english: "I feel anxious all the time.", german: "Ich fühle mich ständig ängstlich.", pronunciation: "ikh FOO-leh mikh SHTEN-dikh ENGST-likh" },
-  { id: 3142, category: "Health & Medical", english: "I've been feeling depressed.", german: "Ich fühle mich deprimiert.", pronunciation: "ikh FOO-leh mikh deh-pri-MEERT" },
   { id: 3143, category: "Health & Medical", english: "I'd like to speak to a therapist.", german: "Ich möchte mit einem Therapeuten sprechen.", pronunciation: "ikh MURK-teh mit EYE-nem the-rah-POY-ten SHPREH-khen" },
   { id: 3144, category: "Health & Medical", english: "Is this covered by health insurance?", german: "Wird das von der Krankenversicherung übernommen?", pronunciation: "veert das fon dehr KRANK-en-fer-zikh-er-oong YOO-ber-nom-men" },
   { id: 3145, category: "Health & Medical", english: "I need sunscreen.", german: "Ich brauche Sonnenschutz.", pronunciation: "ikh BROW-kheh ZON-nen-shoots" },
@@ -3803,35 +1720,28 @@ const sentences = [
   { id: 3164, category: "Health & Medical", english: "What are the risks?", german: "Was sind die Risiken?", pronunciation: "vas zint dee ri-ZEE-ken" },
   { id: 3165, category: "Health & Medical", english: "How long is the recovery?", german: "Wie lange dauert die Genesung?", pronunciation: "vee LANG-eh DOW-ert dee geh-NAY-zoong" },
   { id: 3166, category: "Health & Medical", english: "I need physical therapy.", german: "Ich brauche Physiotherapie.", pronunciation: "ikh BROW-kheh fy-zyo-the-rah-PEE" },
-  { id: 3167, category: "Health & Medical", english: "My knee is swollen.", german: "Mein Knie ist geschwollen.", pronunciation: "myn knee ist geh-SHVOL-len" },
   { id: 3168, category: "Health & Medical", english: "I have pain in my chest.", german: "Ich habe Schmerzen in der Brust.", pronunciation: "ikh HAH-beh SHMER-tsen in dehr broost" },
   { id: 3169, category: "Health & Medical", english: "This pain is constant.", german: "Dieser Schmerz ist dauerhaft.", pronunciation: "DEE-zer shmerts ist DOW-er-haft" },
   { id: 3170, category: "Health & Medical", english: "The pain comes and goes.", german: "Der Schmerz kommt und geht.", pronunciation: "dehr shmerts komt oont gayt" },
   { id: 3171, category: "Health & Medical", english: "On a scale of 1 to 10, it's a 7.", german: "Auf einer Skala von 1 bis 10 ist es eine 7.", pronunciation: "owf EYE-ner SKAH-lah fon eyns bis tsehn ist es EYE-neh ZEE-ben" },
-  { id: 3172, category: "Health & Medical", english: "I feel much worse today.", german: "Mir geht es heute viel schlechter.", pronunciation: "meer gayt es HOY-teh feel SHLE-khter" },
   { id: 3201, category: "Emergency", english: "Help! Someone call an ambulance!", german: "Hilfe! Jemand soll einen Krankenwagen rufen!", pronunciation: "HIL-feh YEH-mant zol EYE-nen KRANK-en-vah-gen ROO-fen" },
   { id: 3202, category: "Emergency", english: "There's been a car accident!", german: "Es gab einen Autounfall!", pronunciation: "es gahp EYE-nen OW-to-oon-fal" },
   { id: 3203, category: "Emergency", english: "Someone is unconscious.", german: "Jemand ist bewusstlos.", pronunciation: "YEH-mant ist beh-VOOSD-los" },
   { id: 3204, category: "Emergency", english: "He's not breathing!", german: "Er atmet nicht!", pronunciation: "ehr AHT-met nikht" },
-  { id: 3205, category: "Emergency", english: "Do you know CPR?", german: "Können Sie Wiederbelebung durchführen?", pronunciation: "KUR-nen zee VEE-der-beh-lay-boong DOORKH-fyoo-ren" },
   { id: 3206, category: "Emergency", english: "Keep him still.", german: "Halten Sie ihn ruhig.", pronunciation: "HAL-ten zee een ROO-ikh" },
   { id: 3207, category: "Emergency", english: "Don't move him!", german: "Bewegen Sie ihn nicht!", pronunciation: "beh-VAY-gen zee een nikht" },
   { id: 3208, category: "Emergency", english: "There's a lot of blood.", german: "Es gibt viel Blut.", pronunciation: "es gipt feel bloot" },
-  { id: 3209, category: "Emergency", english: "Apply pressure to the wound.", german: "Drücken Sie auf die Wunde.", pronunciation: "DRYOO-ken zee owf dee VOON-deh" },
   { id: 3210, category: "Emergency", english: "I need a first aid kit.", german: "Ich brauche einen Erste-Hilfe-Kasten.", pronunciation: "ikh BROW-kheh EYE-nen ERS-teh-HEL-feh-kas-ten" },
   { id: 3211, category: "Emergency", english: "I've been robbed!", german: "Ich bin ausgeraubt worden!", pronunciation: "ikh bin OWS-geh-rowpt VOR-den" },
-  { id: 3212, category: "Emergency", english: "My bag was snatched.", german: "Meine Tasche wurde entrissen.", pronunciation: "MY-neh TAH-sheh VOOR-deh ent-RIS-sen" },
   { id: 3213, category: "Emergency", english: "I need to report a theft.", german: "Ich muss einen Diebstahl anzeigen.", pronunciation: "ikh moos EYE-nen DEEP-stahl AN-tsay-gen" },
   { id: 3214, category: "Emergency", english: "My car has been stolen.", german: "Mein Auto wurde gestohlen.", pronunciation: "myn OW-to VOOR-deh geh-SHTOH-len" },
   { id: 3215, category: "Emergency", english: "Can I file a report online?", german: "Kann ich die Anzeige online erstatten?", pronunciation: "kan ikh dee AN-tsay-geh on-LINE er-SHTAT-ten" },
   { id: 3216, category: "Emergency", english: "I need a copy of the police report.", german: "Ich brauche eine Kopie des Polizeiberichts.", pronunciation: "ikh BROW-kheh EYE-neh ko-PEE des po-li-TSY-beh-rikhts" },
   { id: 3217, category: "Emergency", english: "There's a fire!", german: "Es brennt!", pronunciation: "es brent" },
   { id: 3218, category: "Emergency", english: "Everyone evacuate now!", german: "Alle sofort evakuieren!", pronunciation: "AL-leh zo-FORT eh-vah-koo-EE-ren" },
-  { id: 3219, category: "Emergency", english: "I smell gas.", german: "Ich rieche Gas.", pronunciation: "ikh REE-kheh gahs" },
   { id: 3220, category: "Emergency", english: "There might be a gas leak.", german: "Es könnte ein Gasleck geben.", pronunciation: "es KURN-teh yn GAHS-lek GAY-ben" },
   { id: 3221, category: "Emergency", english: "Open the windows immediately.", german: "Öffnen Sie sofort die Fenster.", pronunciation: "URF-nen zee zo-FORT dee FEN-ster" },
   { id: 3222, category: "Emergency", english: "Don't use any electrical switches.", german: "Benutzen Sie keine elektrischen Schalter.", pronunciation: "beh-NOOT-tsen zee KY-neh eh-LEK-tri-shen SHAL-ter" },
-  { id: 3223, category: "Emergency", english: "My child is missing.", german: "Mein Kind wird vermisst.", pronunciation: "myn kint veert fer-MIST" },
   { id: 3224, category: "Emergency", english: "He was last seen near the park.", german: "Er wurde zuletzt in der Nähe des Parks gesehen.", pronunciation: "ehr VOOR-deh tsoo-LETST in dehr NAY-heh des parks geh-ZEH-en" },
   { id: 3225, category: "Emergency", english: "I've been in an accident.", german: "Ich hatte einen Unfall.", pronunciation: "ikh HAT-teh EYE-nen OON-fal" },
   { id: 3226, category: "Emergency", english: "Can you take my statement?", german: "Können Sie meine Aussage aufnehmen?", pronunciation: "KUR-nen zee MY-neh OWS-zah-geh OWF-nay-men" },
@@ -3854,10 +1764,8 @@ const sentences = [
   { id: 3243, category: "Emergency", english: "My medication was stolen.", german: "Meine Medikamente wurden gestohlen.", pronunciation: "MY-neh meh-di-kah-MEN-teh VOOR-den geh-SHTOH-len" },
   { id: 3244, category: "Emergency", english: "I have a severe allergic reaction.", german: "Ich habe eine schwere allergische Reaktion.", pronunciation: "ikh HAH-beh EYE-neh SHVEH-reh ah-LER-gi-sheh reh-ahk-TSYON" },
   { id: 3245, category: "Emergency", english: "I need an EpiPen immediately.", german: "Ich brauche sofort einen EpiPen.", pronunciation: "ikh BROW-kheh zo-FORT EYE-nen eh-pi-pen" },
-  { id: 3246, category: "Emergency", english: "She's having a seizure.", german: "Sie hat einen Krampfanfall.", pronunciation: "zee hat EYE-nen KRAMPF-an-fal" },
   { id: 3247, category: "Emergency", english: "He's having a heart attack.", german: "Er hat einen Herzinfarkt.", pronunciation: "ehr hat EYE-nen HERTS-in-farkt" },
   { id: 3248, category: "Emergency", english: "I think she had a stroke.", german: "Ich glaube, sie hatte einen Schlaganfall.", pronunciation: "ikh GLOW-beh zee HAT-teh EYE-nen SHLAHK-an-fal" },
-  { id: 3249, category: "Emergency", english: "Please stay calm.", german: "Bitte bleiben Sie ruhig.", pronunciation: "BIT-teh BLY-ben zee ROO-ikh" },
   { id: 3250, category: "Emergency", english: "Help is on the way.", german: "Hilfe ist unterwegs.", pronunciation: "HIL-feh ist oon-ter-VEGS" },
   { id: 3301, category: "Family", english: "How are your parents doing?", german: "Wie geht es Ihren Eltern?", pronunciation: "vee gayt es EE-ren EL-tern" },
   { id: 3302, category: "Family", english: "My parents are getting older.", german: "Meine Eltern werden älter.", pronunciation: "MY-neh EL-tern VEHR-den EL-ter" },
@@ -3877,7 +1785,6 @@ const sentences = [
   { id: 3316, category: "Family", english: "I have lots of cousins.", german: "Ich habe viele Cousins.", pronunciation: "ikh HAH-beh FEE-leh koo-ZANS" },
   { id: 3317, category: "Family", english: "My nephew is so cute.", german: "Mein Neffe ist so süß.", pronunciation: "myn NEF-feh ist zo zyoos" },
   { id: 3318, category: "Family", english: "My niece just learned to walk.", german: "Meine Nichte hat gerade laufen gelernt.", pronunciation: "MY-neh NIKH-teh hat geh-RAH-deh LOW-fen geh-LERNT" },
-  { id: 3319, category: "Family", english: "We adopted a child.", german: "Wir haben ein Kind adoptiert.", pronunciation: "veer HAH-ben yn kint ah-dop-TEERT" },
   { id: 3320, category: "Family", english: "She's expecting twins.", german: "Sie erwartet Zwillinge.", pronunciation: "zee er-VAR-tet TSVIL-ling-eh" },
   { id: 3321, category: "Family", english: "The baby is due in March.", german: "Das Baby soll im März kommen.", pronunciation: "das BAY-bee zol im merts KOM-men" },
   { id: 3322, category: "Family", english: "We just had our first child.", german: "Wir haben gerade unser erstes Kind bekommen.", pronunciation: "veer HAH-ben geh-RAH-deh OON-zer ERS-tes kint beh-KOM-men" },
@@ -3889,7 +1796,6 @@ const sentences = [
   { id: 3328, category: "Family", english: "Family always comes first.", german: "Familie geht immer vor.", pronunciation: "fah-MEE-lee-eh gayt IM-mer for" },
   { id: 3329, category: "Family", english: "We argue but we love each other.", german: "Wir streiten uns, aber wir lieben uns.", pronunciation: "veer SHTRYT-en oons AH-ber veer LEE-ben oons" },
   { id: 3330, category: "Family", english: "I need to set boundaries.", german: "Ich muss Grenzen setzen.", pronunciation: "ikh moos GREN-tsen ZET-tsen" },
-  { id: 3331, category: "Family", english: "He takes after his father.", german: "Er kommt nach seinem Vater.", pronunciation: "ehr komt nakh ZY-nem FAH-ter" },
   { id: 3332, category: "Family", english: "She has her mother's eyes.", german: "Sie hat die Augen ihrer Mutter.", pronunciation: "zee hat dee OW-gen EE-rer MOOT-ter" },
   { id: 3333, category: "Family", english: "It runs in the family.", german: "Das liegt in der Familie.", pronunciation: "das leekt in dehr fah-MEE-lee-eh" },
   { id: 3334, category: "Family", english: "We're a sporty family.", german: "Wir sind eine sportliche Familie.", pronunciation: "veer zint EYE-neh SPORT-likh-eh fah-MEE-lee-eh" },
@@ -3903,7 +1809,6 @@ const sentences = [
   { id: 3342, category: "Family", english: "You need to do your homework.", german: "Du musst deine Hausaufgaben machen.", pronunciation: "doo moost DY-neh HOWS-owf-gah-ben MAH-khen" },
   { id: 3343, category: "Family", english: "No screen time before dinner.", german: "Kein Bildschirm vor dem Abendessen.", pronunciation: "kyn BILT-shirm for dem AH-bent-es-sen" },
   { id: 3344, category: "Family", english: "We teach our kids good values.", german: "Wir bringen unseren Kindern gute Werte bei.", pronunciation: "veer BRIN-gen OON-zeh-ren KIN-dern GOO-teh VER-teh by" },
-  { id: 3345, category: "Family", english: "I miss my family terribly.", german: "Ich vermisse meine Familie sehr.", pronunciation: "ikh fer-MIS-seh MY-neh fah-MEE-lee-eh zehr" },
   { id: 3346, category: "Family", english: "I call my parents every week.", german: "Ich rufe meine Eltern jede Woche an.", pronunciation: "ikh ROO-feh MY-neh EL-tern YEH-deh VOH-kheh an" },
   { id: 3347, category: "Family", english: "We video chat on weekends.", german: "Wir videochatten am Wochenende.", pronunciation: "veer VEE-deh-o-cha-ten am VOH-khen-en-deh" },
   { id: 3348, category: "Family", english: "Family means everything to me.", german: "Familie bedeutet mir alles.", pronunciation: "fah-MEE-lee-eh beh-DOY-tet meer AL-les" },
@@ -3913,7 +1818,6 @@ const sentences = [
   { id: 3402, category: "Dating & Romance", english: "I get butterflies when I see you.", german: "Wenn ich dich sehe, bekomme ich Schmetterlinge im Bauch.", pronunciation: "ven ikh dikh ZEH-eh beh-KOM-meh ikh SHMET-ter-ling-eh im bowkh" },
   { id: 3403, category: "Dating & Romance", english: "I can't stop thinking about you.", german: "Ich kann nicht aufhören, an dich zu denken.", pronunciation: "ikh kan nikht OWF-hur-en an dikh tsoo DEN-ken" },
   { id: 3404, category: "Dating & Romance", english: "You're the first thing I think of in the morning.", german: "Du bist das Erste, woran ich morgens denke.", pronunciation: "doo bist das ERS-teh vo-RAN ikh MOR-gens DEN-keh" },
-  { id: 3405, category: "Dating & Romance", english: "I love the way you laugh.", german: "Ich liebe dein Lachen.", pronunciation: "ikh LEE-beh dyn LAH-khen" },
   { id: 3406, category: "Dating & Romance", english: "You make everything brighter.", german: "Du machst alles heller.", pronunciation: "doo makhst AL-les HEL-ler" },
   { id: 3407, category: "Dating & Romance", english: "I feel so comfortable with you.", german: "Ich fühle mich bei dir so wohl.", pronunciation: "ikh FOO-leh mikh by deer zo vol" },
   { id: 3408, category: "Dating & Romance", english: "Being with you feels natural.", german: "Mit dir zu sein fühlt sich natürlich an.", pronunciation: "mit deer tsoo zyn fyoolt zikh nah-TYOOR-likh an" },
@@ -3923,10 +1827,8 @@ const sentences = [
   { id: 3412, category: "Dating & Romance", english: "Shall we make it official?", german: "Sollen wir es offiziell machen?", pronunciation: "ZOL-len veer es o-fi-TSYEL MAH-khen" },
   { id: 3413, category: "Dating & Romance", english: "I'd like to be exclusive.", german: "Ich möchte nur mit dir zusammen sein.", pronunciation: "ikh MURK-teh noor mit deer tsoo-ZAM-men zyn" },
   { id: 3414, category: "Dating & Romance", english: "Are you seeing anyone else?", german: "Triffst du dich noch mit jemand anderem?", pronunciation: "trifst doo dikh nokh mit YEH-mant AN-deh-rem" },
-  { id: 3415, category: "Dating & Romance", english: "I only want to be with you.", german: "Ich möchte nur mit dir zusammen sein.", pronunciation: "ikh MURK-teh noor mit deer tsoo-ZAM-men zyn" },
   { id: 3416, category: "Dating & Romance", english: "We should travel together.", german: "Wir sollten zusammen reisen.", pronunciation: "veer ZOL-ten tsoo-ZAM-men RY-zen" },
   { id: 3417, category: "Dating & Romance", english: "Where would you like to go?", german: "Wohin möchtest du gehen?", pronunciation: "vo-HIN MURK-test doo GAY-en" },
-  { id: 3418, category: "Dating & Romance", english: "Let's go on a weekend trip.", german: "Lass uns einen Wochenendausflug machen.", pronunciation: "las oons EYE-nen VOH-khen-ent-ows-flook MAH-khen" },
   { id: 3419, category: "Dating & Romance", english: "I want to cook for you.", german: "Ich möchte für dich kochen.", pronunciation: "ikh MURK-teh fyoor dikh KOH-khen" },
   { id: 3420, category: "Dating & Romance", english: "You're a great cook.", german: "Du kochst wunderbar.", pronunciation: "doo kokhst VOON-der-bar" },
   { id: 3421, category: "Dating & Romance", english: "Thank you for a wonderful evening.", german: "Danke für einen wunderschönen Abend.", pronunciation: "DANK-eh fyoor EYE-nen VOON-der-shur-nen AH-bent" },
@@ -3941,15 +1843,9 @@ const sentences = [
   { id: 3430, category: "Dating & Romance", english: "I'm falling for you.", german: "Ich verliebe mich in dich.", pronunciation: "ikh fer-LEE-beh mikh in dikh" },
   { id: 3431, category: "Dating & Romance", english: "Have you ever been in love before?", german: "Warst du schon mal verliebt?", pronunciation: "varst doo shon mahl fer-LEEPT" },
   { id: 3432, category: "Dating & Romance", english: "I love you more each day.", german: "Ich liebe dich jeden Tag mehr.", pronunciation: "ikh LEE-beh dikh YEH-den tahk mehr" },
-  { id: 3433, category: "Dating & Romance", english: "You complete me.", german: "Du vervollständigst mich.", pronunciation: "doo fer-FOL-shten-dikst mikh" },
-  { id: 3434, category: "Dating & Romance", english: "I want to grow old with you.", german: "Ich möchte mit dir alt werden.", pronunciation: "ikh MURK-teh mit deer alt VEHR-den" },
   { id: 3435, category: "Dating & Romance", english: "Would you move in with me?", german: "Würdest du zu mir einziehen?", pronunciation: "VYOOR-dest doo tsoo meer EYN-tsee-en" },
   { id: 3436, category: "Dating & Romance", english: "Let's move in together.", german: "Lass uns zusammenziehen.", pronunciation: "las oons tsoo-ZAM-men-tsee-en" },
   { id: 3437, category: "Dating & Romance", english: "I want to start a family with you.", german: "Ich möchte mit dir eine Familie gründen.", pronunciation: "ikh MURK-teh mit deer EYE-neh fah-MEE-lee-eh GRYOON-den" },
-  { id: 3438, category: "Dating & Romance", english: "I've never felt this way before.", german: "Ich habe mich noch nie so gefühlt.", pronunciation: "ikh HAH-beh mikh nokh nee zo geh-FYOOLT" },
-  { id: 3439, category: "Dating & Romance", english: "You're my home.", german: "Du bist mein Zuhause.", pronunciation: "doo bist myn TSOO-how-zeh" },
-  { id: 3440, category: "Dating & Romance", english: "I cherish every moment with you.", german: "Ich schätze jeden Moment mit dir.", pronunciation: "ikh SHETS-eh YEH-den mo-MENT mit deer" },
-  { id: 3441, category: "Dating & Romance", english: "You're my best friend.", german: "Du bist mein bester Freund.", pronunciation: "doo bist myn BES-ter froynt" },
   { id: 3442, category: "Dating & Romance", english: "I want to hear your story.", german: "Ich möchte deine Geschichte hören.", pronunciation: "ikh MURK-teh DY-neh geh-SHIKH-teh HUR-ren" },
   { id: 3443, category: "Dating & Romance", english: "What are your dreams?", german: "Was sind deine Träume?", pronunciation: "vas zint DY-neh TROY-meh" },
   { id: 3444, category: "Dating & Romance", english: "I support your goals.", german: "Ich unterstütze deine Ziele.", pronunciation: "ikh oon-ter-SHTYU-tseh DY-neh TSEE-leh" },
@@ -3959,14 +1855,12 @@ const sentences = [
   { id: 3448, category: "Dating & Romance", english: "I don't want to lose you.", german: "Ich möchte dich nicht verlieren.", pronunciation: "ikh MURK-teh dikh nikht fer-LEE-ren" },
   { id: 3449, category: "Dating & Romance", english: "Let's start over.", german: "Lass uns von vorne anfangen.", pronunciation: "las oons fon FOR-neh AN-fang-en" },
   { id: 3450, category: "Dating & Romance", english: "You make my life better.", german: "Du machst mein Leben besser.", pronunciation: "doo makhst myn LAY-ben BES-ser" },
-  { id: 3501, category: "Greetings & Small Talk", english: "How was your day?", german: "Wie war dein Tag?", pronunciation: "vee vahr dyn tahk" },
   { id: 3502, category: "Greetings & Small Talk", english: "Did you sleep well?", german: "Hast du gut geschlafen?", pronunciation: "hast doo goot geh-SHLAH-fen" },
   { id: 3503, category: "Greetings & Small Talk", english: "You look tired.", german: "Du siehst müde aus.", pronunciation: "doo zeest MYOO-deh ows" },
   { id: 3504, category: "Greetings & Small Talk", english: "Is everything okay?", german: "Ist alles in Ordnung?", pronunciation: "ist AL-les in ORD-noong" },
   { id: 3505, category: "Greetings & Small Talk", english: "You look great today!", german: "Du siehst heute toll aus!", pronunciation: "doo zeest HOY-teh tol ows" },
   { id: 3506, category: "Greetings & Small Talk", english: "Did you catch the game last night?", german: "Hast du das Spiel gestern Abend gesehen?", pronunciation: "hast doo das shpeel GES-tern AH-bent geh-ZEH-en" },
   { id: 3507, category: "Greetings & Small Talk", english: "Are you busy this evening?", german: "Bist du heute Abend beschäftigt?", pronunciation: "bist doo HOY-teh AH-bent beh-SHEF-tigt" },
-  { id: 3508, category: "Greetings & Small Talk", english: "Can I join you?", german: "Darf ich mich dazusetzen?", pronunciation: "darf ikh mikh dah-TSOO-zet-tsen" },
   { id: 3509, category: "Greetings & Small Talk", english: "Feel free to sit here.", german: "Setzen Sie sich gerne hierher.", pronunciation: "ZET-tsen zee zikh GEHR-neh HEER-hehr" },
   { id: 3510, category: "Greetings & Small Talk", english: "Mind if I sit down?", german: "Macht es Ihnen etwas aus, wenn ich mich setze?", pronunciation: "makht es EE-nen ET-vas ows ven ikh mikh ZET-tseh" },
   { id: 3511, category: "Greetings & Small Talk", english: "What a coincidence!", german: "Was für ein Zufall!", pronunciation: "vas fyoor yn TSOO-fal" },
@@ -4015,27 +1909,22 @@ const sentences = [
   { id: 3563, category: "Travel & Directions", english: "My flight got cancelled.", german: "Mein Flug wurde storniert.", pronunciation: "myn flook VOOR-deh shtor-NEERT" },
   { id: 3564, category: "Travel & Directions", english: "Can I get a refund?", german: "Kann ich eine Erstattung bekommen?", pronunciation: "kan ikh EYE-neh er-SHTAT-toong beh-KOM-men" },
   { id: 3565, category: "Travel & Directions", english: "I need to rebook my flight.", german: "Ich muss meinen Flug umbuchen.", pronunciation: "ikh moos MY-nen flook OOM-boo-khen" },
-  { id: 3566, category: "Travel & Directions", english: "My luggage is lost.", german: "Mein Gepäck ist verloren gegangen.", pronunciation: "myn geh-PEK ist fer-LOH-ren geh-GANG-en" },
   { id: 3567, category: "Travel & Directions", english: "Where do I file a lost luggage claim?", german: "Wo kann ich eine Gepäckverlustmeldung aufgeben?", pronunciation: "vo kan ikh EYE-neh geh-PEK-fer-loost-mel-doong OWF-gay-ben" },
   { id: 3568, category: "Travel & Directions", english: "Do you have a tourist information office?", german: "Gibt es ein Touristeninformationsbüro?", pronunciation: "gipt es yn too-RIS-ten-in-for-mah-TSYONS-byoo-ro" },
   { id: 3569, category: "Travel & Directions", english: "What time is the last bus?", german: "Wann fährt der letzte Bus?", pronunciation: "van feyrt dehr LETS-teh boos" },
   { id: 3570, category: "Travel & Directions", english: "Can I rent a bicycle?", german: "Kann ich ein Fahrrad mieten?", pronunciation: "kan ikh yn FAH-rraht MEE-ten" },
   { id: 3571, category: "Travel & Directions", english: "Is there a bike lane?", german: "Gibt es einen Fahrradweg?", pronunciation: "gipt es EYE-nen FAH-rraht-vehk" },
-  { id: 3572, category: "Travel & Directions", english: "Do I need a visa?", german: "Brauche ich ein Visum?", pronunciation: "BROW-kheh ikh yn VEE-zoom" },
   { id: 3573, category: "Travel & Directions", english: "Where is the customs desk?", german: "Wo ist der Zoll?", pronunciation: "vo ist dehr tsol" },
-  { id: 3574, category: "Travel & Directions", english: "I have nothing to declare.", german: "Ich habe nichts zu verzollen.", pronunciation: "ikh HAH-beh nikhts tsoo fer-TSOL-len" },
   { id: 3575, category: "Travel & Directions", english: "This is my first time here.", german: "Ich bin zum ersten Mal hier.", pronunciation: "ikh bin tsoom ERS-ten mahl heer" },
   { id: 3576, category: "Travel & Directions", english: "Can you take a photo of us?", german: "Können Sie ein Foto von uns machen?", pronunciation: "KUR-nen zee yn FOH-to fon oons MAH-khen" },
   { id: 3577, category: "Travel & Directions", english: "What a breathtaking view!", german: "Was für eine atemberaubende Aussicht!", pronunciation: "vas fyoor EYE-neh AH-tem-beh-row-ben-deh OWS-zikht" },
   { id: 3581, category: "Shopping", english: "Do you offer free shipping?", german: "Bieten Sie kostenlosen Versand an?", pronunciation: "BEE-ten zee KOS-ten-loh-zen fer-ZANT an" },
   { id: 3582, category: "Shopping", english: "Is this on backorder?", german: "Ist das nachbestellbar?", pronunciation: "ist das NAKH-beh-shtel-bar" },
   { id: 3583, category: "Shopping", english: "Can I get a price check?", german: "Können Sie den Preis prüfen?", pronunciation: "KUR-nen zee den prys PRYOO-fen" },
-  { id: 3584, category: "Shopping", english: "Where are the changing rooms?", german: "Wo sind die Umkleidekabinen?", pronunciation: "vo zint dee OOM-kly-deh-kah-bee-nen" },
   { id: 3585, category: "Shopping", english: "It's a bit loose around the waist.", german: "Es ist etwas weit an der Taille.", pronunciation: "es ist ET-vas vyt an dehr TAH-lee-eh" },
   { id: 3586, category: "Shopping", english: "Can you hem this for me?", german: "Können Sie das für mich kürzen?", pronunciation: "KUR-nen zee das fyoor mikh KYOOR-tsen" },
   { id: 3587, category: "Shopping", english: "Do you have this in other colors?", german: "Haben Sie das in anderen Farben?", pronunciation: "HAH-ben zee das in AN-deh-ren FAR-ben" },
   { id: 3588, category: "Shopping", english: "I'll take the blue one.", german: "Ich nehme das blaue.", pronunciation: "ikh NAY-meh das BLOW-eh" },
-  { id: 3589, category: "Shopping", english: "Can you hold this for me?", german: "Können Sie das für mich zurücklegen?", pronunciation: "KUR-nen zee das fyoor mikh tsoo-RYOOK-lay-gen" },
   { id: 3590, category: "Shopping", english: "I'll be back for it tomorrow.", german: "Ich komme morgen dafür zurück.", pronunciation: "ikh KOM-meh MOR-gen dah-FYOOR tsoo-RYOOK" },
   { id: 3591, category: "Shopping", english: "I'm looking for something unique.", german: "Ich suche etwas Besonderes.", pronunciation: "ikh ZOO-kheh ET-vas beh-ZON-deh-res" },
   { id: 3592, category: "Shopping", english: "This is handmade, isn't it?", german: "Das ist handgemacht, oder?", pronunciation: "das ist HANT-geh-makht OH-der" },
@@ -4045,7 +1934,6 @@ const sentences = [
   { id: 3596, category: "Shopping", english: "I'd like to sign up for your newsletter.", german: "Ich würde gerne Ihren Newsletter abonnieren.", pronunciation: "ikh VYOOR-deh GEHR-neh EE-ren NOO-slet-ter ah-bo-NEE-ren" },
   { id: 3597, category: "Shopping", english: "Thanks for the recommendation!", german: "Danke für die Empfehlung!", pronunciation: "DANK-eh fyoor dee em-PFAY-loong" },
   { id: 3601, category: "Restaurants & Food", english: "I'd like a booth, please.", german: "Ich hätte gerne eine Nische.", pronunciation: "ikh HET-teh GEHR-neh EYE-neh NISH-eh" },
-  { id: 3602, category: "Restaurants & Food", english: "Is the fish fresh today?", german: "Ist der Fisch heute frisch?", pronunciation: "ist dehr fish HOY-teh frish" },
   { id: 3603, category: "Restaurants & Food", english: "I'll start with the soup.", german: "Ich beginne mit der Suppe.", pronunciation: "ikh beh-GIN-neh mit dehr ZOOP-peh" },
   { id: 3604, category: "Restaurants & Food", english: "Could I see the menu again?", german: "Könnte ich die Speisekarte noch einmal sehen?", pronunciation: "KURN-teh ikh dee SHPY-zeh-kar-teh nokh EYN-mahl ZEH-en" },
   { id: 3605, category: "Restaurants & Food", english: "The steak looks amazing.", german: "Das Steak sieht großartig aus.", pronunciation: "das stayk zeert GROH-sar-tikh ows" },
@@ -4100,7 +1988,6 @@ const sentences = [
   { id: 3663, category: "Family", english: "We're throwing her a party.", german: "Wir schmeißen ihr eine Party.", pronunciation: "veer SHMY-sen eer EYE-neh PAR-tee" },
   { id: 3664, category: "Family", english: "My parents are visiting next week.", german: "Meine Eltern besuchen uns nächste Woche.", pronunciation: "MY-neh EL-tern beh-ZOO-khen oons NEKHS-teh VOH-kheh" },
   { id: 3665, category: "Family", english: "Can you help me set up the guest room?", german: "Kannst du mir helfen, das Gästezimmer herzurichten?", pronunciation: "kanst doo meer HEL-fen das GES-teh-tsim-mer HERTS-tsoo-rikh-ten" },
-  { id: 3666, category: "Family", english: "My kids love their grandparents.", german: "Meine Kinder lieben ihre Großeltern.", pronunciation: "MY-neh KIN-der LEE-ben EE-reh GROHS-el-tern" },
   { id: 3667, category: "Family", english: "We spoil the grandkids.", german: "Wir verwöhnen die Enkelkinder.", pronunciation: "veer fer-VURN-nen dee EN-kel-kin-der" },
   { id: 3668, category: "Family", english: "He's walking in his father's footsteps.", german: "Er folgt in die Fußstapfen seines Vaters.", pronunciation: "ehr folkt in dee FOOS-shtap-fen ZY-nes FAH-ters" },
   { id: 3669, category: "Family", english: "We had a family meeting.", german: "Wir hatten ein Familientreffen.", pronunciation: "veer HAT-ten yn fah-MEE-lee-en-tref-fen" },
@@ -4117,9 +2004,6 @@ const sentences = [
   { id: 3683, category: "Dating & Romance", english: "You shouldn't have!", german: "Das wäre doch nicht nötig gewesen!", pronunciation: "das VAY-reh dokh nikht NUR-tikh geh-VAY-zen" },
   { id: 3684, category: "Dating & Romance", english: "This means a lot to me.", german: "Das bedeutet mir sehr viel.", pronunciation: "das beh-DOY-tet meer zehr feel" },
   { id: 3685, category: "Dating & Romance", english: "You always know how to make me smile.", german: "Du weißt immer, wie du mich zum Lächeln bringst.", pronunciation: "doo vyst IM-mer vee doo mikh tsoom LEH-kheln bringst" },
-  { id: 3686, category: "Dating & Romance", english: "I love how caring you are.", german: "Ich liebe, wie fürsorglich du bist.", pronunciation: "ikh LEE-beh vee FYOOR-zor-glikh doo bist" },
-  { id: 3687, category: "Dating & Romance", english: "You inspire me every day.", german: "Du inspirierst mich jeden Tag.", pronunciation: "doo in-spi-REERST mikh YEH-den tahk" },
-  { id: 3688, category: "Dating & Romance", english: "I feel safe with you.", german: "Ich fühle mich bei dir sicher.", pronunciation: "ikh FOO-leh mikh by deer ZIKH-er" },
   { id: 3689, category: "Dating & Romance", english: "You're my calm in the storm.", german: "Du bist meine Ruhe im Sturm.", pronunciation: "doo bist MY-neh ROO-eh im shtoorm" },
   { id: 3690, category: "Dating & Romance", english: "I love every little thing about you.", german: "Ich liebe jede Kleinigkeit an dir.", pronunciation: "ikh LEE-beh YEH-deh KLY-nikh-kyt an deer" },
   { id: 3691, category: "Dating & Romance", english: "Shall we dance?", german: "Darf ich bitten?", pronunciation: "darf ikh BIT-ten" },
@@ -4128,7 +2012,7 @@ const sentences = [
   { id: 3694, category: "Dating & Romance", english: "Close your eyes.", german: "Schließ die Augen.", pronunciation: "shlee dee OW-gen" },
   { id: 3695, category: "Dating & Romance", english: "I have a surprise for you.", german: "Ich habe eine Überraschung für dich.", pronunciation: "ikh HAH-beh EYE-neh YOO-ber-rah-shoong fyoor dikh" },
   { id: 3696, category: "Dating & Romance", english: "You are my greatest adventure.", german: "Du bist mein größtes Abenteuer.", pronunciation: "doo bist myn GRURS-tes ah-ben-TOY-er" },
-  { id: 3697, category: "Dating & Romance", english: "Loving you is the best decision I ever made.", german: "Dich zu lieben ist die beste Entscheidung, die ich je getroffen habe.", pronunciation: "dikh tsoo LEE-ben ist dee BES-teh ent-SHY-doong dee ikh yeh geh-TROF-fen HAH-beh" },
+  { id: 3697, category: "Dating & Romance", english: "Loving you is the best decision I ever made.", german: "Dich zu lieben ist die beste Entscheidung, die ich je getroffen habe.", pronunciation: "dikh tsoo LEE-ben ist dee BES-teh ent-SHY-doong dee ikh yeh geh-TROF-fen HAH-beh" }
 ]
 
 export default sentences
