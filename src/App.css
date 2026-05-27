@@ -638,6 +638,15 @@ input {
   transform: scale(0.96);
 }
 
+.category-tile.category-tile--all {
+  flex-direction: row;
+  align-items: center;
+  background: var(--accent);
+  color: white;
+  border: none;
+  gap: 14px;
+}
+
 .category-tile .tile-icon {
   font-size: 28px;
 }
@@ -1510,6 +1519,97 @@ input {
   color: var(--text-faint);
   letter-spacing: 0.04em;
   display: none;
+}
+
+/* Settings button */
+.flash-settings-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: color 0.15s, background 0.15s;
+}
+
+.flash-settings-btn:hover,
+.flash-settings-btn--active {
+  color: var(--accent);
+  background: var(--border-light);
+}
+
+/* Settings panel (dropdown) */
+.flash-settings-panel {
+  position: absolute;
+  top: 57px;
+  right: 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-md);
+  z-index: 100;
+  min-width: 220px;
+  overflow: hidden;
+}
+
+.flash-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.flash-settings-label {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+/* Toggle switch */
+.flash-toggle {
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--border);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.22s;
+}
+
+.flash-toggle--on {
+  background: var(--accent);
+}
+
+.flash-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+  transition: left 0.22s;
+}
+
+.flash-toggle--on .flash-toggle-thumb {
+  left: 21px;
+}
+
+/* Feedback link */
+.flash-feedback-link {
+  display: block;
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.flash-feedback-link:hover {
+  background: var(--bg-card);
 }
 
 @media (min-width: 768px) {

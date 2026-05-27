@@ -103,6 +103,7 @@ export default function SwipeView({
       setDragOffset(0)
       setStage('idle')
     } else if (stage === 'settling') {
+      setDragOffset(0)
       setStage('idle')
     }
   }, [stage])
@@ -113,6 +114,7 @@ export default function SwipeView({
     if (e.target.closest('.card-fabs, .card-top-bar')) return
     touchStartYRef.current = e.touches[0].clientY
     touchStartXRef.current = e.touches[0].clientX
+    setDragOffset(0)
     setStage('dragging')
   }, [stage])
 

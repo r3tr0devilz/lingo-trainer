@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
-import { ChevronLeft, ChevronRight, RotateCcw, Bookmark, BookmarkCheck, Sun, Moon, GraduationCap } from 'lucide-react'
+import { useState, useCallback, useEffect } from 'react'
+import { ChevronLeft, ChevronRight, RotateCcw, Bookmark, BookmarkCheck, Sun, Moon, GraduationCap, Settings } from 'lucide-react'
 import sentences from '../data/sentences.js'
 
 const CATEGORIES = [
@@ -16,11 +16,20 @@ const CATEGORIES = [
   'Dating & Romance',
 ]
 
+function loadReversed() {
+  try {
+    const raw = localStorage.getItem('lingo-flash-reversed')
+    return raw ? JSON.parse(raw) : false
+  } catch { return false }
+}
+
 export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggleDark }) {
   const [category, setCategory] = useState('All Sentences')
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [showCatPicker, setShowCatPicker] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
+  const [reversed, setReversed] = useState(loadReversed)
 
   const deck = category === 'All Sentences'
     ? sentences
@@ -45,6 +54,15 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
     setShowCatPicker(false)
   }, [])
 
+  const toggleReversed = useCallback(() => {
+    setReversed(r => {
+      const next = !r
+      localStorage.setItem('lingo-flash-reversed', JSON.stringify(next))
+      return next
+    })
+    setRevealed(false)
+  }, [])
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goNext() }
@@ -62,18 +80,53 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
   return (
     <div className="flash-view">
       <div className="flash-header">
-        <button className="flash-cat-btn" onClick={() => setShowCatPicker(p => !p)}>
+        <button
+          className="flash-cat-btn"
+          onClick={() => { setShowCatPicker(p => !p); setShowSettings(false) }}
+        >
           <GraduationCap size={16} strokeWidth={1.75} />
           <span>{category}</span>
           <span className="flash-cat-caret">▾</span>
         </button>
         <div className="flash-header-right">
           <span className="flash-counter">{index + 1} / {total}</span>
+          <button
+            className={`flash-settings-btn${showSettings ? ' flash-settings-btn--active' : ''}`}
+            onClick={() => { setShowSettings(p => !p); setShowCatPicker(false) }}
+            aria-label="Settings"
+          >
+            <Settings size={18} strokeWidth={1.75} />
+          </button>
           <button className="dark-toggle" onClick={onToggleDark} aria-label="Toggle dark mode">
             {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
           </button>
         </div>
       </div>
+
+      {showSettings && (
+        <div className="flash-settings-panel">
+          <div className="flash-settings-row">
+            <span className="flash-settings-label">Show English first</span>
+            <button
+              className={`flash-toggle${reversed ? ' flash-toggle--on' : ''}`}
+              onClick={toggleReversed}
+              role="switch"
+              aria-checked={reversed}
+              aria-label="Reverse card direction"
+            >
+              <span className="flash-toggle-thumb" />
+            </button>
+          </div>
+          <a
+            className="flash-feedback-link"
+            href="https://github.com/r3tr0devilz/lingo-trainer/issues/new"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Send feedback ↗
+          </a>
+        </div>
+      )}
 
       {showCatPicker && (
         <div className="flash-cat-dropdown">
@@ -104,14 +157,25 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
         >
           <div className="flash-card-front">
             <p className="flash-category-badge">{sentence.category}</p>
-            <p className="flash-german">{sentence.german}</p>
+            <p className="flash-german">
+              {reversed ? sentence.english : sentence.german}
+            </p>
             {!revealed && <p className="flash-tap-hint">tap to reveal</p>}
           </div>
 
           {revealed && (
             <div className="flash-card-back">
-              <p className="flash-english">{sentence.english}</p>
-              <p className="flash-pronunciation">{sentence.pronunciation}</p>
+              {reversed ? (
+                <>
+                  <p className="flash-german">{sentence.german}</p>
+                  <p className="flash-pronunciation">{sentence.pronunciation}</p>
+                </>
+              ) : (
+                <>
+                  <p className="flash-english">{sentence.english}</p>
+                  <p className="flash-pronunciation">{sentence.pronunciation}</p>
+                </>
+              )}
             </div>
           )}
         </div>
