@@ -1,5 +1,6 @@
 import { Bookmark, BookmarkX, X, Sun, Moon, BookOpen } from 'lucide-react'
 import { CATEGORY_ICONS } from '../data/categoryIcons.js'
+import SettingsMenu from './SettingsMenu.jsx'
 
 export default function BookmarksView({
   sentences,
@@ -25,6 +26,7 @@ export default function BookmarksView({
         </h2>
         <div className="header-actions">
           <span className="bookmark-count">{sentences.length} saved</span>
+          <SettingsMenu />
           <button
             className="dark-toggle"
             onClick={onToggleDark}

@@ -1741,6 +1741,32 @@ input {
   display: none;
 }
 
+/* ── Shared Settings Menu ────────────────────────────────── */
+.settings-menu {
+  position: relative;
+}
+
+.settings-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-md);
+  z-index: 200;
+  min-width: 200px;
+  overflow: hidden;
+  animation: fadeIn 0.15s ease;
+}
+
+/* Group for right-side top-bar buttons in SentenceCard */
+.card-top-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* Settings button */
 .flash-settings-btn {
   width: 32px;
@@ -2462,6 +2488,13 @@ button:focus:not(:focus-visible) {
 .vocab-actions {
   padding: 8px 16px 10px;
   flex-shrink: 0;
+}
+
+/* Speaking state for nav-btn used as pronounce button */
+.flash-nav-btn--speaking {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 @media (min-width: 1024px) {

@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { BookOpen, ChevronRight, Languages, Sun, Moon } from 'lucide-react'
 import { CATEGORY_ICONS } from '../data/categoryIcons.js'
+import SettingsMenu from './SettingsMenu.jsx'
 
 export default function BrowseView({
   categories,
@@ -24,6 +25,7 @@ export default function BrowseView({
         <div className="browse-title-row">
           <span className="app-logo"><Languages size={26} strokeWidth={1.5} /></span>
           <h1 className="browse-title">Lingo Trainer</h1>
+          <SettingsMenu />
           <button
             className="dark-toggle"
             onClick={onToggleDark}

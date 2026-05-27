@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 import { Search, X, Sun, Moon, Bookmark, BookmarkCheck, Languages, ArrowLeftRight, Loader } from 'lucide-react'
+import SettingsMenu from './SettingsMenu.jsx'
 
 async function translate(text, dir) {
   const [src, tgt] = dir === 'en-de' ? ['en', 'de'] : ['de', 'en']
@@ -71,16 +72,19 @@ export default function SearchView({
         <h2 className="secondary-title">
           <Search size={20} strokeWidth={1.75} /> Search
         </h2>
-        <button
-          className="dark-toggle"
-          onClick={onToggleDark}
-          aria-label="Toggle dark mode"
-        >
-          {darkMode
-            ? <Sun size={18} strokeWidth={1.75} />
-            : <Moon size={18} strokeWidth={1.75} />
-          }
-        </button>
+        <div className="header-actions">
+          <SettingsMenu />
+          <button
+            className="dark-toggle"
+            onClick={onToggleDark}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode
+              ? <Sun size={18} strokeWidth={1.75} />
+              : <Moon size={18} strokeWidth={1.75} />
+            }
+          </button>
+        </div>
       </div>
 
       <div className="search-bar-wrapper">

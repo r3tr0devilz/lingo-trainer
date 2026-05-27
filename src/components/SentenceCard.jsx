@@ -5,6 +5,7 @@ import {
   ChevronUp, ChevronDown, Highlighter,
 } from 'lucide-react'
 import { tagGerman } from '../utils/germanTagger.js'
+import SettingsMenu from './SettingsMenu.jsx'
 
 function pickGermanVoice(voices) {
   return (
@@ -105,14 +106,17 @@ export default function SentenceCard({
           <ArrowLeft size={20} strokeWidth={2} />
         </button>
         <span className="card-category-badge">{sentence.category}</span>
-        <button
-          className="card-dark-toggle"
-          onClick={onToggleDark}
-          aria-label="Toggle dark mode"
-          title={darkMode ? 'Light mode' : 'Dark mode'}
-        >
-          {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
-        </button>
+        <div className="card-top-right">
+          <SettingsMenu />
+          <button
+            className="card-dark-toggle"
+            onClick={onToggleDark}
+            aria-label="Toggle dark mode"
+            title={darkMode ? 'Light mode' : 'Dark mode'}
+          >
+            {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
+          </button>
+        </div>
       </div>
 
       {/* Main content — double-tap to bookmark */}

@@ -1,15 +1,26 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import {
   ChevronLeft, ChevronRight, RotateCcw, Sun, Moon,
-  GraduationCap, Search, X, ChevronUp,
+  GraduationCap, Search, X, ChevronUp, Volume2, PauseCircle,
 } from 'lucide-react'
 import vocab, { VOCAB_CATEGORIES, VOCAB_TYPES } from '../data/vocab.js'
+import SettingsMenu from './SettingsMenu.jsx'
 
 function loadReversed() {
   try {
     const raw = localStorage.getItem('lingo-flash-reversed')
     return raw ? JSON.parse(raw) : true
   } catch { return true }
+}
+
+function pickGermanVoice(voices) {
+  return (
+    voices.find(v => v.lang.replace('_', '-') === 'de-DE' && v.localService) ||
+    voices.find(v => v.lang.replace('_', '-') === 'de-DE') ||
+    voices.find(v => v.lang.replace('_', '-').startsWith('de-')) ||
+    voices.find(v => /deutsch/i.test(v.name) || /\bgerman\b/i.test(v.name)) ||
+    null
+  )
 }
 
 function loadHintSeen() {
@@ -147,11 +158,29 @@ export default function VocabView({ darkMode, onToggleDark }) {
   // 'front' | 'translated' | 'expanded'
   const [cardState, setCardState] = useState('front')
   const [showCatPicker, setShowCatPicker] = useState(false)
-  const [reversed] = useState(loadReversed)
+  const [reversed, setReversed] = useState(loadReversed)
   const [hintSeen, setHintSeen] = useState(loadHintSeen)
+  const [isSpeaking, setIsSpeaking] = useState(false)
   const searchRef = useRef(null)
   const touchStartRef = useRef(null)
   const swipeDidHappenRef = useRef(false)
+  const germanVoiceRef = useRef(null)
+
+  useEffect(() => {
+    const update = () => { germanVoiceRef.current = pickGermanVoice(window.speechSynthesis.getVoices()) }
+    update()
+    window.speechSynthesis.addEventListener('voiceschanged', update)
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', update)
+  }, [])
+
+  const toggleReversed = useCallback(() => {
+    setReversed(r => {
+      const next = !r
+      localStorage.setItem('lingo-flash-reversed', JSON.stringify(next))
+      return next
+    })
+    setCardState('front')
+  }, [])
 
   const filtered = (() => {
     let list = vocab
@@ -176,6 +205,27 @@ export default function VocabView({ darkMode, onToggleDark }) {
     setHintSeen(true)
     localStorage.setItem('lingo-vocab-hint-seen', 'true')
   }, [])
+
+  const speak = useCallback(() => {
+    if (!window.speechSynthesis || !word) return
+    window.speechSynthesis.cancel()
+    if (isSpeaking) { setIsSpeaking(false); return }
+    const text = word.article ? `${word.article} ${word.german}` : word.german
+    const utt = new SpeechSynthesisUtterance(text)
+    utt.lang = 'de-DE'
+    utt.rate = 0.85
+    if (germanVoiceRef.current) utt.voice = germanVoiceRef.current
+    utt.onstart = () => setIsSpeaking(true)
+    utt.onend = () => setIsSpeaking(false)
+    utt.onerror = () => setIsSpeaking(false)
+    window.speechSynthesis.speak(utt)
+  }, [word, isSpeaking])
+
+  // Stop speech when navigating away
+  useEffect(() => {
+    window.speechSynthesis?.cancel()
+    setIsSpeaking(false)
+  }, [index])
 
   const goNext = useCallback(() => {
     if (index < total - 1) { setIndex(i => i + 1); setCardState('front') }
@@ -289,6 +339,19 @@ export default function VocabView({ darkMode, onToggleDark }) {
         </button>
         <div className="flash-header-right">
           <span className="flash-counter">{index + 1} / {total}</span>
+          <SettingsMenu>
+            <div className="flash-settings-row">
+              <span className="flash-settings-label">Show English first</span>
+              <button
+                className={`flash-toggle${reversed ? ' flash-toggle--on' : ''}`}
+                onClick={toggleReversed}
+                role="switch"
+                aria-checked={reversed}
+              >
+                <span className="flash-toggle-thumb" />
+              </button>
+            </div>
+          </SettingsMenu>
           <button className="dark-toggle" onClick={onToggleDark} aria-label="Toggle dark mode">
             {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
           </button>
@@ -401,6 +464,17 @@ export default function VocabView({ darkMode, onToggleDark }) {
       <div className="flash-actions vocab-actions">
         <button className="flash-nav-btn" onClick={goPrev} disabled={index === 0} aria-label="Previous">
           <ChevronLeft size={22} strokeWidth={2} />
+        </button>
+        <button
+          className={`flash-nav-btn${isSpeaking ? ' flash-nav-btn--speaking' : ''}`}
+          onClick={speak}
+          aria-label="Pronounce German word"
+          title="Listen"
+        >
+          {isSpeaking
+            ? <PauseCircle size={20} strokeWidth={1.75} />
+            : <Volume2 size={20} strokeWidth={1.75} />
+          }
         </button>
         <button className="flash-flip-btn" onClick={onCardClick}>
           <RotateCcw size={18} strokeWidth={2} />
