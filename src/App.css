@@ -429,6 +429,59 @@ input {
   pointer-events: none;
 }
 
+/* ── Grammar highlighting ────────────────────────────────── */
+
+/* Inline span around each tagged word */
+.gtag {
+  border-radius: 3px;
+  padding: 0 1px;
+  transition: background 0.2s;
+}
+
+.gtag--subject {
+  background: rgba(59, 130, 246, 0.18);
+  border-bottom: 2px solid #3b82f6;
+  color: inherit;
+}
+
+.gtag--verb {
+  background: rgba(217, 119, 6, 0.18);
+  border-bottom: 2px solid #d97706;
+  color: inherit;
+}
+
+.gtag--object {
+  background: rgba(22, 163, 74, 0.18);
+  border-bottom: 2px solid #16a34a;
+  color: inherit;
+}
+
+/* Legend row below the German sentence */
+.grammar-legend {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.grammar-legend-item {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.grammar-legend-item.gtag--subject { color: #2563eb; }
+.grammar-legend-item.gtag--verb    { color: #b45309; }
+.grammar-legend-item.gtag--object  { color: #15803d; }
+
+.app.dark .grammar-legend-item.gtag--subject { color: #93c5fd; }
+.app.dark .grammar-legend-item.gtag--verb    { color: #fcd34d; }
+.app.dark .grammar-legend-item.gtag--object  { color: #86efac; }
+
 .progress-track {
   width: 8px;
   height: 48px;

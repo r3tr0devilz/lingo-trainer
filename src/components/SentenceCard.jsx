@@ -1,9 +1,10 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import {
   ArrowLeft, Sun, Moon,
   Volume2, PauseCircle, Bookmark, BookmarkCheck,
-  ChevronUp, ChevronDown,
+  ChevronUp, ChevronDown, Highlighter,
 } from 'lucide-react'
+import { tagGerman } from '../utils/germanTagger.js'
 
 function pickGermanVoice(voices) {
   return (
@@ -12,6 +13,24 @@ function pickGermanVoice(voices) {
     voices.find(v => v.lang.replace('_','-').startsWith('de-')) ||
     voices.find(v => /deutsch/i.test(v.name) || /\bgerman\b/i.test(v.name)) ||
     null
+  )
+}
+
+function loadGrammarMode() {
+  try { return JSON.parse(localStorage.getItem('lingo-grammar-mode') ?? 'false') }
+  catch { return false }
+}
+
+function GermanHighlighted({ text }) {
+  const tokens = useMemo(() => tagGerman(text), [text])
+  return (
+    <p className="card-german">
+      {tokens.map((token, i) => (
+        <span key={i} className={token.role ? `gtag gtag--${token.role}` : undefined}>
+          {token.text}{token.space}
+        </span>
+      ))}
+    </p>
   )
 }
 
@@ -32,6 +51,7 @@ export default function SentenceCard({
 }) {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [bookmarkFlash, setBookmarkFlash] = useState(false)
+  const [grammarMode, setGrammarMode] = useState(loadGrammarMode)
   const isBookmarked = bookmarks.has(sentence.id)
   const germanVoiceRef = useRef(null)
   const lastTapRef = useRef(0)
@@ -56,10 +76,7 @@ export default function SentenceCard({
   const speak = useCallback(() => {
     if (!window.speechSynthesis) return
     window.speechSynthesis.cancel()
-    if (isSpeaking) {
-      setIsSpeaking(false)
-      return
-    }
+    if (isSpeaking) { setIsSpeaking(false); return }
     const utterance = new SpeechSynthesisUtterance(sentence.german)
     utterance.lang = 'de-DE'
     utterance.rate = 0.85
@@ -70,34 +87,31 @@ export default function SentenceCard({
     window.speechSynthesis.speak(utterance)
   }, [sentence.german, isSpeaking])
 
-  const handleBookmark = useCallback(() => {
-    onBookmark(sentence.id)
-  }, [onBookmark, sentence.id])
+  const handleBookmark = useCallback(() => { onBookmark(sentence.id) }, [onBookmark, sentence.id])
+
+  const toggleGrammar = useCallback(() => {
+    setGrammarMode(m => {
+      const next = !m
+      localStorage.setItem('lingo-grammar-mode', JSON.stringify(next))
+      return next
+    })
+  }, [])
 
   return (
     <div className="sentence-card">
       {/* Top bar */}
       <div className="card-top-bar">
-        <button
-          className="card-back-btn"
-          onClick={onBack}
-          aria-label="Back to browse"
-        >
+        <button className="card-back-btn" onClick={onBack} aria-label="Back to browse">
           <ArrowLeft size={20} strokeWidth={2} />
         </button>
-        <span className="card-category-badge">
-          {sentence.category}
-        </span>
+        <span className="card-category-badge">{sentence.category}</span>
         <button
           className="card-dark-toggle"
           onClick={onToggleDark}
           aria-label="Toggle dark mode"
           title={darkMode ? 'Light mode' : 'Dark mode'}
         >
-          {darkMode
-            ? <Sun size={18} strokeWidth={1.75} />
-            : <Moon size={18} strokeWidth={1.75} />
-          }
+          {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
         </button>
       </div>
 
@@ -109,7 +123,20 @@ export default function SentenceCard({
           </span>
         )}
         <p className="card-english">{sentence.english}</p>
-        <p className="card-german">{sentence.german}</p>
+
+        {grammarMode
+          ? <GermanHighlighted text={sentence.german} />
+          : <p className="card-german">{sentence.german}</p>
+        }
+
+        {grammarMode && (
+          <div className="grammar-legend">
+            <span className="grammar-legend-item gtag--subject">Subject</span>
+            <span className="grammar-legend-item gtag--verb">Verb</span>
+            <span className="grammar-legend-item gtag--object">Object</span>
+          </div>
+        )}
+
         <p className="card-pronunciation">{sentence.pronunciation}</p>
       </div>
 
@@ -145,18 +172,25 @@ export default function SentenceCard({
           <span className="fab-label">{isBookmarked ? 'Saved' : 'Save'}</span>
         </button>
 
+        <button
+          className={`fab fab--grammar${grammarMode ? ' fab--active' : ''}`}
+          onClick={toggleGrammar}
+          aria-label={grammarMode ? 'Hide grammar highlights' : 'Show grammar highlights'}
+          title="Grammar"
+        >
+          <span className="fab-icon"><Highlighter size={22} strokeWidth={1.75} /></span>
+          <span className="fab-label">Grammar</span>
+        </button>
+
         <div className="fab fab--progress" aria-hidden="true">
           <div className="progress-track">
-            <div
-              className="progress-fill"
-              style={{ height: `${progress * 100}%` }}
-            />
+            <div className="progress-fill" style={{ height: `${progress * 100}%` }} />
           </div>
           <span className="fab-label">{index + 1}/{total}</span>
         </div>
       </div>
 
-      {/* Swipe nudge at bottom — show one at a time, prefer next */}
+      {/* Swipe nudge at bottom */}
       <div className="card-swipe-nudge">
         {canGoNext ? (
           <span className="nudge-arrow" onClick={onNext} title="Next">
