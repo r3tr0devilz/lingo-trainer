@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, RotateCcw, Bookmark, BookmarkCheck, Sun, Moon, GraduationCap, Settings } from 'lucide-react'
 import sentences from '../data/sentences.js'
+import FeedbackModal from './FeedbackModal.jsx'
 
 const CATEGORIES = [
   'All Sentences',
@@ -30,6 +31,7 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
   const [showCatPicker, setShowCatPicker] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [reversed, setReversed] = useState(loadReversed)
+  const [showFeedback, setShowFeedback] = useState(false)
 
   const deck = category === 'All Sentences'
     ? sentences
@@ -117,14 +119,12 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
               <span className="flash-toggle-thumb" />
             </button>
           </div>
-          <a
+          <button
             className="flash-feedback-link"
-            href="https://github.com/r3tr0devilz/lingo-trainer/issues/new"
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={() => { setShowFeedback(true); setShowSettings(false) }}
           >
-            Send feedback ↗
-          </a>
+            Send feedback
+          </button>
         </div>
       )}
 
@@ -222,6 +222,8 @@ export default function FlashCardView({ bookmarks, onBookmark, darkMode, onToggl
 
         <p className="flash-kb-hint">space / enter to flip · ← → to navigate</p>
       </div>
+
+      {showFeedback && <FeedbackModal onClose={() => setShowFeedback(false)} />}
     </div>
   )
 }
