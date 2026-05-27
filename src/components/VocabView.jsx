@@ -17,7 +17,7 @@ function loadHintSeen() {
   catch { return false }
 }
 
-// ── Grammar tables ─────────────────────────────────────────────────────────────
+// ── Grammar tables (rendered in the bottom sheet) ─────────────────────────────
 
 function VerbTable({ forms }) {
   if (!forms) return null
@@ -93,6 +93,50 @@ function WordTypeBadge({ type }) {
   return <span className={`vocab-type-badge vocab-type-badge--${type}`}>{labels[type] ?? type}</span>
 }
 
+// ── Grammar bottom sheet ───────────────────────────────────────────────────────
+
+function GrammarSheet({ word, open, onClose }) {
+  const sheetTouchStartY = useRef(null)
+
+  const onTouchStart = useCallback((e) => {
+    sheetTouchStartY.current = e.touches[0].clientY
+  }, [])
+
+  const onTouchEnd = useCallback((e) => {
+    if (sheetTouchStartY.current === null) return
+    const dy = e.changedTouches[0].clientY - sheetTouchStartY.current
+    sheetTouchStartY.current = null
+    if (dy > 55) onClose()
+  }, [onClose])
+
+  const typeLabels = { verb: 'Verb', noun: 'Noun', adjective: 'Adjective', adverb: 'Adverb' }
+
+  return (
+    <>
+      {open && <div className="vocab-sheet-backdrop" onClick={onClose} />}
+      <div
+        className={`vocab-grammar-sheet${open ? ' vocab-grammar-sheet--open' : ''}`}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        <div className="vocab-sheet-handle" />
+        <div className="vocab-sheet-header">
+          <span className="vocab-sheet-title">
+            {word.article ? `${word.article} ${word.german}` : word.german}
+            <span className="vocab-sheet-type"> · {typeLabels[word.type]}</span>
+          </span>
+          <button className="vocab-sheet-close" onClick={onClose} aria-label="Close">
+            <X size={17} strokeWidth={2} />
+          </button>
+        </div>
+        {word.type === 'verb'      && <VerbTable forms={word.forms} />}
+        {word.type === 'noun'      && <NounTable forms={word.forms} />}
+        {word.type === 'adjective' && <AdjTable german={word.german} forms={word.forms} />}
+      </div>
+    </>
+  )
+}
+
 // ── Main component ─────────────────────────────────────────────────────────────
 
 export default function VocabView({ darkMode, onToggleDark }) {
@@ -157,7 +201,7 @@ export default function VocabView({ darkMode, onToggleDark }) {
     setSearch(''); setIndex(0); setCardState('front'); searchRef.current?.focus()
   }, [])
 
-  // Touch: swipe up on translated card expands grammar; swipe down on expanded collapses
+  // Swipe up on card to expand grammar sheet
   const onCardTouchStart = useCallback((e) => {
     touchStartRef.current = { y: e.touches[0].clientY, x: e.touches[0].clientX }
     swipeDidHappenRef.current = false
@@ -170,31 +214,32 @@ export default function VocabView({ darkMode, onToggleDark }) {
     touchStartRef.current = null
     if (Math.abs(dy) > 38 && Math.abs(dy) > dx) {
       swipeDidHappenRef.current = true
-      if (dy > 0 && cardState === 'translated') {
+      if (dy > 0 && cardState === 'translated' && hasGrammar) {
         setCardState('expanded')
         if (!hintSeen) markHintSeen()
-      } else if (dy < 0 && cardState === 'expanded') {
-        setCardState('translated')
       }
     }
-  }, [cardState, hintSeen, markHintSeen])
+  }, [cardState, hasGrammar, hintSeen, markHintSeen])
 
-  // Tap: reveal translation; if already revealed, collapse to front
   const onCardClick = useCallback(() => {
     if (swipeDidHappenRef.current) { swipeDidHappenRef.current = false; return }
     setCardState(s => s === 'front' ? 'translated' : 'front')
   }, [])
 
-  // Grammar button (always visible on translated, for desktop and accessibility)
-  const expandGrammar = useCallback((e) => {
-    e.stopPropagation()
+  const openGrammar = useCallback((e) => {
+    e?.stopPropagation()
     setCardState('expanded')
     if (!hintSeen) markHintSeen()
   }, [hintSeen, markHintSeen])
 
+  const closeGrammar = useCallback(() => {
+    setCardState('translated')
+  }, [])
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.tagName === 'INPUT') return
+      if (e.key === 'Escape') { if (cardState === 'expanded') closeGrammar(); return }
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goNext() }
       if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goPrev() }
       if (e.key === ' ' || e.key === 'Enter') {
@@ -208,13 +253,13 @@ export default function VocabView({ darkMode, onToggleDark }) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [goNext, goPrev, hasGrammar])
+  }, [goNext, goPrev, hasGrammar, cardState, closeGrammar])
 
   if (!word) {
     return (
       <div className="vocab-view">
         <div className="flash-header">
-          <span className="flash-cat-btn" style={{ opacity: 0.5 }}>No results</span>
+          <span style={{ opacity: 0.5, fontSize: 14 }}>No results</span>
           <button className="dark-toggle" onClick={onToggleDark}>
             {darkMode ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
           </button>
@@ -237,10 +282,7 @@ export default function VocabView({ darkMode, onToggleDark }) {
     <div className="vocab-view">
       {/* Header */}
       <div className="flash-header vocab-header">
-        <button
-          className="flash-cat-btn"
-          onClick={() => setShowCatPicker(p => !p)}
-        >
+        <button className="flash-cat-btn" onClick={() => setShowCatPicker(p => !p)}>
           <GraduationCap size={16} strokeWidth={1.75} />
           <span>{category}</span>
           <span className="flash-cat-caret">▾</span>
@@ -301,12 +343,12 @@ export default function VocabView({ darkMode, onToggleDark }) {
         ))}
       </div>
 
-      {/* Progress bar */}
+      {/* Progress */}
       <div className="flash-progress-bar">
         <div className="flash-progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Scrollable card area */}
+      {/* Card area */}
       <div className="vocab-scroll-area">
         <div
           className={`flash-card vocab-card${cardState !== 'front' ? ' flash-card--revealed' : ''}`}
@@ -316,9 +358,8 @@ export default function VocabView({ darkMode, onToggleDark }) {
           role="button"
           tabIndex={0}
           onKeyDown={e => e.key === 'Enter' && onCardClick()}
-          aria-label={cardState === 'front' ? 'Reveal translation' : 'Hide card'}
         >
-          {/* Always-visible front: the word */}
+          {/* Word (always visible) */}
           <div className="vocab-card-front">
             <div className="vocab-front-meta">
               <span className="flash-category-badge">{word.category}</span>
@@ -329,18 +370,15 @@ export default function VocabView({ darkMode, onToggleDark }) {
             {cardState === 'front' && word.example && !reversed && (
               <p className="vocab-example">{word.example}</p>
             )}
-            {cardState === 'front' && (
-              <p className="flash-tap-hint">tap to reveal</p>
-            )}
+            {cardState === 'front' && <p className="flash-tap-hint">tap to reveal</p>}
           </div>
 
-          {/* Translation section — fades in on tap */}
+          {/* Translation (after tap) */}
           {cardState !== 'front' && (
             <div className="vocab-translation-section">
               <p className="vocab-back-meaning">{backWord}</p>
               {word.example && <p className="vocab-example">{word.example}</p>}
 
-              {/* First-time swipe nudge */}
               {showSwipeHint && (
                 <div className="vocab-swipe-hint">
                   <ChevronUp size={15} strokeWidth={2.5} />
@@ -348,58 +386,41 @@ export default function VocabView({ darkMode, onToggleDark }) {
                 </div>
               )}
 
-              {/* Grammar expand button (desktop + after hint is seen) */}
               {cardState === 'translated' && hasGrammar && (
-                <button className="vocab-grammar-btn" onClick={expandGrammar}>
+                <button className="vocab-grammar-btn" onClick={openGrammar}>
                   <ChevronUp size={13} strokeWidth={2.5} />
                   Grammar
                 </button>
               )}
             </div>
           )}
-
-          {/* Grammar section — slides in on swipe/click */}
-          {cardState === 'expanded' && (
-            <div className="vocab-grammar-section">
-              {word.type === 'verb'      && <VerbTable forms={word.forms} />}
-              {word.type === 'noun'      && <NounTable forms={word.forms} />}
-              {word.type === 'adjective' && <AdjTable german={word.german} forms={word.forms} />}
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Always-visible nav actions */}
+      {/* Nav actions */}
       <div className="flash-actions vocab-actions">
-        <button
-          className="flash-nav-btn"
-          onClick={goPrev}
-          disabled={index === 0}
-          aria-label="Previous word"
-        >
+        <button className="flash-nav-btn" onClick={goPrev} disabled={index === 0} aria-label="Previous">
           <ChevronLeft size={22} strokeWidth={2} />
         </button>
-
-        <button
-          className="flash-flip-btn"
-          onClick={onCardClick}
-          aria-label={cardState === 'front' ? 'Reveal' : 'Hide'}
-        >
+        <button className="flash-flip-btn" onClick={onCardClick}>
           <RotateCcw size={18} strokeWidth={2} />
           <span>{cardState === 'front' ? 'Reveal' : 'Hide'}</span>
         </button>
-
-        <button
-          className="flash-nav-btn"
-          onClick={goNext}
-          disabled={index === total - 1}
-          aria-label="Next word"
-        >
+        <button className="flash-nav-btn" onClick={goNext} disabled={index === total - 1} aria-label="Next">
           <ChevronRight size={22} strokeWidth={2} />
         </button>
       </div>
 
-      <p className="flash-kb-hint">space to reveal · enter to expand · ← → navigate</p>
+      <p className="flash-kb-hint">space to reveal · enter/↑ for grammar · ← → navigate</p>
+
+      {/* Grammar bottom sheet */}
+      {hasGrammar && (
+        <GrammarSheet
+          word={word}
+          open={cardState === 'expanded'}
+          onClose={closeGrammar}
+        />
+      )}
     </div>
   )
 }
