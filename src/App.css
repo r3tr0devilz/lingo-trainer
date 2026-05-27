@@ -2139,9 +2139,23 @@ button:focus:not(:focus-visible) {
   color: var(--text-faint);
 }
 
-/* Card overrides */
+/* Card — scrollable when grammar table overflows */
 .vocab-card {
-  min-height: 300px;
+  min-height: 260px;
+  max-height: clamp(300px, calc(100svh - 280px), 560px);
+  overflow-y: auto;
+  justify-content: flex-start;
+}
+
+/* Front face re-centres itself when card has extra space */
+.vocab-card .flash-card-front {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 190px;
+  justify-content: center;
 }
 
 /* Front face meta row */
@@ -2317,11 +2331,19 @@ button:focus:not(:focus-visible) {
 }
 
 @media (min-width: 768px) {
-  .vocab-card { min-height: 360px; }
+  .vocab-card {
+    min-height: 300px;
+    max-height: clamp(340px, calc(100svh - 300px), 620px);
+  }
+  .vocab-card .flash-card-front { min-height: 220px; }
 }
 
 @media (min-width: 1024px) {
-  .vocab-card { max-width: 680px; min-height: 380px; }
+  .vocab-card {
+    max-width: 680px;
+    min-height: 320px;
+    max-height: clamp(360px, calc(100svh - 300px), 680px);
+  }
   .vocab-table { font-size: 14px; }
   .vocab-table-form { font-size: 15px; }
 }
