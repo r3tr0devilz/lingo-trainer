@@ -2017,3 +2017,311 @@ input {
 button:focus:not(:focus-visible) {
   outline: none;
 }
+
+/* ── Vocab View ──────────────────────────────────────────── */
+.vocab-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+  animation: fadeIn 0.25s ease;
+}
+
+.vocab-header {
+  position: relative;
+  z-index: 20;
+}
+
+/* Search bar */
+.vocab-search-row {
+  padding: 10px 16px 0;
+  flex-shrink: 0;
+}
+
+.vocab-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vocab-search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-faint);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.vocab-search-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 36px 0 36px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.vocab-search-input::placeholder {
+  color: var(--text-faint);
+}
+
+.vocab-search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.vocab-search-clear {
+  position: absolute;
+  right: 10px;
+  color: var(--text-faint);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+}
+
+.vocab-search-clear:hover {
+  color: var(--text-primary);
+  background: var(--border-light);
+}
+
+/* Type filter pills */
+.vocab-type-pills {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.vocab-type-pills::-webkit-scrollbar { display: none; }
+
+.vocab-type-pill {
+  flex-shrink: 0;
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-elevated);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.vocab-type-pill:hover {
+  border-color: var(--accent-light);
+  color: var(--accent);
+}
+
+.vocab-type-pill--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* Empty state */
+.vocab-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--text-faint);
+}
+
+/* Card overrides */
+.vocab-card {
+  min-height: 300px;
+}
+
+/* Front face meta row */
+.vocab-front-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Word type badge */
+.vocab-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.vocab-type-badge--verb      { background: #DBEAFE; color: #1D4ED8; }
+.vocab-type-badge--noun      { background: #FEF3C7; color: #92400E; }
+.vocab-type-badge--adjective { background: #D1FAE5; color: #065F46; }
+.vocab-type-badge--adverb    { background: #EDE9FE; color: #5B21B6; }
+
+.app.dark .vocab-type-badge--verb      { background: #1E3A5F; color: #93C5FD; }
+.app.dark .vocab-type-badge--noun      { background: #3B2E0E; color: #FCD34D; }
+.app.dark .vocab-type-badge--adjective { background: #052E16; color: #6EE7B7; }
+.app.dark .vocab-type-badge--adverb    { background: #2E1065; color: #C4B5FD; }
+
+/* Level badge */
+.vocab-level-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+/* Example sentence on card front */
+.vocab-example {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-faint);
+  font-family: 'Georgia', serif;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Front word size */
+.vocab-front-word {
+  font-size: clamp(26px, 6vw, 42px);
+}
+
+/* Card back */
+.vocab-card-back {
+  width: 100%;
+  text-align: center;
+}
+
+.vocab-back-meaning {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Grammar forms container */
+.vocab-forms {
+  width: 100%;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Conjugation / case table */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.vocab-table th {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: left;
+}
+
+.vocab-table tr:last-child td {
+  border-bottom: none;
+}
+
+.vocab-table-person {
+  padding: 5px 8px;
+  color: var(--text-faint);
+  font-size: 12px;
+  white-space: nowrap;
+  width: 36%;
+}
+
+.vocab-table-form {
+  padding: 5px 8px;
+  color: var(--text-primary);
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Past tenses row */
+.vocab-past-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.vocab-past-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.vocab-past-val {
+  font-family: 'Georgia', serif;
+  color: var(--text-primary);
+}
+
+/* Adjective degree columns */
+.vocab-degrees {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  width: 100%;
+}
+
+.vocab-degree-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+
+.vocab-degree-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-faint);
+}
+
+.vocab-degree-val {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+@media (min-width: 768px) {
+  .vocab-card { min-height: 360px; }
+}
+
+@media (min-width: 1024px) {
+  .vocab-card { max-width: 680px; min-height: 380px; }
+  .vocab-table { font-size: 14px; }
+  .vocab-table-form { font-size: 15px; }
+}

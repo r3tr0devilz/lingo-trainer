@@ -1,9 +1,10 @@
-import { LayoutGrid, BookOpen, Bookmark, Search, Languages, Sun, Moon, GraduationCap } from 'lucide-react'
+import { LayoutGrid, BookOpen, Bookmark, Search, Languages, Sun, Moon, GraduationCap, Library } from 'lucide-react'
 
 const NAV_ITEMS = [
   { id: 'browse',    Icon: LayoutGrid,    label: 'Browse' },
   { id: 'swipe',     Icon: BookOpen,      label: 'Learn'  },
   { id: 'flash',     Icon: GraduationCap, label: 'Flash'  },
+  { id: 'vocab',     Icon: Library,       label: 'Vocab'  },
   { id: 'bookmarks', Icon: Bookmark,      label: 'Saved'  },
   { id: 'search',    Icon: Search,        label: 'Search' },
 ]

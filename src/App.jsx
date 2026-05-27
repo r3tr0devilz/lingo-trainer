@@ -5,6 +5,7 @@ import BrowseView from './components/BrowseView.jsx'
 import BookmarksView from './components/BookmarksView.jsx'
 import SearchView from './components/SearchView.jsx'
 import FlashCardView from './components/FlashCardView.jsx'
+import VocabView from './components/VocabView.jsx'
 import BottomNav from './components/BottomNav.jsx'
 
 const CATEGORIES = [
@@ -161,6 +162,12 @@ export default function App() {
           <FlashCardView
             bookmarks={bookmarks}
             onBookmark={toggleBookmark}
+            darkMode={darkMode}
+            onToggleDark={toggleDarkMode}
+          />
+        )}
+        {activeView === 'vocab' && (
+          <VocabView
             darkMode={darkMode}
             onToggleDark={toggleDarkMode}
           />
