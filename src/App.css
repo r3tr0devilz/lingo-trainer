@@ -2140,19 +2140,17 @@ button:focus:not(:focus-visible) {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 14px 16px 8px;
-  gap: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 }
 
-/* Card — grows with content, no fixed height */
+/* Card — never let flex squish it; scroll area scrolls around it */
 .vocab-card {
+  flex-shrink: 0;
   width: 100%;
   max-width: 560px;
+  margin: 0 auto;
   justify-content: flex-start;
   cursor: pointer;
 }
