@@ -1,4 +1,16 @@
-import { Search, X, Sun, Moon, Bookmark, BookmarkCheck, Languages } from 'lucide-react'
+import { useState, useCallback, useRef } from 'react'
+import { Search, X, Sun, Moon, Bookmark, BookmarkCheck, Languages, ArrowLeftRight, Loader } from 'lucide-react'
+
+async function translate(text, dir) {
+  const [src, tgt] = dir === 'en-de' ? ['en', 'de'] : ['de', 'en']
+  const res = await fetch(
+    `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${src}|${tgt}`
+  )
+  if (!res.ok) throw new Error('Network error')
+  const data = await res.json()
+  if (data.responseStatus !== 200) throw new Error('Translation failed')
+  return data.responseData.translatedText
+}
 
 export default function SearchView({
   query,
@@ -10,6 +22,48 @@ export default function SearchView({
   darkMode,
   onToggleDark,
 }) {
+  const [showTranslate, setShowTranslate] = useState(false)
+  const [translateInput, setTranslateInput] = useState('')
+  const [translateDir, setTranslateDir] = useState('en-de')
+  const [translateResult, setTranslateResult] = useState('')
+  const [translateStatus, setTranslateStatus] = useState('idle') // idle | loading | done | error
+  const inputRef = useRef(null)
+
+  const swapDir = useCallback(() => {
+    setTranslateDir(d => d === 'en-de' ? 'de-en' : 'en-de')
+    setTranslateResult('')
+  }, [])
+
+  const handleTranslate = useCallback(async () => {
+    if (!translateInput.trim()) return
+    setTranslateStatus('loading')
+    setTranslateResult('')
+    try {
+      const result = await translate(translateInput.trim(), translateDir)
+      setTranslateResult(result)
+      setTranslateStatus('done')
+    } catch {
+      setTranslateStatus('error')
+    }
+  }, [translateInput, translateDir])
+
+  const handleTranslateKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleTranslate()
+    }
+  }, [handleTranslate])
+
+  const toggleTranslate = useCallback(() => {
+    setShowTranslate(s => {
+      if (!s) setTimeout(() => inputRef.current?.focus(), 50)
+      return !s
+    })
+  }, [])
+
+  const dirLabel = translateDir === 'en-de'
+    ? { from: 'English', to: 'German' }
+    : { from: 'German', to: 'English' }
 
   return (
     <div className="search-view">
@@ -52,8 +106,65 @@ export default function SearchView({
         )}
       </div>
 
+      {/* Translate toggle pill */}
+      <div className="translate-toggle-row">
+        <button
+          className={`translate-toggle-btn${showTranslate ? ' translate-toggle-btn--active' : ''}`}
+          onClick={toggleTranslate}
+        >
+          <Languages size={14} strokeWidth={1.75} />
+          <span>Translate</span>
+          <span className="translate-toggle-caret">{showTranslate ? '▴' : '▾'}</span>
+        </button>
+      </div>
+
+      {/* Translate panel */}
+      {showTranslate && (
+        <div className="translate-panel">
+          <div className="translate-dir-row">
+            <span className="translate-lang">{dirLabel.from}</span>
+            <button className="translate-swap-btn" onClick={swapDir} aria-label="Swap languages">
+              <ArrowLeftRight size={16} strokeWidth={2} />
+            </button>
+            <span className="translate-lang">{dirLabel.to}</span>
+          </div>
+
+          <textarea
+            ref={inputRef}
+            className="translate-input"
+            placeholder={`Type ${dirLabel.from} here…`}
+            value={translateInput}
+            onChange={e => { setTranslateInput(e.target.value); setTranslateResult('') }}
+            onKeyDown={handleTranslateKeyDown}
+            rows={3}
+          />
+
+          <button
+            className="translate-submit-btn"
+            onClick={handleTranslate}
+            disabled={translateStatus === 'loading' || !translateInput.trim()}
+          >
+            {translateStatus === 'loading'
+              ? <><Loader size={14} strokeWidth={2} className="translate-spinner" /> Translating…</>
+              : 'Translate'
+            }
+          </button>
+
+          {translateStatus === 'done' && translateResult && (
+            <div className="translate-result">
+              <p className="translate-result-label">{dirLabel.to}</p>
+              <p className="translate-result-text">{translateResult}</p>
+            </div>
+          )}
+
+          {translateStatus === 'error' && (
+            <p className="translate-error">Translation failed — check your connection and try again.</p>
+          )}
+        </div>
+      )}
+
       <div className="search-results">
-        {!query.trim() && (
+        {!query.trim() && !showTranslate && (
           <div className="empty-state">
             <span className="empty-icon"><Languages size={52} strokeWidth={1.25} /></span>
             <p className="empty-title">Search all sentences</p>

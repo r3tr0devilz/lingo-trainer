@@ -24,6 +24,7 @@ export default function SwipeView({
   darkMode,
   onToggleDark,
   currentCategory,
+  onBack,
 }) {
   const [index, setIndex] = useState(() => Math.min(startIndex, Math.max(0, sentences.length - 1)))
   const [stage, setStage] = useState('idle')
@@ -223,6 +224,7 @@ export default function SwipeView({
               onPrev={goPrev}
               canGoNext={canGoNext}
               canGoPrev={canGoPrev}
+              onBack={onBack}
             />
           </ErrorBoundary>
         </div>

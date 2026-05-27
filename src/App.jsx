@@ -123,6 +123,7 @@ export default function App() {
             darkMode={darkMode}
             onToggleDark={toggleDarkMode}
             currentCategory={currentCategory}
+            onBack={() => setActiveView('browse')}
           />
         )}
         {activeView === 'browse' && (

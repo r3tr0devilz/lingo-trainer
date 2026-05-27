@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import {
-  ChevronLeft, ChevronRight, Sun, Moon,
+  ArrowLeft, Sun, Moon,
   Volume2, PauseCircle, Bookmark, BookmarkCheck,
   ChevronUp, ChevronDown,
 } from 'lucide-react'
@@ -28,6 +28,7 @@ export default function SentenceCard({
   onPrev,
   canGoNext,
   canGoPrev,
+  onBack,
 }) {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [bookmarkFlash, setBookmarkFlash] = useState(false)
@@ -78,12 +79,11 @@ export default function SentenceCard({
       {/* Top bar */}
       <div className="card-top-bar">
         <button
-          className="card-nav-btn"
-          onClick={onPrev}
-          disabled={!canGoPrev}
-          aria-label="Previous sentence"
+          className="card-back-btn"
+          onClick={onBack}
+          aria-label="Back to browse"
         >
-          <ChevronLeft size={20} strokeWidth={2} />
+          <ArrowLeft size={20} strokeWidth={2} />
         </button>
         <span className="card-category-badge">
           {sentence.category}
