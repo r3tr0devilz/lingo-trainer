@@ -20,7 +20,7 @@ const CATEGORIES = [
 function loadReversed() {
   try {
     const raw = localStorage.getItem('lingo-flash-reversed')
-    return raw ? JSON.parse(raw) : false
+    return raw ? JSON.parse(raw) : true
   } catch { return false }
 }
 
